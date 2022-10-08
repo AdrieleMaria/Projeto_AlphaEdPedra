@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+body{
+    margin: 0;
+}
+
+
+/* ------------------------------------------------------
+                        HEADER
+------------------------------------------------------ */
+header{
+    display: flex;
+    justify-content: space-between;
+    border-bottom: black 1px solid;
+    padding: 1vw 1.8vw;
+    margin: 0 3vw;
+}
+.display_flex{
+    display: flex;
+    align-items: center;
+}
+.title{
+    font-family: 'Philosopher', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.3vw;
+    padding: 0 1vw;
+}
+nav{
+    gap: 5vw;
+    align-items: center;
+}
+.nav_on{
+    list-style-type: none;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 2.2vw;
+    color: #533F36;
+    border-bottom: #FBBE86 0.1em solid;
+}
+.nav_off{
+    list-style-type: none;
+    cursor: pointer;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 2.2vw;
+    text-align: center;
+    color: #533F36;
+    border-bottom: transparent 0.1em solid;
+}
+.nav_off:hover{
+    border-bottom: #FBBE86 0.1em solid;
+}
+.round_input{
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 1.5vw;
+    height: 3vw;
+    width: 18vw;
+    border-radius: 5em;
+    border-width: 1px;
+    border-style: solid;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    padding: 0.2em 0.5em;
+}
+.round_input:focus{
+    outline: #FBBE86 1px solid;
+}
+.display_gap{
+    gap: 30px;
+    align-items: center;
+}
+.icon{
+    border-bottom: transparent 0.1em solid;
+}
+#profile_icon:hover{
+    border-bottom: #FBBE86 0.1em solid;
+}

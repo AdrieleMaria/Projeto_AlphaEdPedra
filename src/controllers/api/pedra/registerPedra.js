@@ -4,6 +4,9 @@ const insertPedra = require('../../../repositories/pedras/deletePedra');
 
 exports.addPedra = async (req, res) => {
 
+    console.log(req.files);
+    return;
+
     //verificar:
     const userid = req.auth.id;
     const { name, description, user_id, created_at, img_url } = req.body;

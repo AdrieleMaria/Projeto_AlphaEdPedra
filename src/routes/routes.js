@@ -31,16 +31,16 @@ router.post('/logout', logout);
 router.post('/addpedra', jwtUser, addPedra);
 router.put('/updatePedra', jwtUser, updatePedra);
 router.delete('/deletepedra', jwtUser, deletePedra);
-router.get('listpedra', jwtUser, listPedra);
-router.get('getpedra', jwtUser, getPedra);
+router.get('/listpedra', jwtUser, listPedra);
+router.get('/getpedra', jwtUser, getPedra);
 //----------------------------PEDRA---------------------------
 
 //----------------------------TROCA---------------------------
 router.post('/addtroca', jwtUser, addTroca);
 router.put('/updatroca', jwtUser, updateTroca);
 router.delete('/deletetroca', jwtUser, deleteTroca);
-router.get('listtrpca', jwtUser, listTroca);
-router.get('gettroca', jwtUser, getTroca);
+router.get('/listtrpca', jwtUser, listTroca);
+router.get('/gettroca', jwtUser, getTroca);
 //----------------------------TROCA---------------------------
 
 module.exports = router;

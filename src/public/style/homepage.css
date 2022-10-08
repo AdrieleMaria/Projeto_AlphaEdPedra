@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+/* ------------------------------------------------------
+                        HOMEPAGE
+------------------------------------------------------ */
+.display_flex{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.title{
+    font-family: 'Philosopher', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.3em;
+    padding: 0.6em 0.5em;
+}
+#intro{
+    font-family: 'Philosopher', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 4em;
+    width: 350px;
+}
+.banner{
+    background-color: #FFF5DF;
+}
+.homepage_display{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4em 0;
+}
+#rules{
+    border-top: 2px #FBBE86 solid;
+    font-family: 'Philosopher', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 4em;
+    width: 800px;
+    text-align: center;
+    margin: auto;
+}
+#homepage_footer{
+    background-color: #FFF5DF;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 1em;  
+    text-align: center; 
+    padding: 2em; 
+}

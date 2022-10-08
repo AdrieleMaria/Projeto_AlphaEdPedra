@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+/* ------------------------------------------------------
+                        MY TRADES
+------------------------------------------------------ */
+.trades{
+    padding: 5em;
+    gap: 20em;
+    position: relative;
+    top: 50%;
+    transform: translate(0%, 0%);
+    flex-wrap: wrap;
+}
+.trade_menu{
+    text-align: center;
+}
+.trade_title{
+    margin-top: 1em;
+}
+#my_trades{
+    background-color: #FFF5DF;
+    padding: 2em 3em;
+    border-radius: 1em;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
+}
+#my_trade{
+    text-align: center;
+}
+.trades_modal{
+    width: fit-content;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
+}
+.trade_flex{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5em;
+}
+.modal_flex{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.close_modal{
+    align-self: flex-end;
+}
+.close_display_modal{
+    cursor: pointer;
+    position: relative;
+    left: 68%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -0%);
+    transform: translate(-50%, 280%);
+}
+#search_trades{
+    background-color: #FFF5DF;
+    padding: 2em 3em;
+    border-radius: 1em;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3em;
+}

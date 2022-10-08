@@ -2,9 +2,15 @@ const fs = require('fs');
 const jwt = require('./jwt');
 
 const authMiddleware = async (req, res, next) => {
-    const token = req.cookies.auth;
+    const [, token] = req.headers.authorization.split(" ");
+
+    // console.log(req.headers);
+    // console.log(token);
+
     try {
-        const payload = await jwt.verify(token);
+        const payload = jwt.verify(token);
+
+        console.log(payload);
 
         if (payload.type === "user") {
             next();

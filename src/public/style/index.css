@@ -1,0 +1,191 @@
+@import url('https://fonts.googleapis.com/css2?family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+body{
+    margin: 0;
+}
+.display_flex{
+    display: flex;
+}
+.clickable{
+    cursor: pointer;
+}
+
+
+/* ------------------------------------------------------
+                        MAIN
+------------------------------------------------------ */
+#stone_search{
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 1.5em;
+    height: 1.5em;
+    width: 8em;
+    border-radius: 5em;
+    border-width: 1px;
+    border-style: solid;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    padding: 0.2em 0.5em;
+}
+#stone_search:focus{
+    outline: #FBBE86 1px solid;
+}
+.btn_submit{
+    width: 9em;
+    height: 2.8em;
+    cursor: pointer;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 1em;
+    letter-spacing: -0.05em;
+    text-align: center;
+    color: #533F36;
+    background: #FBBE86;
+    border: none;
+    border-radius: 0.8em;
+    margin-bottom: 2vh;
+    margin-top: 2vh;
+}
+.stone_search{
+    padding: 3.8em;
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+}
+#inventory{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 0 10vw;
+}
+.inventory_icon{
+    flex-basis: 21%;
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    justify-content: baseline;
+    align-items: center;
+    padding-bottom: 3em;
+}
+.stone_name{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 0.9em;
+    letter-spacing: -0.05em;
+    text-align: center;
+    margin: 0;
+    padding: 0.3em;
+}
+.edit_delete{
+    display: flex;
+    gap: 10px;
+    cursor: pointer;
+}
+.stone{
+    height: 8.2em;
+    width: 8.2em;
+    border: #533F36 0.25em solid;
+    cursor: pointer;
+}
+
+/* ------------------------------------------------------
+                        MODAL
+------------------------------------------------------ */
+#cadastrate_modal{
+    border: 2px solid #FBBE86;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 3em 5em;
+    width: 25em;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    margin: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    /* transform: translate(-50%, -50%); */
+    z-index: 99;
+    background-color: white;
+}
+.modal_input[type="text"], input[type="email"], input[type="password"], input[type="number"]{
+    background-color: transparent;
+    border: none;
+	border-bottom: 1px solid #533F36;
+	margin-bottom: 4vh;
+	padding: 0 1em;
+	width: 20em;
+    height: 5vh;
+}
+.modal_input[type="text"]::placeholder, input[type="email"]::placeholder, input[type="password"]::placeholder, input[type="number"]::placeholder{
+    font-family: 'Roboto', sans-serif;
+    font-size: 2vh;
+    font-weight: 300;
+    text-align: left;
+    color:rgb( 98, 101, 108);
+}
+.modal_input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus, input[type="number"]:focus{
+    outline: none;
+    border-bottom: #FBBE86 1px solid;
+}
+.modal_input[type="text"]:hover, input[type="email"]:hover, input[type="password"]:hover, input[type="number"]:hover{
+    outline: none;
+    border-bottom: #FBBE86 1px solid;
+}
+input[type="file"]{
+    display: none;
+}
+.btn_file{
+    cursor: pointer;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 0.9em;
+    letter-spacing: -0.05em;
+    text-align: center;
+    color: #533F36;
+    background: #FBBE86;
+    border: none;
+    border-radius: 0.8em;
+    padding: 0.6em 1.4em;
+    height: fit-content;
+}
+.modal_title_div{
+    color: #533F36;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1.6em;   
+    justify-content: space-between; 
+}
+.file_div{
+    display: flex;
+    gap: 1em;
+    align-items: center;
+    margin-top: 1em;
+}
+.done_warning, .upload_warning{
+    color: #533F36;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1em; 
+}
+.done_warning{
+    text-align: center;
+}
+#cadastrate_stone, #edit_stone{
+    align-self: flex-end;
+    margin-top: 2em;
+}
+#delete_stone{
+    align-self: center;
+    margin-top: 2em;
+}
+.philosopher{
+font-family: 'Philosopher', sans-serif;
+font-style: normal;
+font-weight: 400;
+font-size: 1em;
+}
