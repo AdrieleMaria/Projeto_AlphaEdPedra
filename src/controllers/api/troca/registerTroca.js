@@ -1,8 +1,8 @@
 const bcrypt = require('bcrypt');
 const jwt = require('../../../auth/jwt');
-const insertPedra = require('../../../repositories/pedras/deletePedra');
+const insertTroca = require('../../../repositories/Troca/addTroca');
 
-exports.addPedra = async (req, res) => {
+exports.addTroca = async (req, res) => {
 
     //verificar:
     const userid = req.auth.id;
@@ -18,7 +18,7 @@ exports.addPedra = async (req, res) => {
         };
         console.log(columns);
 
-        const resp = await insertPedra(columns);
+        const resp = await insertTroca(columns);
 
         if (resp.err !== null) {
             console.log({ err: resp.err });
