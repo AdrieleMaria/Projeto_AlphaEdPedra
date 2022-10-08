@@ -1,7 +1,16 @@
-import { login } from "./modules/login.js";
-import { cadastro } from "./modules/cadastro.js";
-import { homePage } from "./modules/home.js";
-// import { account } from "./modules/account.js";
+import { login } from "./modules/access/login.js";
+import { cadastro } from "./modules/access/cadastro.js";
+import { acessCadastro } from "./modules/access/registration.js";
+import { acessLogin } from "./modules/access/log.js";
+import { display } from "./modules/home/display.js";
+import { inventory } from "./modules/home/inventories.js";
+import { exchanges } from "./modules/home/exchanges.js";
+import { searchUser } from "./modules/home/searchUser.js";
+import { profile } from "./modules/home/profile.js";
+import { logout } from "./modules/home/logout.js";
+import cookieParser from "cookie-parser";
+
+// import { homePage } from "./modules/home.js";
 
 //--------------INICIAL
 const app = document.getElementById("app_form");
@@ -13,120 +22,133 @@ btnCadastro.addEventListener("click", printCadastro);
 //--------------INICIAL
 
 
-async function log(_user) {
+function validToken() {
 
-    fetch(`http://localhost:8082/login`, {
-        method: "POST",
-        body: JSON.stringify(_user),
-        headers: { "Content-type": "application/json; charset=UTF-8" },
-    })
-        .then((res) => {
-            if (res.status === 200 || res.status === 401) {
-                const dados = res.json();
-                return dados;
-            }
-        })
-        .then((dados) => {
-            console.log(dados);
-            if (dados.message === "Login sucedido") {
-                // window.location.href = "./home.html";
-                // document.location.reload(true);
-                body.innerHTML = homePage();
-                // window.onload = account();
+    if (cookie.auth) {
+        console.log("cookie");
+    }
 
-            } else if (dados.message === "Email não encontrado") {
-                document.getElementById("status").innerHTML = `Conta inexistente`;
-                document.getElementById("email").focus();
-            } else if (dados.message === "Senha incorreta, acesso negado") {
-                document.getElementById("status").innerHTML = `Senha incorreta`;
-                document.getElementById("password").focus();
-            } else {
-                document.getElementById("status").innerHTML = `Erro inexperado...`;
-            }
-        })
-        .catch((erro) => {
-            console.log(erro);
-            document.getElementById("status").textContent = `Erro inexperado...${erro}`
-        });
-}
-
-async function register(_user) {
-
-    fetch(`http://localhost:8082/register`, {
-        method: "POST",
-        body: JSON.stringify(_user),
-        headers: { "Content-type": "application/json; charset=UTF-8" },
-    })
-        .then((res) => res.json())
-        .then((dados) => {
-            console.log(dados);
-            if (dados.message === "Login sucedido") {
-                // body.innerHTML = homePage();
-            } else {
-                if (dados.message === "Usuário existente") {
-                    document.getElementById("status").innerHTML = `Conta já existente`;
-                }
-            }
-        })
-        .catch((erro) => {
-            console.log(erro);
-            document.getElementById("status").innerHTML = `${erro}`;
-        });
 
 }
 
-async function acessLogin() {
+// validToken()
 
-    const user = {
-        email: document.getElementById("email").value,
-        password: document.getElementById("password").value
-    }
 
-    if (user.email !== "" && user.password !== "") {
 
-        const dataacess = await log(user);
 
-        console.log("dataacess", dataacess);
-        // if (!dataacess) {
-        //     inventario(dataacess);
-        // }
+// async function log(_user) {
 
-    } else {
-        document.getElementById("status").innerHTML = `Preencha todos os campos`;
-        document.getElementById("email").focus();
-    }
+//     fetch(`http://localhost:8082/login`, {
+//         method: "POST",
+//         body: JSON.stringify(_user),
+//         headers: { "Content-type": "application/json; charset=UTF-8" },
+//     })
+//         .then((res) => {
+//             if (res.status === 200 || res.status === 401) {
+//                 const dados = res.json();
+//                 return dados;
+//             }
+//         })
+//         .then((dados) => {
+//             console.log(dados);
+//             if (dados.message === "Login sucedido") {
+//                 // window.location.href = "./home.html";
+//                 // document.location.reload(true);
+//                 body.innerHTML = homePage();
+//                 // window.onload = account();
 
-}
+//             } else if (dados.message === "Email não encontrado") {
+//                 document.getElementById("status").innerHTML = `Conta inexistente`;
+//                 document.getElementById("email").focus();
+//             } else if (dados.message === "Senha incorreta, acesso negado") {
+//                 document.getElementById("status").innerHTML = `Senha incorreta`;
+//                 document.getElementById("password").focus();
+//             } else {
+//                 document.getElementById("status").innerHTML = `Erro inexperado...`;
+//             }
+//         })
+//         .catch((erro) => {
+//             console.log(erro);
+//             document.getElementById("status").textContent = `Erro inexperado...${erro}`
+//         });
+// }
 
-async function acessCadastro() {
+// async function register(_user) {
+//     fetch(`http://localhost:8082/register`, {
+//         method: "POST",
+//         body: JSON.stringify(_user),
+//         headers: { "Content-type": "application/json; charset=UTF-8" },
+//     })
+//         .then((res) => res.json())
+//         .then((dados) => {
+//             console.log(dados);
+//             if (dados.message === "Login sucedido") {
+//                 // body.innerHTML = homePage();
+//             } else {
+//                 if (dados.message === "Usuário existente") {
+//                     document.getElementById("status").innerHTML = `Conta já existente`;
+//                 }
+//             }
+//         })
+//         .catch((erro) => {
+//             console.log(erro);
+//             document.getElementById("status").innerHTML = `${erro}`;
+//         });
 
-    const user = {
-        name: document.getElementById("name").value,
-        phone: document.getElementById("phone").value,
-        email: document.getElementById("email").value,
-        password: document.getElementById("password").value
-    }
+// }
 
-    if (user.name !== "" && user.phone !== "" && user.email !== "" && user.password !== "") {
+// async function acessLogin() {
 
-        const passwordValid = document.getElementById("password2").value;
-        if (user.password !== passwordValid) {
-            document.getElementById("password").value = "";
-            document.getElementById("password2").value = "";
-            document.getElementById("status").innerHTML = `Preencha com a mesma senha`;
-            document.getElementById("password").focus();
-        } else {
+//     const user = {
+//         email: document.getElementById("email").value,
+//         password: document.getElementById("password").value
+//     }
 
-            const dataacess = await register(user);
-            console.log("dataacess", dataacess);
+//     if (user.email !== "" && user.password !== "") {
 
-        }
+//         const dataacess = await log(user);
 
-    } else {
-        document.getElementById("status").innerHTML = `Preencha todos os campos`;
-    }
+//         console.log("dataacess", dataacess);
+//         // if (!dataacess) {
+//         //     inventario(dataacess);
+//         // }
 
-}
+//     } else {
+//         document.getElementById("status").innerHTML = `Preencha todos os campos`;
+//         document.getElementById("email").focus();
+//     }
+
+// }
+
+// async function acessCadastro() {
+
+//     const user = {
+//         name: document.getElementById("name").value,
+//         phone: document.getElementById("phone").value,
+//         email: document.getElementById("email").value,
+//         password: document.getElementById("password").value
+//     }
+
+//     if (user.name !== "" && user.phone !== "" && user.email !== "" && user.password !== "") {
+
+//         const passwordValid = document.getElementById("password2").value;
+//         if (user.password !== passwordValid) {
+//             document.getElementById("password").value = "";
+//             document.getElementById("password2").value = "";
+//             document.getElementById("status").innerHTML = `Preencha com a mesma senha`;
+//             document.getElementById("password").focus();
+//         } else {
+
+//             const dataacess = await register(user);
+//             console.log("dataacess", dataacess);
+
+//         }
+
+//     } else {
+//         document.getElementById("status").innerHTML = `Preencha todos os campos`;
+//     }
+
+// }
 
 function printLogin() {
 
