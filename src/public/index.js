@@ -20,7 +20,7 @@ async function log(_user) {
         .then((res) => res.json())
         .then((dados) => {
             console.log(dados);
-            if (dados === "Login sucedido") {
+            if (dados.message === "Login sucedido") {
                 body.innerHTML = homePage();
             }
         })
