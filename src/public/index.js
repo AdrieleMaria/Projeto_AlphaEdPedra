@@ -1,14 +1,17 @@
 import { login } from "./modules/login.js";
 import { cadastro } from "./modules/cadastro.js";
 import { homePage } from "./modules/home.js";
+// import { account } from "./modules/account.js";
 
+//--------------INICIAL
 const app = document.getElementById("app_form");
 const btnLogin = document.getElementById("login");
 const btnCadastro = document.getElementById("cadastro");
 const body = document.getElementById("body");
-
 btnLogin.addEventListener("click", printLogin);
 btnCadastro.addEventListener("click", printCadastro);
+//--------------INICIAL
+
 
 async function log(_user) {
 
@@ -17,18 +20,34 @@ async function log(_user) {
         body: JSON.stringify(_user),
         headers: { "Content-type": "application/json; charset=UTF-8" },
     })
-        .then((res) => res.json())
+        .then((res) => {
+            if (res.status === 200 || res.status === 401) {
+                const dados = res.json();
+                return dados;
+            }
+        })
         .then((dados) => {
             console.log(dados);
             if (dados.message === "Login sucedido") {
+                // window.location.href = "./home.html";
+                // document.location.reload(true);
                 body.innerHTML = homePage();
+                // window.onload = account();
+
+            } else if (dados.message === "Email não encontrado") {
+                document.getElementById("status").innerHTML = `Conta inexistente`;
+                document.getElementById("email").focus();
+            } else if (dados.message === "Senha incorreta, acesso negado") {
+                document.getElementById("status").innerHTML = `Senha incorreta`;
+                document.getElementById("password").focus();
+            } else {
+                document.getElementById("status").innerHTML = `Erro inexperado...`;
             }
         })
         .catch((erro) => {
             console.log(erro);
-            document.getElementById("status").innerHTML = `${erro}`;
+            document.getElementById("status").textContent = `Erro inexperado...${erro}`
         });
-
 }
 
 async function register(_user) {
@@ -41,8 +60,12 @@ async function register(_user) {
         .then((res) => res.json())
         .then((dados) => {
             console.log(dados);
-            if (dados === "criado") {
-                body.innerHTML = homePage();
+            if (dados.message === "Login sucedido") {
+                // body.innerHTML = homePage();
+            } else {
+                if (dados.message === "Usuário existente") {
+                    document.getElementById("status").innerHTML = `Conta já existente`;
+                }
             }
         })
         .catch((erro) => {
@@ -70,6 +93,7 @@ async function acessLogin() {
 
     } else {
         document.getElementById("status").innerHTML = `Preencha todos os campos`;
+        document.getElementById("email").focus();
     }
 
 }
@@ -90,6 +114,7 @@ async function acessCadastro() {
             document.getElementById("password").value = "";
             document.getElementById("password2").value = "";
             document.getElementById("status").innerHTML = `Preencha com a mesma senha`;
+            document.getElementById("password").focus();
         } else {
 
             const dataacess = await register(user);

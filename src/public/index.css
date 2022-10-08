@@ -25,6 +25,11 @@ body{
     flex-direction: column;
 }
 
+.main{
+    width: 100vw;
+    height: 100vh;
+}
+
 .box{
     width: 60vw;
     height: 70vh;

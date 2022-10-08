@@ -19,31 +19,46 @@ exports.login = async (req, res) => {
 
     if (user.data !== null) {
 
-        // const vslidat = await bcrypt.compare(user.data.password, columns.password);
-        // console.log("bycript compare", bcrypt.compare(user.data.password, columns.password));
-
         console.log(user.data);
-
         console.log(user.data.password, columns.password);
 
-        const valid = await bcrypt.compare(user.data.password, columns.password);
-        console.log(valid);
+        // const valid = await bcrypt.compare(user.data.password, columns.password);
+        // console.log(valid);
 
-        if (await bcrypt.compare(user.data.password, columns.password)) {
 
-            res.status(401).send({ err: "Senha incorreta, acesso negado" });
+        bcrypt.compare(password, user.data.password, (err, data) => {
+            if (err) throw err
+            if (data) {
 
-        } else {
-            const token = jwt.sign({
-                id: user.id,
-                email,
-                name: user.name,
-                phone: user.phone,
-                type: user.type,
-            });
+                const token = jwt.sign({
+                    id: user.id,
+                    email,
+                    name: user.name,
+                    phone: user.phone,
+                    type: user.type,
+                });
 
-            res.cookie('auth', token).status(200).send({ message: 'Login sucedido', token });
-        }
+                return res.cookie('auth', token).status(200).send({ message: 'Login sucedido', token });
+
+            } else {
+                return res.status(401).send({ message: "Senha incorreta, acesso negado" });
+            }
+        })
+        // if (!(await bcrypt.compare(user.data.password, columns.password))) {
+
+        //     res.status(401).send({ message: "Senha incorreta, acesso negado" });
+
+        // } else {
+        //     const token = jwt.sign({
+        //         id: user.id,
+        //         email,
+        //         name: user.name,
+        //         phone: user.phone,
+        //         type: user.type,
+        //     });
+
+        //     res.cookie('auth', token).status(200).send({ message: 'Login sucedido', token });
+        // }
 
     } else {
         errors = {

@@ -1,7 +1,15 @@
-export function homePage() {
-    return `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../index.css">
+    <title>Home - Alpha EdPedra</title>
+</head>
+<body>
+    <section class="main display_columm">
         <header class="header">
-    
             <section class="box_logo">
                 <svg class="icon_navbar" viewBox="0 0 69 62" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M1 29.0126L14.8688 40.7476M1 29.0126L16.8222 18.224M1 29.0126L14.6735 2.32492M1 29.0126L9.00875 42.6404M16.8222 18.224L24.0496 23.3344M16.8222 18.224L14.6735 2.32492M24.0496 23.3344L34.5977 12.5457M24.0496 23.3344L31.277 41.8833M34.5977 12.5457L49.8338 16.3312M34.5977 12.5457L24.0496 1M49.8338 16.3312L59.6006 27.4984M49.8338 16.3312L24.0496 1M49.8338 16.3312L54.5219 10.4637M59.6006 27.4984L68 25.4164M59.6006 27.4984L51.9825 40.1798M68 25.4164L58.6239 49.4543M68 25.4164L54.5219 10.4637M58.6239 49.4543L53.3499 45.4795M58.6239 49.4543L45.7318 57.4038M53.3499 45.4795L51.9825 40.1798M53.3499 45.4795L45.7318 57.4038M45.7318 57.4038L20.5335 61M20.5335 61L30.105 48.3186M20.5335 61L15.0641 40.9369L28.5423 43.3975M20.5335 61L16.0408 54.1861M30.105 48.3186L35.379 43.2082M30.105 48.3186L29.7143 46.2366L28.5423 43.3975M35.379 43.2082L51.9825 40.1798M35.379 43.2082L31.277 41.8833M28.5423 43.3975L31.277 41.8833M14.6735 2.32492L24.0496 1M24.0496 1L54.5219 10.4637M9.39942 43.3975L10.5714 45.2902M11.1574 46.0473L13.8921 50.5899M14.4781 51.7256L15.2595 52.8612" stroke="#FBBE86"/>
@@ -45,10 +53,12 @@ export function homePage() {
                 </ul>
             </section>
         </header>
-        
+         
         <section id="appHome"></section>
 
-        <script src="./account.js"></script>
+    </section>
 
-        `
-}
+    <script type="module" src="./account.js"></script>
+
+</body>
+</html>
