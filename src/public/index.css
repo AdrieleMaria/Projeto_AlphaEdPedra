@@ -1,0 +1,270 @@
+@import url('https://fonts.googleapis.com/css2?family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    width: 100vw;
+    height: 100vh;
+}
+
+.display_row{
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.display_columm{
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.box{
+    width: 60vw;
+    height: 70vh;
+
+    border-radius: 2%;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+}
+
+.box_left{
+    width: 30vw;
+    height: 70vh;
+    background-color: #FFF5DF; 
+    border-radius: 2% 0px 0px 2%;
+    
+}
+
+.box_right{
+    width: 30vw;
+    height: 70vh;
+}
+
+.box_btn{
+    width: 30vw;
+    height: 10vh;
+
+    justify-content:space-evenly;
+}
+
+#app_form{
+    width: 30vw;
+    height: 60vh;
+}
+
+/* ------------------------------------------------------
+                        TEXTOS
+------------------------------------------------------ */
+.title{
+    font-family: 'Philosopher', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 4vh;
+    text-align: center;
+    color: #533F36;
+    padding-top: 2vh;
+}
+
+/* ------------------------------------------------------
+                        BUTTON
+------------------------------------------------------ */
+
+.btn_logon{
+
+    cursor: pointer;
+    width: 10vw;
+    height: 4vh;
+
+    font-family: 'Philosopher', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 3vh;
+    text-align: center;
+    color: #FBBE86;
+    background-color: transparent;
+    border: transparent;
+}
+
+.btn_logon:active, .btn_logon:hover{
+    color: #533F36;
+    border-bottom: 0.5vh solid  #FBBE86;
+}
+
+.btn_logonAC{
+    cursor: pointer;
+    width: 10vw;
+    height: 4vh;
+    font-family: 'Philosopher', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 3vh;
+    text-align: center;
+    background-color: transparent;
+    border: transparent;
+    color: #533F36;
+    border-bottom: 0.5vh solid  #FBBE86;
+}
+
+.btn_submit{
+    width: 15vw;
+    height: 5vh;
+    cursor: pointer;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 3vh;
+    text-align: center;
+    color: #533F36;
+    background: #FBBE86;
+    border: none;
+    border-radius: 1vh;
+    margin-bottom: 2vh;
+    margin-top: 2vh;
+}
+
+/* ------------------------------------------------------
+                        INPUT
+------------------------------------------------------ */
+
+.icon{
+    width: 3vw;
+    height:3vh;
+}
+
+input[type="text"], input[type="email"], input[type="password"]{
+    border: none;
+	border-bottom: 1px solid #533F36;
+	margin-bottom: 4vh;
+	padding: 2vh;
+
+	width: 20vw;
+    height: 5vh;
+}
+
+input[type="text"]::placeholder, input[type="email"]::placeholder, input[type="password"]::placeholder{
+    font-family: 'Roboto', sans-serif;
+    font-size: 2vh;
+    font-weight: 300;
+    text-align: left;
+    color:rgb( 98, 101, 108);
+}
+
+/* ------------------------------------------------------
+                        HEADER
+------------------------------------------------------ */
+
+.header{
+    width: 100vw;
+    height: 10vh;
+    border-bottom: 0.2vh solid   #533F36;
+    display: flex;
+}
+
+.box_logo{
+    width: 20vw;
+    height: 10vh;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    align-items: center;
+}
+
+.title_two{
+    font-family: 'Philosopher', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 2.5vh;
+    text-align: start;
+    color: #533F36;
+}
+
+.icon_navbar{
+    width: 6vw;
+    height:6vh;
+}
+
+.navbar{ 
+    display: flex;
+    justify-content: center;
+    width: 50vw;  
+    height: 10vh;
+}
+
+.list_one{
+    list-style: none;
+    width: 30vw;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+}
+
+li a {
+    text-align: center;
+    text-decoration: none;
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 3vh;    
+    color: #533F36;
+
+}
+
+li a:hover, li a:active {
+    border-bottom: 0.5vh solid  #FBBE86;
+}
+
+.box_login{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 30vw;  
+    height: 10vh;
+}
+
+.icon_navbar_two{
+    width: 4vw;
+    height:4vh;
+}
+
+.list_two{
+    list-style: none;
+    width: 10vw;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+}
+
+#UserSearch{
+   
+    border: 1px solid #533F36;
+	margin-bottom: 0vh;
+	padding: 1vh;
+    border-radius: 1vh;
+	width: 20vw;
+    height: 5vh;
+}
+
+#btnSearchUser{
+
+    cursor: pointer;
+    width: 3vw;
+    height: 5vh;
+    background-color: transparent;
+    color: transparent;
+    border: transparent;
+}
+
+#btnSearchUser:active, #btnSearchUser:hover{
+    border-bottom: 0.5vh solid  #FBBE86;
+}
