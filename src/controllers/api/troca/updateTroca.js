@@ -1,8 +1,8 @@
 const bcrypt = require('bcrypt');
 const jwt = require('../../../auth/jwt');
-const insertPedra = require('../../../repositories/pedras/deletePedra');
+const updateTroca = require('../../../repositories/Troca/updateTroca');
 
-exports.addPedra = async (req, res) => {
+exports.updateTroca= async (req, res) => {
 
     //verificar:
     const userid = req.auth.id;
@@ -18,7 +18,7 @@ exports.addPedra = async (req, res) => {
         };
         console.log(columns);
 
-        const resp = await insertPedra(columns);
+        const resp = await updateTroca(columns);
 
         if (resp.err !== null) {
             console.log({ err: resp.err });
@@ -26,7 +26,7 @@ exports.addPedra = async (req, res) => {
             res.status(500).send("Internal Server Error");
         } else {
 
-            const pedraCreate = "criado";
+            const pedraCreate = "update troca";
             res.status(201).json(pedraCreate);
         }
 

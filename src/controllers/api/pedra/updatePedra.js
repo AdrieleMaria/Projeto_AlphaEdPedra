@@ -2,7 +2,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('../../../auth/jwt');
 const insertPedra = require('../../../repositories/pedras/deletePedra');
 
-exports.addPedra = async (req, res) => {
+exports.updatePedra = async (req, res) => {
 
     //verificar:
     const userid = req.auth.id;
@@ -18,7 +18,7 @@ exports.addPedra = async (req, res) => {
         };
         console.log(columns);
 
-        const resp = await insertPedra(columns);
+        const resp = await updatePedra(columns);
 
         if (resp.err !== null) {
             console.log({ err: resp.err });
