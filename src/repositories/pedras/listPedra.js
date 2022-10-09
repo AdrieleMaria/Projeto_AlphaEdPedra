@@ -1,22 +1,19 @@
-
 const db = require("../../controllers/db");
 
-async function listPedra(params) {
+async function listStone(params) {
     try {
 
-        // console.log(params);
-        // console.log(params);
+        const query = `SELECT id, name, description, user_id, img_url, created_at, validated, offered 
+        FROM "stone" WHERE user_id = $1`;
+        const values = [params.user_id];
 
-        const query = `SELECT * FROM pedra
-        RETURNING *`;
+        const data = await db.query(query, values);
+        console.log(data);
 
-        const result = await db.query(query, values);
-        console.log(result);
-
-        return { err: null };
+        return { data: data.rows, err: null };
     } catch (err) {
-        return { err: err };
+        return { data: null, err: err };
     };
 }
 
-module.exports = listPedra;
+module.exports = listStone;

@@ -14,7 +14,7 @@ exports.login = async (req, res) => {
     const user = await searchUser(columns);
 
     if (user.data) {
-        console.log(user);
+        // console.log(user);
         bcrypt.compare(password, user.data.password, (err, data) => {
             if (err) throw err;
             if (data) {

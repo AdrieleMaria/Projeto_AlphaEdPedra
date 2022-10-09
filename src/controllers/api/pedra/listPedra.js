@@ -1,24 +1,28 @@
 const bcrypt = require('bcrypt');
 const jwt = require('../../../auth/jwt');
-const insertPedra = require('../../../repositories/pedras/listPedra');
+const listStone = require('../../../repositories/pedras/listPedra');
 
 exports.listPedra = async (req, res) => {
 
-    //verificar:
-    const userid = req.auth.id;
-    const { name, description, user_id, created_at, img_url } = req.body;
+    const [, token] = req.headers.authorization.split(" ");
+    const payload = jwt.verify(token);
+    console.log(payload.id);
+
+    const userid = payload.id;
+    const columns = { user_id: userid };
 
     try {
-        const resp = await listPedra(columns);
+        const resp = await listStone(columns);
 
         if (resp.err !== null) {
-            console.log({ err: resp.err });
 
+            console.log({ err: resp.err });
             res.status(500).send("Internal Server Error");
+
         } else {
 
-            const pedraCreate = "criado";
-            res.status(201).json(pedraCreate);
+            res.status(201).json(resp);
+
         }
 
     } catch (err) {

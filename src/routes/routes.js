@@ -20,6 +20,7 @@ const { updateTroca } = require('../controllers/api/troca/updateTroca');
 const { listTroca } = require('../controllers/api/troca/listTroca');
 const { getTroca } = require('../controllers/api/troca/getTroca');
 
+
 //----------------------------USER----------------------------
 router.post('/login', login); //user e admin | criação de token
 router.post('/register', searchEmail, addUser);  //user e admin | criação de token
@@ -29,8 +30,8 @@ router.post('/logout', logout);
 
 //----------------------------PEDRA---------------------------
 router.post('/addpedra', jwtUser, addPedra);
-router.put('/updatePedra', jwtUser, updatePedra);
-router.delete('/deletepedra', jwtUser, deletePedra);
+router.put('/updatePedra/:id', jwtUser, updatePedra);
+router.delete('/deletepedra/:id', jwtUser, deletePedra);
 router.get('/listpedra', jwtUser, listPedra);
 router.get('/getpedra', jwtUser, getPedra);
 //----------------------------PEDRA---------------------------
@@ -39,8 +40,20 @@ router.get('/getpedra', jwtUser, getPedra);
 router.post('/addtroca', jwtUser, addTroca);
 router.put('/updatroca', jwtUser, updateTroca);
 router.delete('/deletetroca', jwtUser, deleteTroca);
-router.get('/listtrpca', jwtUser, listTroca);
+router.get('/listtroca', jwtUser, listTroca);
 router.get('/gettroca', jwtUser, getTroca);
 //----------------------------TROCA---------------------------
+
+router.get('/photoStone/:file', function (req, res) {
+
+    let file = req.params.file;
+
+    if (file) {
+        res.sendFile(__dirname + '../photoStone' + '/' + file);
+    } else {
+        res.send('Errorrrrr');
+    }
+
+})
 
 module.exports = router;
