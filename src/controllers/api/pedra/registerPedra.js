@@ -18,11 +18,11 @@ exports.addPedra = async (req, res) => {
     console.log(photo);
     console.log(name, description);
 
-    const [, token] = req.headers.authorization.split(" ");
-    const payload = jwt.verify(token);
-    console.log(payload.id);
+    // const [, token] = req.headers.authorization.split(" ");
+    // const payload = jwt.verify(token);
+    // console.log(payload.id);
 
-    const userid = payload.id;
+    const userid = req.auth.id;
 
     const columns = {
         name: name,
@@ -51,7 +51,7 @@ exports.addPedra = async (req, res) => {
             console.log(resp.data.id);
 
             const id = resp.data.id;
-            const uploadPath = path.join(__dirname, `../../../photoStone/photoStone-${id}.jpg`);
+            const uploadPath = path.join(__dirname, `../../../photoStone/stonephoto-${id}.jpg`);
 
             //>>>>>>>>>>>>>>>>>>>>>>>ATENÇÃO!!!!!!<<<<<<<<<<<<<<<<<<<<
             const host = 'localhost';

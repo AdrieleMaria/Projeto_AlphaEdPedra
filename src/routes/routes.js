@@ -44,16 +44,17 @@ router.get('/listtroca', jwtUser, listTroca);
 router.get('/gettroca', jwtUser, getTroca);
 //----------------------------TROCA---------------------------
 
-router.get('/photoStone/:file', function (req, res) {
+// router.get('/photoStone/:file', function (req, res) {
 
-    let file = req.params.file;
+//     let file = req.params.file;
 
-    if (file) {
-        res.sendFile(__dirname + '../photoStone' + '/' + file);
-    } else {
-        res.send('Errorrrrr');
-    }
+//     if (file) {
 
-})
+//         res.sendFile(`${process.env.Walk}` + '\\src\\photoStone' + '/' + file);
+//     } else {
+//         res.send('Errorrrrr');
+//     }
+
+// })
 
 module.exports = router;

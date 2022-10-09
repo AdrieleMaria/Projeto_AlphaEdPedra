@@ -6,7 +6,9 @@ const authMiddleware = async (req, res, next) => {
 
     try {
         const payload = jwt.verify(token);
-
+        req.auth = {
+            id: payload.id,
+        };
         console.log(payload);
 
         if (payload.type === "user") {

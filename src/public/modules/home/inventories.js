@@ -69,80 +69,82 @@ function createStone() {
 
 }
 
-//Edição
-// async function putStone() {
+// Edição
+async function putStone() {
 
-//     // fetch(`http://localhost:8082/updatePedra/:id`
+    // fetch(`http://localhost:8082/updatePedra/:id`
 
-// }
+}
 
-// function editStone(_stone) {
+function editStone(_stone) {
 
-//     document.getElementById("appHome").innerHTML = modalEditStone(_stone);
+    document.getElementById("appHome").innerHTML = modalEditStone(_stone);
 
-//     // edit_stone_submit
+    // edit_stone_submit
 
-// }
+}
 
-//Listar
-// async function getStone() {
+// Listar
+async function getStone() {
 
-//     const token = localStorage.getItem("auth");
+    const token = localStorage.getItem("auth");
 
-//     try {
-//         const response = await fetch(`http://localhost:8082/listpedra`, {
-//             method: "GET",
-//             headers: { "Content-type": "application/json; charset=UTF-8", "Authorization": `Basic ${token}` },
-//         });
+    try {
+        const response = await fetch(`http://localhost:8082/listpedra`, {
+            method: "GET",
+            headers: { "Content-type": "application/json; charset=UTF-8", "Authorization": `Basic ${token}` },
+        });
 
-//         const data = await response.json();
+        const data = await response.json();
 
-//         console.log(data);
+        console.log(data);
 
-//         //retornando o objeto >>>>>>>> OK!!!!!
-
-
-//     } catch (error) {
-
-//         console.log(error);
-
-//     }
-
-// }
-
-// function listStone() {
-
-//     getStone();
-
-// }
-
-//DELEÇÃO
-// async function deleteStone(_id) {
-
-//     // fetch(`http://localhost:8082/deletepedra/:${_id}`
-
-// }
-
-// function removeStone(_id) {
-
-//     document.getElementById("appHome").innerHTML = modalDeleteStone();
-
-//     document.getElementById("delete_stone").addEventListener("click", function () {
+        //retornando o objeto >>>>>>>> OK!!!!!
 
 
-//         deleteStone(_id);
+    } catch (error) {
+
+        console.log(error);
+
+    }
+
+}
+
+function listStone() {
+
+    getStone();
 
 
-//     });
+    //construir os cards
+}
+
+// DELEÇÃO
+async function deleteStone(_id) {
+
+    // fetch(`http://localhost:8082/deletepedra/:${_id}`
+
+}
+
+function removeStone(_id) {
+
+    document.getElementById("appHome").innerHTML = modalDeleteStone();
+
+    document.getElementById("delete_stone").addEventListener("click", function () {
+
+
+        deleteStone(_id);
+
+
+    });
 
 
 
 
-// }
+}
 
 function inventory() {
 
-    // listStone();
+    listStone();
     console.log("INVENTÁRIO");
 
     document.getElementById("appHome").innerHTML = inventoriesRender();
