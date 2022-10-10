@@ -27,7 +27,7 @@ router.post('/login', login); //user e admin | criação de token
 router.post('/register', searchEmail, addUser);  //user e admin | criação de token
 // router.put('/update-userdata', jwtuser, updateUserData); //user | verificação de token | editar dados
 router.post('/logout', logout);
-router.get('/profile', getUser);
+router.get('/profile', jwtUser, getUser);
 //----------------------------USER----------------------------
 
 //----------------------------PEDRA---------------------------
