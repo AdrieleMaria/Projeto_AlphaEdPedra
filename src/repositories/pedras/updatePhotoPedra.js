@@ -1,5 +1,5 @@
 const db = require("../../controllers/db");
-
+//>>>>>>>>>>>>>>>>>>OK
 async function upatePhotoPedra(params) {
     try {
 

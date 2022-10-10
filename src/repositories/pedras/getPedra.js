@@ -1,19 +1,19 @@
-
 const db = require("../../controllers/db");
 
 async function getPedra(params) {
     try {
 
-        // console.log(params);
-        // console.log(params);
+        console.log(params.id);
 
-        const query = `SELECT * FROM pedra WHERE id = $1
-        RETURNING *`;
-        values [ params.user_id ]
+        const query = `SELECT name, description, img_url 
+        FROM "stone" WHERE id = $1`;
+        const values = [params.id];
+
         const result = await db.query(query, values);
+
         console.log(result);
 
-        return { err: null };
+        return { data: result.rows, err: null };
     } catch (err) {
         return { err: err };
     };

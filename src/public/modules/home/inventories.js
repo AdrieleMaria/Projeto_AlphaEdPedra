@@ -1,5 +1,6 @@
 import { inventoriesRender } from "./pages/inventoriesRender.js";
 import { modalCreateStone } from "./pages/modalCreateStone.js";
+import { modalStone } from "./pages/modalStone.js"
 // import { modalEditStone } from "./pages/modalEditStone.js";
 // import { modalDeleteStone } from "./pages/modalDeleteStone.js";
 
@@ -111,9 +112,50 @@ function removeStone(_id) {
 
 }
 
+async function getStoneModal(_id) {
+
+    const token = localStorage.getItem("auth");
+
+    try {
+        const response = await fetch(`http://localhost:8082/getpedra/${_id}`, {
+            method: "GET",
+            headers: { "Content-type": "application/json; charset=UTF-8", "Authorization": `Basic ${token}` },
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) throw new Error(data.err);
+
+        console.log("data do getStoneModal", data.data);
+        document.getElementById("appHome").innerHTML = modalStone(data.data[0]);
+
+        // return data;
+
+    } catch (error) {
+
+        console.log(error);
+
+    }
+}
+
+
 function modalpedra(_id) {
 
     console.log("modalpedra", _id);
+    getStoneModal(_id);
+
+    // const dadosModal = await getStoneModal(_id);
+    // console.log(dadosModal);
+    // try {
+
+
+    //     document.getElementById("appHome").innerHTML = modalStone(dadosModal.data);
+
+    // } catch (err) {
+
+    //     console.log(err);
+
+    // }
 
 }
 
@@ -143,7 +185,7 @@ async function getStone() {
             inventories.innerHTML += `
             <div class="inventory_icon">
                 <button class="stone" onclick="modalpedra(${element.id})">
-                    <img width="40px" height="40px" src="${element.img_url}"/>
+                    <img width="100%" height="100%" src="${element.img_url}"/>
                 </button>
                 
                 <p class="stone_name">${element.name}</p>
@@ -190,7 +232,6 @@ function listStone() {
 
 
 function inventory() {
-
 
 
     document.getElementById("appHome").innerHTML = inventoriesRender();

@@ -33,7 +33,7 @@ router.post('/addpedra', jwtUser, addPedra);
 router.put('/updatePedra/:id', jwtUser, updatePedra);
 router.delete('/deletepedra/:id', jwtUser, deletePedra);
 router.get('/listpedra', jwtUser, listPedra);
-router.get('/getpedra', jwtUser, getPedra);
+router.get('/getpedra/:id', jwtUser, getPedra);
 //----------------------------PEDRA---------------------------
 
 //----------------------------TROCA---------------------------
@@ -44,17 +44,5 @@ router.get('/listtroca', jwtUser, listTroca);
 router.get('/gettroca', jwtUser, getTroca);
 //----------------------------TROCA---------------------------
 
-// router.get('/photoStone/:file', function (req, res) {
-
-//     let file = req.params.file;
-
-//     if (file) {
-
-//         res.sendFile(`${process.env.Walk}` + '\\src\\photoStone' + '/' + file);
-//     } else {
-//         res.send('Errorrrrr');
-//     }
-
-// })
 
 module.exports = router;
