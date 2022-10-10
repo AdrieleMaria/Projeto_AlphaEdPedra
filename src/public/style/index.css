@@ -30,23 +30,6 @@ body{
 #stone_search:focus{
     outline: #FBBE86 1px solid;
 }
-.btn_submit{
-    width: 9em;
-    height: 2.8em;
-    cursor: pointer;
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 600;
-    font-size: 1em;
-    letter-spacing: -0.05em;
-    text-align: center;
-    color: #533F36;
-    background: #FBBE86;
-    border: none;
-    border-radius: 0.8em;
-    margin-bottom: 2vh;
-    margin-top: 2vh;
-}
 .stone_search{
     padding: 3.8em;
     justify-content: center;
@@ -109,7 +92,7 @@ body{
     z-index: 99;
     background-color: white;
 }
-.modal_input[type="text"], input[type="email"], input[type="password"], input[type="number"]{
+.modal_input[type="text"], .modal_input[type="email"], .modal_input[type="password"], .modal_input[type="number"]{
     background-color: transparent;
     border: none;
 	border-bottom: 1px solid #533F36;
@@ -118,18 +101,18 @@ body{
 	width: 20em;
     height: 5vh;
 }
-.modal_input[type="text"]::placeholder, input[type="email"]::placeholder, input[type="password"]::placeholder, input[type="number"]::placeholder{
+.modal_input[type="text"]::placeholder, .modal_input[type="email"]::placeholder, .modal_input[type="password"]::placeholder, .modal_input[type="number"]::placeholder{
     font-family: 'Roboto', sans-serif;
     font-size: 2vh;
     font-weight: 300;
     text-align: left;
     color:rgb( 98, 101, 108);
 }
-.modal_input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus, input[type="number"]:focus{
+.modal_input[type="text"]:focus, .modal_input[type="text"]:hover, .modal_input[type="email"]:focus, .modal_input[type="password"]:focus, .modal_input[type="number"]:focus{
     outline: none;
     border-bottom: #FBBE86 1px solid;
 }
-.modal_input[type="text"]:hover, input[type="email"]:hover, input[type="password"]:hover, input[type="number"]:hover{
+.modal_input[type="text"]:hover, .modal_input[type="text"]:hover, .modal_input[type="email"]:hover, .modal_input[type="password"]:hover, .modal_input[type="number"]:hover{
     outline: none;
     border-bottom: #FBBE86 1px solid;
 }

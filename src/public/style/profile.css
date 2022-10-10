@@ -73,24 +73,6 @@
     padding: 0 5em 1em;
     box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
 }
-.btn_submit{
-    width: 9em;
-    height: 2.8em;
-    cursor: pointer;
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 600;
-    font-size: 0.6em;
-    letter-spacing: -0.05em;
-    text-align: center;
-    color: #533F36;
-    background: #FBBE86;
-    border: none;
-    border-radius: 0.8em;
-    margin-bottom: 2vh;
-    margin-top: 2vh;
-    align-self: center;
-}
 
 /* ------------------------------------------------------
                         SEARCH PROFILE

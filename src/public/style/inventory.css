@@ -83,20 +83,3 @@
     cursor: pointer;
     align-self: flex-end;
 }
-.btn_submit{
-    width: 9em;
-    height: 2.8em;
-    cursor: pointer;
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 600;
-    font-size: 1em;
-    letter-spacing: -0.05em;
-    text-align: center;
-    color: #533F36;
-    background: #FBBE86;
-    border: none;
-    border-radius: 0.8em;
-    margin-bottom: 2vh;
-    margin-top: 2vh;
-}

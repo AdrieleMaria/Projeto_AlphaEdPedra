@@ -13,5 +13,5 @@ export function login() {
         <input type="password" id="password" name="password" placeholder="Senha" value="qaz"/>
     </div>
     <p id="status"><p>
-    <button type="submit" id="loginSubmit" class="btn_submit">Login</button>`
+    <button type="submit" id="loginSubmit" class="btn_submit">Acessar</button>`
 }
