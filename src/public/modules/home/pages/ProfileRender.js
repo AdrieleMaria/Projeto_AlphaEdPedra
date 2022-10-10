@@ -1,4 +1,5 @@
-export function ProfileRender() {
+export function ProfileRender(_data) {
+    //console.log(_data.data.name)
     return `
     <main>
         <div id="profile_card">
@@ -12,7 +13,7 @@ export function ProfileRender() {
                 </svg>
             </div>
 
-            <div class="profile_info">
+            <div class="profile_info"> 
                 <svg height="2.5em" viewBox="0 0 16 16" fill="none"
                     xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -20,10 +21,9 @@ export function ProfileRender() {
                         fill="#533F36" />
                 </svg>
                 <div>
-                    <p id="profile_name" class="roboto">Nome: Maria</p>
-                    <p id="profile_email" class="roboto">Email: maria@email.com</p>
-                    <p id="profile_phone" class="roboto">Telefone: 1234-456
-                    <p>
+                    <p id="profile_name" class="roboto">Nome: ${_data.data.name}</p>
+                    <p id="profile_email" class="roboto">Email: ${_data.data.email}</p>
+                    <p id="profile_phone" class="roboto">Telefone: ${_data.data.email}<p>
                 </div>
             </div>
         </div>

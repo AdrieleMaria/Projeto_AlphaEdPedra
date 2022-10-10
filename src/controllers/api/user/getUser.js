@@ -15,8 +15,8 @@ exports.getUser = async (req, res, next) => {
     const user = await searchUser(columns);
 
     if (user.err !== null) {
-        const msg = { message: "Usuário existente" };
-        res.status(200).send(msg);
+        //const msg = { message: "Usuário existente" };
+        res.status(200).send(user);
     } else {
         return next();
     }

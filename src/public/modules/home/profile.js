@@ -1,8 +1,8 @@
 import { ProfileRender } from "./pages/ProfileRender.js";
 
-function profile() {
-    document.getElementById("appHome").innerHTML = ProfileRender();
+async function profile() {
     getUser();
+    //document.getElementById("appHome").innerHTML = ProfileRender(data);
 }
 
 async function getUser() {
@@ -16,12 +16,16 @@ async function getUser() {
         });
 
         const data = await response.json();
-        console.log(data.id);
+ 
+        const render = await ProfileRender(data);
+        document.getElementById("appHome").innerHTML = render;
 
+        return true;
 
     } catch (error) {
         console.log(error);
     }
+
 
 }
 
