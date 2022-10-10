@@ -7,6 +7,7 @@ const { login } = require('../controllers/api/session/login');
 const { addUser } = require('../controllers/api/user/registerUser');
 const { searchEmail } = require('../controllers/api/user/searchUserEmail');
 const { logout } = require('../controllers/api/session/logout');
+const { getUser} = require('../controllers/api/user/getUser');
 
 const { addPedra } = require('../controllers/api/pedra/registerPedra');
 const { deletePedra } = require('../controllers/api/pedra/deletePedra');
@@ -26,6 +27,7 @@ router.post('/login', login); //user e admin | criação de token
 router.post('/register', searchEmail, addUser);  //user e admin | criação de token
 // router.put('/update-userdata', jwtuser, updateUserData); //user | verificação de token | editar dados
 router.post('/logout', logout);
+router.get('/profile', getUser);
 //----------------------------USER----------------------------
 
 //----------------------------PEDRA---------------------------
