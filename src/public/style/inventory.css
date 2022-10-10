@@ -5,15 +5,24 @@
 ------------------------------------------------------ */
 #appHome{
     display: flex;
+    justify-content: center;
     flex-direction: column;
-    align-items: center;
+    align-items: center;    
     padding-top: 5em;
 }
-#display_box{
-    flex: 6em 6em 18%;
+.display_center{
     display: flex;
+    justify-content: center;
+    align-items: center;
     flex-wrap: wrap;
-    width: 642px;
+}
+
+#display_box{
+    flex: 6em 6em 18%; 
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 642px; 
     margin-top: 5em;
     padding: 1em;
     gap: 1em;
