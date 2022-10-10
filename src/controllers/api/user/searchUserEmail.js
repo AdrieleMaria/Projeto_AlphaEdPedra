@@ -12,7 +12,7 @@ exports.searchEmail = async (req, res, next) => {
 
     if (user.err !== null) {
         const msg = { message: "Usuário existente" };
-        res.status(200).send(msg);
+        res.status(409).send(msg);
     } else {
         return next();
     }

@@ -38,7 +38,8 @@ exports.addUser = async (req, res) => {
                 type: "user"
             });
 
-            res.cookie('auth', token).status(200).send({ message: 'Login sucedido', token, usercreate });
+            return res.status(200).json({ message: "Login sucedido", token });
+            // res.cookie('auth', token).status(200).send({ message: 'Login sucedido', token, usercreate });
             // res.status(201).json(usercreate);
         }
 

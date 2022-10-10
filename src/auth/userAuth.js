@@ -19,19 +19,20 @@ const authMiddleware = async (req, res, next) => {
         }
 
     } catch (error) {
-        fs.readFile('./logs/data.json', 'utf8', (err, data) => {
-            if (err) {
-                console.log(err);
-            } else {
-                const buffer = JSON.parse(data);
-                buffer.push(error);
-                // eslint-disable-next-line no-unused-vars
-                fs.writeFile('./logs/data.json', JSON.stringify(buffer), (err) => {
-                    // console.log(err);
-                });
-            }
-        });
-        res.cookie('auth').status(401).send('Falha na autenticação do usuário');
+        // fs.readFile('./logs/data.json', 'utf8', (err, data) => {
+        //     if (err) {
+        //         console.log(err);
+        //     } else {
+        //         const buffer = JSON.parse(data);
+        //         buffer.push(error);
+        //         // eslint-disable-next-line no-unused-vars
+        //         fs.writeFile('./logs/data.json', JSON.stringify(buffer), (err) => {
+        //             // console.log(err);
+        //         });
+        //     }
+        // });
+        res.status(401).send('Falha na autenticação do usuário');
+        // res.cookie('auth').status(401).send('Falha na autenticação do usuário');
     }
 };
 

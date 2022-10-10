@@ -5,18 +5,19 @@ async function sign(_user) {
         const response = await fetch(`http://localhost:8082/login`, {
             method: "POST",
             body: JSON.stringify(_user),
-            headers: { "Content-type": "application/json; charset=UTF-8"},
+            headers: { "Content-type": "application/json; charset=UTF-8" },
         });
 
         // headers: { "Content-type": "application/json; charset=UTF-8", "Authorization": `Basic ${token}`},
-
 
         const data = await response.json();
 
         if (!response.ok) throw new Error(data.message);
 
         document.getElementById("status").innerHTML = "";
+        //----------------------------------------
         localStorage.setItem("auth", data.token);
+        //----------------------------------------
         document.getElementById("body").innerHTML = homePage();
     } catch (error) {
         document.getElementById("status").innerHTML = error;

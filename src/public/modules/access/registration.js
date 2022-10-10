@@ -2,26 +2,42 @@ import { homePage } from "../home/home.js";
 
 async function register(_user) {
 
-    fetch(`http://localhost:8082/register`, {
-        method: "POST",
-        body: JSON.stringify(_user),
-        headers: { "Content-type": "application/json; charset=UTF-8" },
-    })
-        .then((res) => res.json())
-        .then((dados) => {
-            console.log(dados);
-            if (dados.message === "Login sucedido") {
-                body.innerHTML = homePage();
-            } else {
-                if (dados.message === "Usuário existente") {
-                    document.getElementById("status").innerHTML = `Conta já existente`;
-                }
-            }
-        })
-        .catch((erro) => {
-            console.log(erro);
-            document.getElementById("status").innerHTML = `${erro}`;
+    try {
+        const response = await fetch(`http://localhost:8082/register`, {
+            method: "POST",
+            body: JSON.stringify(_user),
+            headers: { "Content-type": "application/json; charset=UTF-8" },
         });
+        // .then((res) => res.json())
+        // .then((dados) => {
+        //     console.log(dados);
+        //     if (dados.message === "Login sucedido") {
+
+        //         body.innerHTML = homePage();
+        //     } else {
+        //         if (dados.message === "Usuário existente") {
+        //             document.getElementById("status").innerHTML = `Conta já existente`;
+        //         }
+        //     }
+        // })
+        // .catch((erro) => {
+        //     console.log(erro);
+        //     document.getElementById("status").innerHTML = `${erro}`;
+        // });
+        const data = await response.json();
+
+        if (!response.ok) throw new Error(data.message);
+
+        document.getElementById("status").innerHTML = "";
+        //----------------------------------------
+        localStorage.setItem("auth", data.token);
+        //----------------------------------------
+        document.getElementById("body").innerHTML = homePage();
+
+    } catch (error) {
+        document.getElementById("status").innerHTML = error;
+    }
+
 
 }
 
