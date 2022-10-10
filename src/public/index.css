@@ -10,6 +10,12 @@ body{
     width: 100vw;
     height: 100vh;
 }
+button{
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
 
 .display_row{
     display: flex;
@@ -18,12 +24,15 @@ body{
     align-items: center;
 }
 
-
 .display_columm{
     display: flex;
     justify-content:start;
     align-items: center;
     flex-direction: column;
+}
+
+#app_form{
+    justify-content: center;
 }
 
 .main{
@@ -68,18 +77,16 @@ body{
 
 #logo_stone{
     max-width: 10em;
+    padding: 0 0 1em;
 }
-/* ------------------------------------------------------
-                        TEXTOS
------------------------------------------------------- */
+
 .title{
     font-family: 'Philosopher', sans-serif;
     font-style: normal;
     font-weight: 400;
-    font-size: 4vw;
+    font-size: 1.8em;
+    padding: 0 1vw;
     text-align: center;
-    color: #533F36;
-    padding-top: 2vh;
 }
 
 /* ------------------------------------------------------
@@ -133,17 +140,21 @@ body{
     margin-top: 2vh;
     padding: 0.5em 1em;
 }
+.btn_nav{
+    color: #533F36;
+}
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 800px) {
     .btn_logon, .btn_logonAC, .btn_logon:hover, .btn_logon:focus, .btn_logon:active{
         font-size: 1em;
-    }
-    .title{
-        font-size: 0.8em;
     }
     .btn_submit{
         font-size: 0.8em;
         padding: 0.5em 1em;
+    }
+    #logo_stone{
+        max-width: 10em;
+        padding: 0 1em 1em;
     }
 }
 
@@ -156,7 +167,7 @@ body{
     height:3vh;
 }
 
-input[type="text"], input[type="email"], input[type="password"]{
+.login_input[type="text"], .login_input[type="email"], .login_input[type="password"]{
     border: none;
 	border-bottom: 1px solid #533F36;
 	margin-bottom: 4vh;
@@ -167,7 +178,7 @@ input[type="text"], input[type="email"], input[type="password"]{
     height: 5vh;
 }
 
-input[type="text"]::placeholder, input[type="email"]::placeholder, input[type="password"]::placeholder{
+.login_input[type="text"]::placeholder, .login_input[type="email"]::placeholder, .login_input[type="password"]::placeholder{
     font-family: 'Roboto', sans-serif;
     font-size: 2vw;
     font-weight: 300;
@@ -175,7 +186,7 @@ input[type="text"]::placeholder, input[type="email"]::placeholder, input[type="p
     color:rgb( 98, 101, 108);
 }
 
-input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus{
+.login_input[type="text"]:focus, .login_input[type="email"]:focus, .login_input[type="password"]:focus{
     outline: none;
 }
 
@@ -183,7 +194,7 @@ input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focu
                         HEADER
 ------------------------------------------------------ */
 
-/* .header{
+.header{
     width: 100vw;
     height: 10vh;
     border-bottom: 0.2vh solid   #533F36;
@@ -290,4 +301,4 @@ li a:hover, li a:active {
 
 #btnSearchUser:active, #btnSearchUser:hover{
     border-bottom: 0.5vh solid  #FBBE86;
-} */
+} 

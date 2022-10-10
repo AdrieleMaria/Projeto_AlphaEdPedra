@@ -4,25 +4,22 @@ export function homePage() {
 
     <header>
     <div class="display_flex">
-        <svg width="5vw" viewBox="0 0 180 162" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg class="nav_logo" viewBox="0 0 180 162" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
                 d="M1 75.7003L37.8455 106.994M1 75.7003L43.035 46.9306M1 75.7003L37.3265 4.53312M1 75.7003L22.277 112.041M43.035 46.9306L62.2362 60.5584M43.035 46.9306L37.3265 4.53312M62.2362 60.5584L90.2595 31.7886M62.2362 60.5584L81.4373 110.022M90.2595 31.7886L130.738 41.8833M90.2595 31.7886L62.2362 1M130.738 41.8833L156.685 71.6625M130.738 41.8833L62.2362 1M130.738 41.8833L143.192 26.2366M156.685 71.6625L179 66.1104M156.685 71.6625L136.446 105.479M179 66.1104L154.09 130.211M179 66.1104L143.192 26.2366M154.09 130.211L140.079 119.612M154.09 130.211L119.84 151.41M140.079 119.612L136.446 105.479M140.079 119.612L119.84 151.41M119.84 151.41L52.895 161M52.895 161L78.3236 127.183M52.895 161L38.3644 107.498L74.172 114.06M52.895 161L40.9592 142.83M78.3236 127.183L92.3353 113.555M78.3236 127.183L77.2857 121.631L74.172 114.06M92.3353 113.555L136.446 105.479M92.3353 113.555L81.4373 110.022M74.172 114.06L81.4373 110.022M37.3265 4.53312L62.2362 1M62.2362 1L143.192 26.2366M23.3149 114.06L26.4286 119.107M27.9854 121.126L35.2507 133.24M36.8076 136.268L38.8834 139.297"
                 stroke="#FBBE86" stroke-width="3" />
         </svg>
-        <h1 class="title">ALPHA<br />EDPEDRA</h1>
+        <h1 class="nav_h1">ALPHA<br />EDPEDRA</h1>
     </div>
 
     <nav class="display_flex">
-        <a>
-            <li class="nav_title nav_off"><button id="inventory" onclick="inventory()">Inventário</button></li>
-        </a>
-        <a>
-            <li class="nav_title nav_on" ><button onclick="display()">Display</button></li>
-        </a>
-        <a>
-            <li class="nav_title nav_off">Trocas</li>
-        </a>
-        <input class="round_input" type="text" title="Procure por outros usuários" id="profile_search"></input>
+            <li class="nav_title"><button id="inventory" class="btn_logon btn_nav" onclick="inventory()">Inventário</button></li>
+
+            <li class="nav_title"><button class="btn_logon btn_nav" onclick="display()">Display</button></li>
+
+            <li class="nav_title"><button class="btn_logon btn_nav">Trocas</button></li>
+
+        <input type="text" title="Procure por outros usuários" id="profile_search"></input>
     </nav>
 
     <div class="display_flex display_gap">
@@ -39,7 +36,6 @@ export function homePage() {
                 stroke-linecap="round" stroke-linejoin="round" />
         </svg>
     </button>
-
     </div>
 
 </header>

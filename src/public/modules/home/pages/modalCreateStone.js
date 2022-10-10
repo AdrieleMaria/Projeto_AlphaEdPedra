@@ -12,8 +12,9 @@ export function modalCreateStone() {
             </button>
         </div>
 
-        <input class="modal_input" type="text" id="stone_name" name="stone_name" placeholder="Tipo de pedra" />
-        <input class="modal_input" type="text" id="stone_description" name="stone_weight" placeholder="Descrição..." />
+        <input class="modal_input" type="text" id="stone_name_modal" name="stone_name" placeholder="Tipo de pedra"/>
+
+        <input class="modal_input" type="text" id="stone_description" name="stone_weight" placeholder="Descrição..."/>
 
         <div class="file_div">
             <label for="stone_file" class="btn_file">BUSCAR IMAGEM</label>

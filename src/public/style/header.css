@@ -19,18 +19,25 @@ header{
     display: flex;
     align-items: center;
 }
-.title{
+.nav_logo{
+    width: 2em;
+}
+.nav_h1{
     font-family: 'Philosopher', sans-serif;
     font-style: normal;
     font-weight: 400;
-    font-size: 1.3vw;
-    padding: 0 1vw;
+    font-size: 1em;
+    padding: 0 0.6em;
+}
+.nav_title{
+    list-style-type: none;
 }
 nav{
     gap: 5vw;
     align-items: center;
 }
-.nav_on{
+/* .nav_on{
+    background-color: transparent;
     list-style-type: none;
     font-family: 'Roboto', sans-serif;
     font-style: normal;
@@ -40,6 +47,8 @@ nav{
     border-bottom: #FBBE86 0.1em solid;
 }
 .nav_off{
+    border: none;
+    background-color: transparent;
     list-style-type: none;
     cursor: pointer;
     font-family: 'Roboto', sans-serif;
@@ -52,8 +61,8 @@ nav{
 }
 .nav_off:hover{
     border-bottom: #FBBE86 0.1em solid;
-}
-.round_input{
+} */
+.round_input, #profile_search{
     font-family: 'Roboto', sans-serif;
     font-style: normal;
     font-weight: 300;
@@ -66,16 +75,35 @@ nav{
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     padding: 0.2em 0.5em;
 }
-.round_input:focus{
+.round_input:hover, #profile_search:hover{
+    outline: #FBBE86 1px solid;
+}
+.round_input:focus, #profile_search:focus{
+    outline: #FBBE86 1px solid;
+}
+.round_input:active, #profile_search:active{
     outline: #FBBE86 1px solid;
 }
 .display_gap{
-    gap: 30px;
-    align-items: center;
+    gap: 10px;
+    align-items: flex-end;
 }
 .icon{
     border-bottom: transparent 0.1em solid;
 }
 #profile_icon:hover{
     border-bottom: #FBBE86 0.1em solid;
+}
+
+@media only screen and (max-width: 800px) {
+    .title{
+        font-size: 1em;
+    }
+    .nav_logo{
+        width: 1.4em;
+    }
+    .nav_h1{
+        font-size: 0.6em;
+        padding-right: 1.6em;
+    }
 }

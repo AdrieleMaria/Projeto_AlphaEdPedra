@@ -40,16 +40,18 @@ body{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    margin: 0 10vw;
+    margin: 0 auto;
+    align-self: center;
 }
 .inventory_icon{
-    flex-basis: 21%;
     display: flex;
+    flex-wrap: wrap;
     flex-direction: column;
-    width: fit-content;
+    flex: 1 1 21%;
     justify-content: center;
-    align-items: center;
+    align-content: center;
     padding-bottom: 3em;
+    gap: 0.8em;
 }
 .stone_name{
     font-family: 'Roboto';
@@ -59,10 +61,11 @@ body{
     letter-spacing: -0.05em;
     text-align: center;
     margin: 0;
-    padding: 0.3em;
+    padding: 0.3em auto;
 }
 .edit_delete{
     display: flex;
+    justify-content: center;
     gap: 10px;
     cursor: pointer;
 }
@@ -71,6 +74,7 @@ body{
     width: 8.2em;
     border: #533F36 0.25em solid;
     cursor: pointer;
+    align-self: center;
 }
 
 /* ------------------------------------------------------
@@ -79,16 +83,17 @@ body{
 #cadastrate_modal{
     border: 2px solid #FBBE86;
     display: flex;
+    gap: 1em;
     flex-direction: column;
     justify-content: center;
     padding: 3em 5em;
-    width: 25em;
+    width: 30em;
     box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
     margin: auto;
-    position: absolute;
-    top: 50%;
+    position: relative;
+    /* top: 50%;
     left: 50%;
-    /* transform: translate(-50%, -50%); */
+    transform: translate(-100%, -50%); */
     z-index: 99;
     background-color: white;
 }
@@ -108,7 +113,7 @@ body{
     text-align: left;
     color:rgb( 98, 101, 108);
 }
-.modal_input[type="text"]:focus, .modal_input[type="text"]:hover, .modal_input[type="email"]:focus, .modal_input[type="password"]:focus, .modal_input[type="number"]:focus{
+.modal_input[type="text"]:focus, .modal_input[type="email"]:focus, .modal_input[type="password"]:focus, .modal_input[type="number"]:focus{
     outline: none;
     border-bottom: #FBBE86 1px solid;
 }
