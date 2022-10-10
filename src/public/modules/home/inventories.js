@@ -1,7 +1,7 @@
 import { inventoriesRender } from "./pages/inventoriesRender.js";
 import { modalCreateStone } from "./pages/modalCreateStone.js";
 import { modalStone } from "./pages/modalStone.js"
-// import { modalEditStone } from "./pages/modalEditStone.js";
+import { modalEditStone } from "./pages/modalEditStone.js";
 // import { modalDeleteStone } from "./pages/modalDeleteStone.js";
 
 //Criação
@@ -70,22 +70,6 @@ function createStone() {
 
 }
 
-// Edição
-async function putStone() {
-
-    // fetch(`http://localhost:8082/updatePedra/:id`
-
-}
-
-function editStone(_id) {
-
-    console.log("edit", _id);
-    // document.getElementById("appHome").innerHTML = modalEditStone(_stone);
-
-    // edit_stone_submit
-
-}
-
 // DELEÇÃO
 async function deleteStone(_id) {
 
@@ -112,7 +96,7 @@ function removeStone(_id) {
 
 }
 
-async function getStoneModal(_id) {
+async function getStoneModal(_id, _func) {
 
     const token = localStorage.getItem("auth");
 
@@ -127,7 +111,7 @@ async function getStoneModal(_id) {
         if (!response.ok) throw new Error(data.err);
 
         console.log("data do getStoneModal", data.data);
-        document.getElementById("appHome").innerHTML = modalStone(data.data[0]);
+        document.getElementById("appHome").innerHTML = _func(data.data[0]);
 
         // return data;
 
@@ -138,26 +122,31 @@ async function getStoneModal(_id) {
     }
 }
 
-
 function modalpedra(_id) {
 
-    console.log("modalpedra", _id);
-    getStoneModal(_id);
-
-    // const dadosModal = await getStoneModal(_id);
-    // console.log(dadosModal);
-    // try {
-
-
-    //     document.getElementById("appHome").innerHTML = modalStone(dadosModal.data);
-
-    // } catch (err) {
-
-    //     console.log(err);
-
-    // }
+    console.log("modalpedra", _id,);
+    getStoneModal(_id, modalStone);
 
 }
+
+// Edição
+async function putStone() {
+
+    // fetch(`http://localhost:8082/updatePedra/:id`
+
+}
+
+function editStone(_id) {
+
+    console.log("edit", _id);
+    getStoneModal(_id, modalEditStone);
+
+    // edit_stone_submit
+
+    // document.getElementById("appHome").innerHTML = modalEditStone(_stone);
+
+}
+
 
 // Listar
 async function getStone() {
@@ -229,7 +218,6 @@ function listStone() {
 
     //construir os cards
 }
-
 
 function inventory() {
 
