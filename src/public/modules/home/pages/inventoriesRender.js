@@ -5,17 +5,18 @@ export function inventoriesRender() {
     <button type="button" id="stone_search_button" class="btn_submit">BUSCAR</button>
     </div>
 
-    <div id="inventory">
-        <div id="new_stone" class="inventory_icon">
-            <button class="stone">
-                <svg width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M23.625 18.375V0H18.375V18.375H0V23.625H18.375V42H23.625V23.625H42V18.375H23.625Z"
-                        fill="#533F36" />
-                </svg>
-            </button>
-        </div>
+    <div id="new_stone" class="inventory_icon">
+        <button class="stone">
+            <svg width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M23.625 18.375V0H18.375V18.375H0V23.625H18.375V42H23.625V23.625H42V18.375H23.625Z"
+                    fill="#533F36" />
+            </svg>
+        </button>
+    </div>
 
-        <div class="inventory_icon">
+    <div id="inventory_main">
+
+        <div id="listIcon" class="inventory_icon">
             <button class="stone">
                 <img />
             </button>

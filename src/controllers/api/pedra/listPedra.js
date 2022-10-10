@@ -4,11 +4,8 @@ const listStone = require('../../../repositories/pedras/listPedra');
 
 exports.listPedra = async (req, res) => {
 
-    const [, token] = req.headers.authorization.split(" ");
-    const payload = jwt.verify(token);
-    console.log(payload.id);
-
-    const userid = payload.id;
+    const userid = req.auth.id;
+    
     const columns = { user_id: userid };
 
     try {
