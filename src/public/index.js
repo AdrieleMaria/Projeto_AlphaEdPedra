@@ -50,3 +50,5 @@ function printCadastro() {
     app.innerHTML = cadastro();
     document.getElementById("cadastroSubmit").addEventListener("click", acessCadastro);
 }
+
+export { printLogin }
