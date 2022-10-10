@@ -2,11 +2,8 @@ const searchUser = require('../../../repositories/user/getUser');
 const jwt = require('../../../auth/jwt');
 
 exports.getUser = async (req, res, next) => {
-    
-    const [, token] = req.headers.authorization.split(" ");
-    const payload = jwt.verify(token);
 
-    const userid = payload.id;
+    const userid = req.auth.id;
     //console.log(userid)
 
     const columns = {
