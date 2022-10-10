@@ -28,8 +28,6 @@ function validToken() {
 
 validToken();
 
-
-
 function printLogin() {
 
     const app = document.getElementById("app_form");
@@ -40,6 +38,8 @@ function printLogin() {
     document.getElementById("loginSubmit").addEventListener("click", acessLogin);
 
 }
+
+printLogin();
 
 function printCadastro() {
 

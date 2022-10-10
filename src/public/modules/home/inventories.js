@@ -56,7 +56,7 @@ function createStone() {
     document
         .getElementById("cadastrate_stone")
         .addEventListener("click", function () {
-            const name = document.getElementById("stone_name").value;
+            const name = document.getElementById("stone_name_modal").value;
             const description = document.getElementById("stone_description").value;
 
             if (name === "" || description === "" || photo === "") {
@@ -113,7 +113,7 @@ async function getStoneModal(_id, _func) {
         console.log("data do getStoneModal", data.data);
         document.getElementById("appHome").innerHTML = _func(data.data[0]);
 
-        // return data;
+        return true;
 
     } catch (error) {
 
@@ -130,20 +130,82 @@ function modalpedra(_id) {
 }
 
 // Edição
-async function putStone() {
+async function putStone(_photo, _name, _description, _id) {
 
     // fetch(`http://localhost:8082/updatePedra/:id`
 
+    const token = localStorage.getItem("auth");
+    console.log(_photo, _name, _description, _id);
+
+    const formData = new FormData();
+    formData.append("photo", _photo);
+    formData.append("name", _name);
+    formData.append("description", _description);
+
+
+    try {
+        const response = await fetch(`http://localhost:8082/updatePedra/${_id}`, {
+            method: "PUT",
+            body: formData,
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) throw new Error(data.message);
+
+        document.getElementById(
+            "statusEdit"
+        ).textContent = `Atualizado com sucesso!`;
+
+        //pegar os dados da pedra retornados no data
+        console.log("data", data);
+
+    } catch (error) {
+        document.getElementById("statusEdit").textContent = error;
+    }
+
 }
 
-function editStone(_id) {
-
+async function editStone(_id) {
     console.log("edit", _id);
-    getStoneModal(_id, modalEditStone);
+    try {
 
-    // edit_stone_submit
+        const render = await getStoneModal(_id, modalEditStone);
+        console.log(render)
+        if (!render) throw new Error("errooooooo, passe mais tarde");
 
-    // document.getElementById("appHome").innerHTML = modalEditStone(_stone);
+        document.getElementById("stone_file").addEventListener("change", (event) => {
+            photo = event.target.files[0];
+        });
+
+        document
+            .getElementById("edit_stone_submit")
+            .addEventListener("click", function () {
+
+                const name = document.getElementById("stone_name").value;
+                const description = document.getElementById("stone_description").value;
+
+                if (name === "" || description === "") {
+                    document.getElementById(
+                        "done_warning"
+                    ).textContent = `Preencha todos os campos`;
+                } else {
+                    console.log(photo, name, description, _id);
+                    putStone(photo, name, description, _id);
+                }
+            });
+
+
+        // edit_stone_submit
+
+        // document.getElementById("appHome").innerHTML = modalEditStone(_stone);
+    } catch (erro) {
+        console.log(erro);
+    }
+
 
 }
 
@@ -215,8 +277,6 @@ function listStone() {
 
     getStone();
 
-
-    //construir os cards
 }
 
 function inventory() {

@@ -18,10 +18,6 @@ exports.addPedra = async (req, res) => {
     console.log(photo);
     console.log(name, description);
 
-    // const [, token] = req.headers.authorization.split(" ");
-    // const payload = jwt.verify(token);
-    // console.log(payload.id);
-
     const userid = req.auth.id;
 
     const columns = {
