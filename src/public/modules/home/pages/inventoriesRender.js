@@ -1,10 +1,11 @@
 export function inventoriesRender() {
-    return `       
-    <div class="display_flex display_gap stone_search">
-    <input type="text" title="Procure no seu inventário" id="stone_search"></input>
-    <button type="button" id="stone_search_button" class="btn_submit">BUSCAR</button>
-    </div>
+          
+    /* <div class="display_flex display_gap stone_search">
+        <input type="text" title="Procure no seu inventário" id="stone_search"></input>
+        <button type="button" id="stone_search_button" class="btn_submit">BUSCAR</button>
+    </div> */
 
+    return ` 
     <div id="new_stone" class="inventory_icon">
         <button class="stone">
             <svg width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -15,8 +16,10 @@ export function inventoriesRender() {
     </div>
 
     <div id="inventory_main">
+    </div> `
+}
 
-        <div id="listIcon" class="inventory_icon">
+/* <div id="listIcon" class="inventory_icon">
             <button class="stone">
                 <img />
             </button>
@@ -34,7 +37,4 @@ export function inventoriesRender() {
                         fill="black" />
                 </svg>
             </div>
-        </div>
-
-    </div> `
-}
+        </div> */

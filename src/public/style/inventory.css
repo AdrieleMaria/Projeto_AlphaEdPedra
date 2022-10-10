@@ -3,8 +3,14 @@
 /* ------------------------------------------------------
                         INVENTORY
 ------------------------------------------------------ */
+#appHome{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 5em;
+}
 #display_box{
-    flex: 6em 6em 21%;
+    flex: 6em 6em 18%;
     display: flex;
     flex-wrap: wrap;
     width: 642px;
@@ -71,15 +77,21 @@
     font-size: 1.6em;
     margin: 0;
 }
-#stone_weight{
+#stone_weight, .stone_description_modal{
     font-family: 'Roboto', sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 1em;
     margin-top: 2em;
-    margin-bottom: 5em;
+    margin-bottom: 3em;
 }
 .close_modal{
     cursor: pointer;
+}
+#closeCreate{
     align-self: flex-end;
+}
+.stone_modal{
+    width: 15em;
+    height: 15em;
 }

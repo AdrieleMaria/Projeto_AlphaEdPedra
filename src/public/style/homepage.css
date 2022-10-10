@@ -8,13 +8,6 @@
     align-items: center;
     justify-content: center;
 }
-.title{
-    font-family: 'Philosopher', sans-serif;
-    font-style: normal;
-    font-weight: 700;
-    font-size: 1.3em;
-    padding: 0.6em 0.5em;
-}
 #intro{
     font-family: 'Philosopher', sans-serif;
     font-style: normal;
