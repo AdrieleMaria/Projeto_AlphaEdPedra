@@ -39,7 +39,7 @@
     align-self: flex-start;
     height: 7em;
     width: 7em;
-    border: black 0.25em solid;
+    border: black 0.2em solid;
     cursor: pointer;
     background-color: #FFF5DF;
     box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(97, 97, 97, 0.5) -3px -3px 6px 1px inset;
@@ -84,7 +84,6 @@
     font-style: normal;
     font-weight: 500;
     font-size: 1.6em;
-    margin: 0;
 }
 #stone_weight, .stone_description_modal{
     font-family: 'Roboto', sans-serif;
@@ -93,9 +92,6 @@
     font-size: 1em;
     margin-top: 2em;
     margin-bottom: 3em;
-}
-.close_modal{
-    cursor: pointer;
 }
 #closeCreate{
     align-self: flex-end;

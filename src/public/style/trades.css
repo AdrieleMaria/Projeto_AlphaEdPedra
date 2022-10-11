@@ -45,9 +45,6 @@
     align-items: center;
     justify-content: center;
 }
-.close_modal{
-    align-self: flex-end;
-}
 .close_display_modal{
     cursor: pointer;
     position: relative;

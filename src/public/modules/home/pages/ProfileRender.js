@@ -3,7 +3,7 @@ export function ProfileRender(_data) {
     return `
     <main>
         <div id="profile_card">
-            <div class="profile_title">
+            <div class="profile_title_div">
                 <h3 class="profile_title">Dados Pessoais</h3>
                 <svg class="close_modal" width="22" height="22" viewBox="0 0 28 28" fill="none"
                     xmlns="http://www.w3.org/2000/svg">

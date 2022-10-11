@@ -12,7 +12,7 @@ export function modalEditStone(_dataStone) {
             </button>
         </div>
 
-        <input class="modal_input" type="text" id="stone_name" name="stone_name" placeholder="Nome" value="${_dataStone.name}"/>
+        <input class="modal_input" type="text" id="stone_name_modal" name="stone_name" placeholder="Nome" value="${_dataStone.name}"/>
         <input class="modal_input" type="text" id="stone_description" name="stone_weight" placeholder="Description..." value="${_dataStone.description}"/>
 
         <div class="file_div">
@@ -22,7 +22,10 @@ export function modalEditStone(_dataStone) {
             <p class="upload_warning"></p>
         </div>
 
+        <div class="close_modal">
         <button type="submit" id="edit_stone_submit" name="edit_stone" class="btn_submit">EDITAR</button>
+        </div>
+
         <p class="done_warning" id="statusEdit"></p>
 
     </aside>
