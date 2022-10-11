@@ -7,7 +7,7 @@ async function searchUser(params) {
 
         //VERIFICAR ESSA CHAMADA:
 
-        const query = `SELECT email, password, phone, type, id FROM "user" WHERE email= $1;`;
+        const query = `SELECT name, email, password, phone, type, id FROM "user" WHERE email= $1;`;
         const values = [params.email];
 
         const data = await db.query(query, values);
