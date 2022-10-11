@@ -23,9 +23,8 @@ export function modalEditStone(_dataStone) {
         </div>
 
         <button type="submit" id="edit_stone_submit" name="edit_stone" class="btn_submit">EDITAR</button>
-        <p class="done_warning"></p>
+        <p class="done_warning" id="statusEdit"></p>
 
-        <p id="statusEdit"></p>
     </aside>
     `
 }

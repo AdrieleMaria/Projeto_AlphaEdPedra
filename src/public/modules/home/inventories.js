@@ -2,7 +2,7 @@ import { inventoriesRender } from "./pages/inventoriesRender.js";
 import { modalCreateStone } from "./pages/modalCreateStone.js";
 import { modalStone } from "./pages/modalStone.js"
 import { modalEditStone } from "./pages/modalEditStone.js";
-// import { modalDeleteStone } from "./pages/modalDeleteStone.js";
+import { modalDeleteStone } from "./pages/modalDeleteStone.js";
 
 //Criação
 async function postStone(_photo, _name, _description) {
@@ -70,31 +70,7 @@ function createStone() {
 
 }
 
-// DELEÇÃO
-async function deleteStone(_id) {
 
-    // fetch(`http://localhost:8082/deletepedra/:${_id}`
-
-}
-
-function removeStone(_id) {
-
-    console.log("remove", _id);
-
-    // document.getElementById("appHome").innerHTML = modalDeleteStone();
-
-    // document.getElementById("delete_stone").addEventListener("click", function () {
-
-
-    //     deleteStone(_id);
-
-
-    // });
-
-
-
-
-}
 
 async function getStoneModal(_id, _func) {
 
@@ -206,6 +182,59 @@ async function editStone(_id) {
         console.log(erro);
     }
 
+
+}
+
+// DELEÇÃO
+async function deleteStone(_id) {
+
+    const token = localStorage.getItem("auth");
+
+    try {
+        const response = await fetch(`http://localhost:8082/deletepedra/${_id}`, {
+            method: "DELETE",
+            headers: { 
+                "Content-type": "application/json; charset=UTF-8",
+                "Authorization": `Basic ${token}` },
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) throw new Error(data.message);
+
+        document.getElementById(
+            "statusDelete"
+        ).textContent = `Deletado com sucesso!`;
+
+        //pegar os dados da pedra retornados no data
+        console.log("data", data);
+
+    } catch (error) {
+        document.getElementById("statusDelete").textContent = error;
+    }
+
+}
+
+async function removeStone(_id) {
+
+    console.log("remove", _id);
+    try {
+
+        const render = await getStoneModal(_id, modalDeleteStone);
+        console.log(render)
+        if (!render) throw new Error("errooooooo, passe mais tarde");
+
+        document
+            .getElementById("delete_stone")
+            .addEventListener("click", function () {
+
+                deleteStone(_id);
+               
+            });
+
+    } catch (erro) {
+        console.log(erro);
+    }
 
 }
 
