@@ -193,9 +193,10 @@ async function deleteStone(_id) {
     try {
         const response = await fetch(`http://localhost:8082/deletepedra/${_id}`, {
             method: "DELETE",
-            headers: { 
+            headers: {
                 "Content-type": "application/json; charset=UTF-8",
-                "Authorization": `Basic ${token}` },
+                "Authorization": `Basic ${token}`
+            },
         });
 
         const data = await response.json();
@@ -229,7 +230,7 @@ async function removeStone(_id) {
             .addEventListener("click", function () {
 
                 deleteStone(_id);
-               
+
             });
 
     } catch (erro) {
