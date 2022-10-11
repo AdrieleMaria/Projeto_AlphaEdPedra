@@ -89,11 +89,7 @@ body{
     padding: 3em 5em;
     width: 30em;
     box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
-    margin: auto;
     position: relative;
-    /* top: 50%;
-    left: 50%;
-    transform: translate(-100%, -50%); */
     z-index: 99;
     background-color: white;
 }

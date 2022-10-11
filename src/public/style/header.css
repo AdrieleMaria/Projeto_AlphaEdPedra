@@ -36,32 +36,6 @@ nav{
     gap: 5vw;
     align-items: center;
 }
-/* .nav_on{
-    background-color: transparent;
-    list-style-type: none;
-    font-family: 'Roboto', sans-serif;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 2.2vw;
-    color: #533F36;
-    border-bottom: #FBBE86 0.1em solid;
-}
-.nav_off{
-    border: none;
-    background-color: transparent;
-    list-style-type: none;
-    cursor: pointer;
-    font-family: 'Roboto', sans-serif;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 2.2vw;
-    text-align: center;
-    color: #533F36;
-    border-bottom: transparent 0.1em solid;
-}
-.nav_off:hover{
-    border-bottom: #FBBE86 0.1em solid;
-} */
 .round_input, #profile_search{
     font-family: 'Roboto', sans-serif;
     font-style: normal;
