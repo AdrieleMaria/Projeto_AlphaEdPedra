@@ -14,7 +14,7 @@ async function insert(params) {
         const result = await db.query(query, values);
         console.log(result);
 
-        return { err: null };
+        return {data: result.rows[0], err: null };
     } catch (err) {
         return { err: err };
     };

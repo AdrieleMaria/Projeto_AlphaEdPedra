@@ -26,7 +26,7 @@ exports.login = async (req, res) => {
                     type: user.data.type,
                 });
 
-                return res.status(200).json({ message: "Login sucedido", token });
+                return res.status(200).json({ message: "Login sucedido", name: user.data.name, token});
             } else {
                 return res
                     .status(401)

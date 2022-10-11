@@ -22,7 +22,7 @@ header{
 .nav_logo{
     width: 2em;
 }
-.nav_h1{
+.nav_h1, .user_name{
     font-family: 'Philosopher', sans-serif;
     font-style: normal;
     font-weight: 400;
@@ -79,5 +79,8 @@ nav{
     .nav_h1{
         font-size: 0.6em;
         padding-right: 1.6em;
+    }
+    .nav_gap{
+        gap: 2vw;
     }
 }

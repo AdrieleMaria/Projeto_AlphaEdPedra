@@ -32,7 +32,7 @@ async function register(_user) {
         //----------------------------------------
         localStorage.setItem("auth", data.token);
         //----------------------------------------
-        document.getElementById("body").innerHTML = homePage();
+        document.getElementById("body").innerHTML = homePage(data);
 
     } catch (error) {
         document.getElementById("status").innerHTML = error;

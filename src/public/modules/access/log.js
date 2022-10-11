@@ -12,6 +12,7 @@ async function sign(_user) {
         // headers: { "Content-type": "application/json; charset=UTF-8", "Authorization": `Basic ${token}`},
 
         const data = await response.json();
+        console.log(data);
 
         if (!response.ok) throw new Error(data.message);
 
@@ -19,7 +20,7 @@ async function sign(_user) {
         //----------------------------------------
         localStorage.setItem("auth", data.token);
         //----------------------------------------
-        document.getElementById("body").innerHTML = homePage();
+        document.getElementById("body").innerHTML = homePage(data);
         inventory();
     } catch (error) {
         document.getElementById("status").innerHTML = error;
