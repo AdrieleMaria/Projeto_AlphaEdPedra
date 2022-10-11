@@ -7,7 +7,7 @@ async function deletePedra(params) {
         // console.log(params);
         // console.log(params);
 
-        const query = `DELETE FROM pedra WHERE id = $1 RETURNING *`;
+        const query = `DELETE FROM stone WHERE id = $1 RETURNING *`;
         const values = [params.id];
 
         const result = await db.query(query, values);

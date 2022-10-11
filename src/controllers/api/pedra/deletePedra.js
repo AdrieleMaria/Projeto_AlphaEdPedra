@@ -5,11 +5,11 @@ const deletePedra = require('../../../repositories/pedras/deletePedra');
 exports.deletePedra = async (req, res) => {
 
     //verificar:
-    const userid = req.auth.id;
+    const id = Number(req.params.id);
 
     try {
         const columns = {
-            id : userid
+            id : id
         };
         console.log(columns);
 
@@ -32,6 +32,6 @@ exports.deletePedra = async (req, res) => {
             code: 500,
             detail: { ...err },
         };
-        res.sendError(errors, 501);
+        res.send(errors, 501);
     }
 };
