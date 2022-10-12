@@ -1,22 +1,94 @@
 import { exchangesRender } from "./pages/exchangesRender.js"
 import { newExchangesModal } from "./pages/newExchangesModal.js"
 
-function procurar() {
+async function procurar() {
     console.log("Procurar");
-}
 
+    const token = localStorage.getItem("auth");
+
+    try {
+        const response = await fetch(`http://localhost:8082/listofertas`, {
+            method: "GET",
+            headers: { "Content-type": "application/json; charset=UTF-8", "Authorization": `Basic ${token}` },
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) throw new Error(data.err);
+
+        console.log(data);
+
+        const userid = data.id_user;
+        const display = document.getElementById("display_box");
+        display.innerHTML = ``;
+
+        data.data.forEach(element => {
+
+            if (element.user_id !== userid) {
+                display.innerHTML += `
+                <div class="inventory_icon">
+                    <button class="stone">
+                        <img width="100%" height="100%" src="${element.img_url}" />
+                    </button>  
+                    <button>VER OFERTA</button>        
+                </div>`;
+            }
+
+        });
+
+
+    } catch (error) {
+
+        console.log(error);
+
+    }
+
+}
 
 function minhasOfertas() {
     console.log("Minhas Ofertas");
 }
 
+async function displayMinhasTrocas() {
+
+    // const token = localStorage.getItem("auth");
+
+    // try {
+    //     const response = await fetch(`http://localhost:8082/listpedra`, {
+    //         method: "GET",
+    //         headers: { "Content-type": "application/json; charset=UTF-8", "Authorization": `Basic ${token}` },
+    //     });
+
+    //     const data = await response.json();
+
+    //     if (!response.ok) throw new Error(data.err);
+
+    //     const display = document.getElementById("display_box");
+    //     display.innerHTML = ``;
+
+    //     data.data.forEach(element => {
+
+    //         if (element.validated === true && element.offered === true) {
+    //             display.innerHTML += `
+    //             <div class="inventory_icon">
+    //                 <button class="stone" onclick="minhasTrocaModal('${element.id}','${element.name}','${element.description}','${element.img_url}')">
+    //                     <img width="100%" height="100%" src="${element.img_url}" />
+    //                 </button>          
+    //             </div>`;
+    //         }
+
+    //     });
 
 
-function minhasTrocas() {
-    console.log("Minhas Trocas");
+    // } catch (error) {
+
+    //     console.log(error);
+
+    // }
+
 }
 
-async function addTroca(_id) {
+async function addTroca(_id, _img_url) {
 
     const token = localStorage.getItem("auth");
 
@@ -25,6 +97,7 @@ async function addTroca(_id) {
     const oferta = {
         id_pedra: _id,
         desejo: desejo,
+        img_url: _img_url
     }
 
     console.log(oferta);
@@ -112,7 +185,7 @@ function exchanges(op) {
             displayTroca();
             break;
         case 2:
-            minhasTrocas();
+            displayMinhasTrocas();
             break;
         case 3:
             minhasOfertas();
@@ -129,7 +202,6 @@ window.displayTroca = displayTroca;
 window.novaTrocaModal = novaTrocaModal;
 window.addTroca = addTroca;
 window.minhasOfertas = minhasOfertas;
-window.minhasTrocas = minhasTrocas;
 window.procurar = procurar;
 window.exchanges = exchanges;
 export { exchanges }

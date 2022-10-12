@@ -20,7 +20,7 @@ const { deleteTroca } = require('../controllers/api/troca/deleteTroca');
 const { updateTroca } = require('../controllers/api/troca/updateTroca');
 const { listTroca } = require('../controllers/api/troca/listTroca');
 const { getTroca } = require('../controllers/api/troca/getTroca');
-
+const { listOferta } = require('../controllers/api/troca/listOferta');
 
 //----------------------------USER----------------------------
 router.post('/login', login); //user e admin | criação de token
@@ -44,6 +44,8 @@ router.put('/updatroca', jwtUser, updateTroca);
 router.delete('/deletetroca', jwtUser, deleteTroca);
 router.get('/listtroca', jwtUser, listTroca);
 router.get('/gettroca', jwtUser, getTroca);
+
+router.get('/listofertas', jwtUser, listOferta);
 //----------------------------TROCA---------------------------
 
 

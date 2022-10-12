@@ -1,21 +1,18 @@
-
 const db = require("../../controllers/db");
 
-async function listTroca(params) {
+//usado em listOferta
+//lista todas as trocas da tabela nova_troca com conclusão falsa
+async function listTroca() {
+
     try {
 
-        // console.log(params);
-        // console.log(params);
+        const query = `SELECT * FROM nova_troca WHERE finished='false';`;
+        const data = await db.query(query);
+        console.log(data);
 
-        const query = `SELECT * FROM troca
-        RETURNING *`;
-
-        const result = await db.query(query, values);
-        console.log(result);
-
-        return { err: null };
+        return { data: data.rows, err: null };
     } catch (err) {
-        return { err: err };
+        return { data: null, err: err };
     };
 }
 
