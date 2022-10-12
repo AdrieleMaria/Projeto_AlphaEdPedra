@@ -23,7 +23,7 @@ export function ProfileRender(_data) {
                 <div>
                     <p id="profile_name" class="roboto">Nome: ${_data.data.name}</p>
                     <p id="profile_email" class="roboto">Email: ${_data.data.email}</p>
-                    <p id="profile_phone" class="roboto">Telefone: ${_data.data.email}<p>
+                    <p id="profile_phone" class="roboto">Telefone: ${_data.data.phone}<p>
                 </div>
             </div>
         </div>
