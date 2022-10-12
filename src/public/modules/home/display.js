@@ -17,14 +17,14 @@ async function displayReq() {
         console.log(data);
         //retornando o objeto >>>>>>>> OK!!!!!
         const display = document.getElementById("display_box");
-        display.innerHTML = ``;
+        display.innerHTML = "";
 
         data.data.forEach(element => {
             // listIcon
 
-
-
             if(element.validated === true){
+                display.style.display="flex";
+
                 display.innerHTML += `
                 <button class="stone">
                     <img width="100%" height="100%" src="${element.img_url}" />

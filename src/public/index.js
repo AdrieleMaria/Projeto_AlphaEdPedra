@@ -5,7 +5,7 @@ import { acessLogin } from "./modules/access/log.js";
 import { display } from "./modules/home/display.js";
 import { inventory } from "./modules/home/inventories.js";
 import { exchanges } from "./modules/home/exchanges.js";
-import { searchUser } from "./modules/home/searchUser.js";
+import { userProfile, searchForUser } from "./modules/home/searchProfile.js";
 import { profile } from "./modules/home/profile.js";
 import { logout } from "./modules/home/logout.js";
 

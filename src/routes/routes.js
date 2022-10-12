@@ -9,6 +9,8 @@ const { searchEmail } = require('../controllers/api/user/searchUserEmail');
 const { logout } = require('../controllers/api/session/logout');
 const { getUser } = require('../controllers/api/user/getUser');
 
+const { searchProfile } = require('../controllers/api/user/searchProfile');
+
 const { addPedra } = require('../controllers/api/pedra/registerPedra');
 const { deletePedra } = require('../controllers/api/pedra/deletePedra');
 const { updatePedra } = require('../controllers/api/pedra/updatePedra');
@@ -28,7 +30,8 @@ router.post('/register', searchEmail, addUser);  //user e admin | criação de t
 // router.put('/update-userdata', jwtuser, updateUserData); //user | verificação de token | editar dados
 // router.post('/logout', logout);
 router.get('/profile', jwtUser, getUser);
-//----------------------------USER----------------------------
+//----------------------------SEARCH----------------------------
+router.get('/searchprofile/:name', jwtUser, searchProfile);
 
 //----------------------------PEDRA---------------------------
 router.post('/addpedra', jwtUser, addPedra);
