@@ -25,12 +25,11 @@ exports.addUser = async (req, res) => {
 
         if (resp.err !== null) {
             console.log({ err: resp.err });
-            console.log("CONSOLE DO RESP "+resp.data);
-
             res.status(500).send("Internal Server Error");
+
         } else {
-            const usercreate = "criado";
-            console.log("CONSOLE DO RESP "+resp.data);
+            // const usercreate = "criado";
+            // console.log("CONSOLE DO RESP "+resp.data);
 
             const token = jwt.sign({
                 id: resp.data.id,
