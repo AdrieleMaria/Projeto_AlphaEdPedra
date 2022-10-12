@@ -19,7 +19,7 @@
 
 #display_box{
     flex: 6em 6em 18%; 
-    display: none;
+    display: flex;
     justify-content: center;
     flex-wrap: wrap;
     width: fit-content; 
