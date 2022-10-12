@@ -85,7 +85,6 @@ function display() {
 
 }
 
-
 window.displayModal = displayModal;
 window.display = display;
 export { display }
