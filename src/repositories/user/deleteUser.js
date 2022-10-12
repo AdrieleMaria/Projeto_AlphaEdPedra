@@ -3,6 +3,7 @@ const db = require("../../controllers/db");
 
 async function deletePedra(params) {
     try {
+        console.log(params)
 
         const query = `DELETE FROM "user" WHERE id = $1 RETURNING *`;
         const values = [params.id];

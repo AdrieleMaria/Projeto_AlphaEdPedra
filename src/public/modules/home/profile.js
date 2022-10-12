@@ -137,7 +137,7 @@ async function removeUser(id){
     const token = localStorage.getItem("auth");
 
     try {
-        const response = await fetch(`http://localhost:8082/deletUser/${id}`, {
+        const response = await fetch(`http://localhost:8082/deleteUser/${id}`, {
             method: "DELETE",
             headers: {
                 "Content-type": "application/json; charset=UTF-8",
@@ -152,8 +152,9 @@ async function removeUser(id){
         document.getElementById(
             "statusDelete"
         ).textContent = `Deletado com sucesso!`;
-
-        console.log("data", data);
+        
+        localStorage.clear();
+        window.location.reload(false);
 
     } catch (error) {
         document.getElementById("statusDelete").textContent = error;
