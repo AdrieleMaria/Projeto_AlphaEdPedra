@@ -1,4 +1,5 @@
 export function modalSearchOffer(_data, _id_troca, _wish) {
+    console.log(_data)
     return `
     <div id="inventory_modal">
             <button id="closeCreate" onclick="exchanges(4)">
