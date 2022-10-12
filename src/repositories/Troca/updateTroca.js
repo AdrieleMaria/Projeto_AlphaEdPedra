@@ -3,10 +3,7 @@ const db = require("../../controllers/db");
 
 async function updateTroca(params) {
     try {
-
-        // console.log(params);
-        // console.log(params);
-
+        
         const query = `UPDATE troca SET
         name = $1
         description = $2
