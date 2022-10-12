@@ -17,8 +17,9 @@ export function exchangesRender(_id) {
 
         </div>
 
+        <div id="text_Troca"></div>
         <div id="display_box"></div>
-
+      
     </div>
     `
 }

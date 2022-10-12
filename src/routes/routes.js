@@ -27,6 +27,9 @@ const { listTroca } = require('../controllers/api/troca/listTroca');
 const { getTroca } = require('../controllers/api/troca/getTroca');
 const { listOferta } = require('../controllers/api/troca/listOferta');
 
+
+const { addOferta } = require('../controllers/api/oferta/registerOferta');
+
 //----------------------------USER----------------------------
 router.post('/login', login); //user e admin | criação de token
 router.post('/register', searchEmail, addUser);  //user e admin | criação de token
@@ -51,13 +54,20 @@ router.get('/getpedra/:id', jwtUser, getPedra);
 
 //----------------------------TROCA---------------------------
 router.post('/addtroca', jwtUser, addTroca);
+router.get('/listofertas', jwtUser, listOferta);
+//<<<<<<<<<OKKKK
+
 router.put('/updatroca', jwtUser, updateTroca);
 router.delete('/deletetroca', jwtUser, deleteTroca);
 router.get('/listtroca', jwtUser, listTroca);
 router.get('/gettroca', jwtUser, getTroca);
-
-router.get('/listofertas', jwtUser, listOferta);
 //----------------------------TROCA---------------------------
+
+//----------------------------OFERTA---------------------------
+router.post('/addoferta', jwtUser, addOferta);
+
+
+//----------------------------OFERTA---------------------------
 
 
 module.exports = router;
