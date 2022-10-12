@@ -24,12 +24,10 @@ async function addTroca(_id) {
 
     const oferta = {
         id_pedra: _id,
-        desejo: desejo
+        desejo: desejo,
     }
 
     console.log(oferta);
-
-    return
 
     try {
         const response = await fetch(`http://localhost:8082/addtroca`, {
@@ -52,8 +50,6 @@ async function addTroca(_id) {
     } catch (error) {
         document.getElementById("statusEdit").textContent = error;
     }
-
-
 
 }
 

@@ -1,35 +1,53 @@
 const bcrypt = require('bcrypt');
 const jwt = require('../../../auth/jwt');
 const insertTroca = require('../../../repositories/Troca/addTroca');
+const updateStone = require('../../../repositories/pedras/updatePedra');
 
 exports.addTroca = async (req, res) => {
 
-    //acessar a tabela stone e atribuir o campo offered = true
-    //acessar a tabela 
-
     const userid = req.auth.id;
-    // const {  } = req.body;
+    const { id_pedra, desejo } = req.body;
 
     try {
         const columns = {
-            name: name,
-            description: description,
             user_id: userid,
-            created_at: created_at,
-            img_url: img_url
+            pedra_id: id_pedra,
+            desejo: desejo,
         };
         console.log(columns);
 
-        const resp = await insertTroca(columns);
+        const respTroca = await insertTroca(columns);
 
-        if (resp.err !== null) {
-            console.log({ err: resp.err });
+        if (respTroca.err !== null) {
+            console.log({ err: respTroca.err });
 
             res.status(500).send("Internal Server Error");
         } else {
 
-            const pedraCreate = "criado";
-            res.status(201).json(pedraCreate);
+            try {
+
+                const respUpdate = await updateStone(columns);
+
+                if (respUpdate.err !== null) {
+                    console.log({ err: respUpdate.err });
+
+                    res.status(500).send("Internal Server Error");
+                } else {
+
+                    res.status(200).json({ message: "Oferta criada." });
+
+                }
+
+            } catch (err) {
+                console.log(err);
+                errors = {
+                    message: 'Ocorreu um erro inesperado.',
+                    code: 500,
+                    detail: { ...err },
+                };
+                res.send(errors, 501);
+            }
+
         }
 
     } catch (err) {
