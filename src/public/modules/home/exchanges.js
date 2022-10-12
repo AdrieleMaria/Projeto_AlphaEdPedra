@@ -47,7 +47,9 @@ async function ProcurarOfertarConfirma(_id_stone_offer, _id_troca) {
 async function modalProcurarOfertar(_img_url, _name, _description, _id_troca, _id_stone_offer) {
 
     console.log("modalProcurarOfertar", _img_url, _name, _description, _id_troca, _id_stone_offer);
-    document.getElementById("display_box").innerHTML = modalSearchOfferCheck(_img_url, _name, _description, _id_troca, _id_stone_offer);
+    const modal = document.getElementById("display_box").innerHTML;
+    modal = ``;
+    modal = modalSearchOfferCheck(_img_url, _name, _description, _id_troca, _id_stone_offer);
 }
 
 
@@ -110,7 +112,7 @@ async function modalProcurar(_id_troca, _id_pedra, _wish, _img_url) {
 
         if (!response.ok) throw new Error(data.err);
 
-        console.log("data do getPedraModal", data.data);
+        console.log("data do getPedraModal", data);
 
         document.getElementById("display_box").innerHTML = modalSearchOffer(data.data[0], _id_troca, _wish);
 
