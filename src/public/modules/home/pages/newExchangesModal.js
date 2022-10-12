@@ -1,6 +1,5 @@
 export function newExchangesModal(_id, _name, _description, _img_url) {
     return `    
-    
     <div id="inventory_modal">
         <button id="closeCreate" onclick="exchanges(1)">
             <svg class="close_modal" width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -16,7 +15,7 @@ export function newExchangesModal(_id, _name, _description, _img_url) {
         
         <input type="textarea" id="desejo" placeholder="Desejo trocar por..."/>
 
-        <button type="submit" id="display_stone" name="display_stone" onclick="addTroca('${_id}')" class="btn_submit">Ofertar</button>
+        <button type="submit" id="display_stone" name="display_stone" onclick="addTroca('${_id}', '${_img_url}')" class="btn_submit">Ofertar</button>
 
         <p id="statusCreateOferta"></p>
 
