@@ -203,5 +203,4 @@ window.novaTrocaModal = novaTrocaModal;
 window.addTroca = addTroca;
 window.minhasOfertas = minhasOfertas;
 window.procurar = procurar;
-window.exchanges = exchanges;
-export { exchanges }
+export { exchanges };
