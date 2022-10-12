@@ -1,12 +1,48 @@
 export function exchangesRender(_id) {
-    return `            
-    <div class="trade_menu">
-        <button class="trade_title nav_on">Nova Troca</button>
-        <button class="trade_title nav_on">Minhas Trocas</button>
-        <button class="trade_title nav_on">Minhas Ofertas</button>
-        <button class="trade_title nav_off">Procurar</button>
-    </div>
+    return `  
+    <div  class="display_flex_row" >
+  
+        <div class="trade_menu">
 
-    <div id="app_trades"></div>
+            <nav class="nav_gap">
+                <li class="nav_title"><button class="btn_logon btn_nav" onclick="displayTroca()">Nova Troca</button></li>
+
+                <li class="nav_title"><button class="btn_logon btn_nav" onclick="minhasTrocas()">Minhas Trocas</button></li>
+
+                <li class="nav_title"><button class="btn_logon btn_nav" onclick="minhasOfertas()">Minhas Ofertas</button></li>
+
+                <li class="nav_title"><button class="btn_logon btn_nav" onclick="procurar()">Procurar</button></li>
+            
+            </nav>
+
+        </div>
+
+        <div id="display_box"></div>
+
+    </div>
     `
 }
+
+// app_trades
+
+
+{/* <div  class="display_flex_row" >
+<div class="display_flex trades">
+    <div class="trade_menu">
+
+        <nav class="nav_gap">
+            <li class="nav_title"><button class="btn_logon btn_nav" onclick="displayTroca()">Nova Troca</button></li>
+
+            <li class="nav_title"><button class="btn_logon btn_nav" onclick="minhasTrocas()">Minhas Trocas</button></li>
+
+            <li class="nav_title"><button class="btn_logon btn_nav" onclick="minhasOfertas()">Minhas Ofertas</button></li>
+
+            <li class="nav_title"><button class="btn_logon btn_nav" onclick="procurar()">Procurar</button></li>
+        
+        </nav>
+
+    </div>
+
+    <div id="display_box"></div>
+</div>
+</div> */}

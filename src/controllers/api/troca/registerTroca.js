@@ -4,9 +4,11 @@ const insertTroca = require('../../../repositories/Troca/addTroca');
 
 exports.addTroca = async (req, res) => {
 
-    //verificar:
+    //acessar a tabela stone e atribuir o campo offered = true
+    //acessar a tabela 
+
     const userid = req.auth.id;
-    const { name, description, user_id, created_at, img_url } = req.body;
+    // const {  } = req.body;
 
     try {
         const columns = {
