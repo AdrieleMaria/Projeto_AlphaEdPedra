@@ -6,13 +6,14 @@ const updateStone = require('../../../repositories/pedras/updatePedra');
 exports.addTroca = async (req, res) => {
 
     const userid = req.auth.id;
-    const { id_pedra, desejo } = req.body;
+    const { id_pedra, desejo, img_url } = req.body;
 
     try {
         const columns = {
             user_id: userid,
             pedra_id: id_pedra,
             desejo: desejo,
+            img_url: img_url
         };
         console.log(columns);
 
