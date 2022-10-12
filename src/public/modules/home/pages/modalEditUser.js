@@ -20,8 +20,7 @@ export function modalEditUser(_data) {
                 </div>
             </div>
         </div>
+
     </main>
     `
 }
-
-//modalEditUser(_dataStone)

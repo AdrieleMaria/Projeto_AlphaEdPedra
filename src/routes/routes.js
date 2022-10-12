@@ -11,6 +11,7 @@ const { logout } = require('../controllers/api/session/logout');
 const { getUser } = require('../controllers/api/user/getUser');
 const { getProfileEdit } = require('../controllers/api/user/getProfileEdit');
 const { updateUser } = require('../controllers/api/user/updateUser');
+const { deleteUser } = require('../controllers/api/user/deleteUser');
 
 const { searchProfile } = require('../controllers/api/user/searchProfile');
 
@@ -42,6 +43,7 @@ router.get('/searchprofile/:name', jwtUser, searchProfile);
 
 router.get('/editar-perfil', jwtUser, getProfileEdit);
 router.put('/updateUser/:id', jwtUser, updateUser)
+router.delete('/deleteUser/:id', jwtUser, deleteUser);
 //----------------------------USER----------------------------
 
 //----------------------------PEDRA---------------------------

@@ -1,5 +1,6 @@
 import { modalEditUser } from "./pages/modalEditUser.js";
 import { ProfileRender } from "./pages/ProfileRender.js";
+import { modalDeleteProfile } from "./pages/modalDeleteProfile.js"
 
 async function profile() {
     getUser();
@@ -103,8 +104,64 @@ async function putUser(_name, _email, _phone, _id) {
 
 }
 
+async function getProfileDelete() {
+
+    const token = localStorage.getItem("auth");
+
+    try {
+        const response = await fetch(`http://localhost:8082/profile`, {
+            method: "GET",
+            headers: { "Content-type": "application/json; charset=UTF-8", "Authorization": `Bearer ${token}` },
+        });
+
+        const data = await response.json();
+        console.log(data)
+        const render = await modalDeleteProfile(data.data);
+        document.getElementById("appHome").innerHTML = render;
+
+        document
+            .getElementById("delete_profile")
+            .addEventListener("click", function () {
+                removeUser(data.data.id);
+            });
+
+
+    } catch (error) {
+        console.log(error);
+    }
+
+}
+
+async function removeUser(id){
+    
+    const token = localStorage.getItem("auth");
+
+    try {
+        const response = await fetch(`http://localhost:8082/deletUser/${id}`, {
+            method: "DELETE",
+            headers: {
+                "Content-type": "application/json; charset=UTF-8",
+                "Authorization": `Basic ${token}`
+            },
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) throw new Error(data.message);
+
+        document.getElementById(
+            "statusDelete"
+        ).textContent = `Deletado com sucesso!`;
+
+        console.log("data", data);
+
+    } catch (error) {
+        document.getElementById("statusDelete").textContent = error;
+    }
+}
 
 window.profile = profile;
 window.getProfileEdit = getProfileEdit;
+window.getProfileDelete = getProfileDelete;
 
-export { profile, getProfileEdit }
+export { profile, getProfileEdit, getProfileDelete }
