@@ -1,18 +1,17 @@
-export function ProfileRender(_data) {
+export function searchUserModalRender(name,email,phone) {
     return `
-    <main>
-        <div id="profile_card">
+    <div class="modal">
+        <div id="profile_card" class="modal-content">
             <div class="profile_title_div">
-                <h3 class="profile_title">Dados Pessoais</h3>
-                <button id="closeEdit" onclick="getProfileEdit()">
-                    <svg class="close_modal" width="22" height="22" viewBox="0 0 28 28" fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M0 25.8462H28V28H0V25.8462ZM23.4 7.53846C24.2 6.67692 24.2 5.38462 23.4 4.52308L19.8 0.646154C19 -0.215385 17.8 -0.215385 17 0.646154L2 16.8V23.6923H8.4L23.4 7.53846ZM18.4 2.15385L22 6.03077L19 9.26154L15.4 5.38462L18.4 2.15385ZM4 21.5385V17.6615L14 6.89231L17.6 10.7692L7.6 21.5385H4Z"
-                            fill="black" />
-                    </svg>
-                </button>
+                <h3 class="profile_title">${name}</h3>
             </div>
+            <svg class="clickable" onclick=function() {
+                modal.style.display = "none";
+              } width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M19.385 0.5L11 8.885L2.615 0.5L0.5 2.615L8.885 11L0.5 19.385L2.615 21.5L11 13.115L19.385 21.5L21.5 19.385L13.115 11L21.5 2.615L19.385 0.5Z"
+                        fill="#FBBE86" />
+                </svg>
 
             <div class="profile_info"> 
                 <svg height="2.5em" viewBox="0 0 16 16" fill="none"
@@ -22,14 +21,11 @@ export function ProfileRender(_data) {
                         fill="#533F36" />
                 </svg>
                 <div>
-                    <p id="profile_name" class="roboto">Nome: ${_data.data.name}</p>
-                    <p id="profile_email" class="roboto">Email: ${_data.data.email}</p>
-                    <p id="profile_phone" class="roboto">Telefone: ${_data.data.phone}<p>
+                    <p id="profile_email" class="roboto">Email: ${email}</p>
+                    <p id="profile_phone" class="roboto">Telefone: ${phone}<p>
                 </div>
             </div>
         </div>
-    </main>
-
-    // <script type="application/javascript" src="./display.js"></script>
+    </div>
 `
 }

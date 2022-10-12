@@ -1,4 +1,38 @@
 import { displayRender } from "./pages/displayRender.js";
+import { modalDisplay } from "./pages/modalDisplay.js"
+
+async function getDisplayModal(_id, _func) {
+
+    const token = localStorage.getItem("auth");
+
+    try {
+        const response = await fetch(`http://localhost:8082/getpedra/${_id}`, {
+            method: "GET",
+            headers: { "Content-type": "application/json; charset=UTF-8", "Authorization": `Basic ${token}` },
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) throw new Error(data.err);
+
+        console.log("data do getDisplayModal", data.data);
+        document.getElementById("appHome").innerHTML = _func(data.data[0]);
+
+        return true;
+
+    } catch (error) {
+
+        console.log(error);
+
+    }
+}
+
+function displayModal(_id, _name, _description, _img) {
+
+    console.log("modalpedra", _id,);
+    getDisplayModal(_id, modalDisplay);
+
+}
 
 async function displayReq() {
 
@@ -17,17 +51,17 @@ async function displayReq() {
         console.log(data);
         //retornando o objeto >>>>>>>> OK!!!!!
         const display = document.getElementById("display_box");
-        display.innerHTML = ``;
+        display.innerHTML = "";
 
         data.data.forEach(element => {
             // listIcon
 
-
-
             if(element.validated === true){
+                display.style.display="flex";
+
                 display.innerHTML += `
-                <button class="stone">
-                    <img width="100%" height="100%" src="${element.img_url}" />
+                <button class="stone" onclick="displayModal('${element.id}','${element.name}','${element.description}','${element.img_url}')">
+                    <img width="100%" height="100%" src="${element.img_url}"  />
                 </button>             
                 `;
             }
@@ -52,7 +86,7 @@ function display() {
 }
 
 
-
+window.displayModal = displayModal;
 window.display = display;
 export { display }
 
