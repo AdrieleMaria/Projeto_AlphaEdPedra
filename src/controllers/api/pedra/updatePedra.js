@@ -11,7 +11,7 @@ exports.updatePedra = async (req, res) => {
     const userid = req.auth.id;
     const id = Number(req.params.id);
     const { name, description } = req.body;
-    const { photo } = req.files;
+
 
     console.log("Consolleeeeeee", userid, id, name, description);
 
@@ -51,7 +51,7 @@ exports.updatePedra = async (req, res) => {
     } else {
 
         console.log("caso foto enviada");
-
+        const { photo } = req.files;
         try {
 
             const uploadPath = path.join(__dirname, `../../../photoStone/stonephoto-${id}.jpg`);

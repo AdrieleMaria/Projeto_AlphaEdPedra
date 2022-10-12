@@ -159,7 +159,7 @@ async function editStone(_id) {
             .getElementById("edit_stone_submit")
             .addEventListener("click", function () {
 
-                const name = document.getElementById("stone_name").value;
+                const name = document.getElementById("stone_name_modal").value;
                 const description = document.getElementById("stone_description").value;
 
                 if (name === "" || description === "") {
@@ -172,10 +172,6 @@ async function editStone(_id) {
                 }
             });
 
-
-        // edit_stone_submit
-
-        // document.getElementById("appHome").innerHTML = modalEditStone(_stone);
     } catch (erro) {
         console.log(erro);
     }
