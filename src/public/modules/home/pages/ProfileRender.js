@@ -1,16 +1,17 @@
 export function ProfileRender(_data) {
-    //console.log(_data.data.name)
     return `
     <main>
         <div id="profile_card">
             <div class="profile_title_div">
                 <h3 class="profile_title">Dados Pessoais</h3>
-                <svg class="close_modal" width="22" height="22" viewBox="0 0 28 28" fill="none"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path
-                        d="M0 25.8462H28V28H0V25.8462ZM23.4 7.53846C24.2 6.67692 24.2 5.38462 23.4 4.52308L19.8 0.646154C19 -0.215385 17.8 -0.215385 17 0.646154L2 16.8V23.6923H8.4L23.4 7.53846ZM18.4 2.15385L22 6.03077L19 9.26154L15.4 5.38462L18.4 2.15385ZM4 21.5385V17.6615L14 6.89231L17.6 10.7692L7.6 21.5385H4Z"
-                        fill="black" />
-                </svg>
+                <button id="closeEdit" onclick="getProfileEdit()">
+                    <svg class="close_modal" width="22" height="22" viewBox="0 0 28 28" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M0 25.8462H28V28H0V25.8462ZM23.4 7.53846C24.2 6.67692 24.2 5.38462 23.4 4.52308L19.8 0.646154C19 -0.215385 17.8 -0.215385 17 0.646154L2 16.8V23.6923H8.4L23.4 7.53846ZM18.4 2.15385L22 6.03077L19 9.26154L15.4 5.38462L18.4 2.15385ZM4 21.5385V17.6615L14 6.89231L17.6 10.7692L7.6 21.5385H4Z"
+                            fill="black" />
+                    </svg>
+                </button>
             </div>
 
             <div class="profile_info"> 

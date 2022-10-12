@@ -7,7 +7,10 @@ const { login } = require('../controllers/api/session/login');
 const { addUser } = require('../controllers/api/user/registerUser');
 const { searchEmail } = require('../controllers/api/user/searchUserEmail');
 const { logout } = require('../controllers/api/session/logout');
+
 const { getUser } = require('../controllers/api/user/getUser');
+const { getProfileEdit } = require('../controllers/api/user/getProfileEdit');
+const { updateUser } = require('../controllers/api/user/updateUser');
 
 const { addPedra } = require('../controllers/api/pedra/registerPedra');
 const { deletePedra } = require('../controllers/api/pedra/deletePedra');
@@ -28,6 +31,8 @@ router.post('/register', searchEmail, addUser);  //user e admin | criação de t
 // router.put('/update-userdata', jwtuser, updateUserData); //user | verificação de token | editar dados
 // router.post('/logout', logout);
 router.get('/profile', jwtUser, getUser);
+router.get('/editar-perfil', jwtUser, getProfileEdit);
+router.put('/updateUser/:id', jwtUser, updateUser)
 //----------------------------USER----------------------------
 
 //----------------------------PEDRA---------------------------

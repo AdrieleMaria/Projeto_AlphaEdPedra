@@ -70,8 +70,6 @@ function createStone() {
 
 }
 
-
-
 async function getStoneModal(_id, _func) {
 
     const token = localStorage.getItem("auth");
