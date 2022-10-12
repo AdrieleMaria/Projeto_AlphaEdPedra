@@ -70,8 +70,6 @@ function createStone() {
 
 }
 
-
-
 async function getStoneModal(_id, _func) {
 
     const token = localStorage.getItem("auth");
@@ -161,7 +159,7 @@ async function editStone(_id) {
             .getElementById("edit_stone_submit")
             .addEventListener("click", function () {
 
-                const name = document.getElementById("stone_name").value;
+                const name = document.getElementById("stone_name_modal").value;
                 const description = document.getElementById("stone_description").value;
 
                 if (name === "" || description === "") {
@@ -174,10 +172,6 @@ async function editStone(_id) {
                 }
             });
 
-
-        // edit_stone_submit
-
-        // document.getElementById("appHome").innerHTML = modalEditStone(_stone);
     } catch (erro) {
         console.log(erro);
     }
@@ -193,9 +187,10 @@ async function deleteStone(_id) {
     try {
         const response = await fetch(`http://localhost:8082/deletepedra/${_id}`, {
             method: "DELETE",
-            headers: { 
+            headers: {
                 "Content-type": "application/json; charset=UTF-8",
-                "Authorization": `Basic ${token}` },
+                "Authorization": `Basic ${token}`
+            },
         });
 
         const data = await response.json();
@@ -229,7 +224,7 @@ async function removeStone(_id) {
             .addEventListener("click", function () {
 
                 deleteStone(_id);
-               
+
             });
 
     } catch (erro) {

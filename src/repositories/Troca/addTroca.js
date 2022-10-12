@@ -1,20 +1,15 @@
-
 const db = require("../../controllers/db");
 
 async function insertTroca(params) {
     try {
 
-        // console.log(params);
-        // console.log(params);
-
-        const query = `INSERT INTO troca (name, description, user_id, created_at, img_url) 
-                VALUES ($1, $2, $3, $4, $5) RETURNING *`;
-        const values = [params.name, params.description, params.user_id, params.oferta, params.valid];
+        const query = `INSERT INTO nova_troca (stone_id, user_id, wish, finished) VALUES ($1, $2, $3, 'false') RETURNING *;`;
+        const values = [params.pedra_id, params.user_id, params.desejo];
 
         const result = await db.query(query, values);
         console.log(result);
 
-        return { err: null };
+        return { data: result.rows[0], err: null };
     } catch (err) {
         return { err: err };
     };

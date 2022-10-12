@@ -17,7 +17,7 @@ export function homePage(data) {
 
         <li class="nav_title"><button class="btn_logon btn_nav" onclick="display()">Display</button></li>
 
-        <li class="nav_title"><button class="btn_logon btn_nav">Trocas</button></li>
+        <li class="nav_title"><button class="btn_logon btn_nav" onclick="exchanges(1)">Trocas</button></li>
 
         <div class="display_flex display_gap">
         <input type="text" title="Procure por outros usuários" id="profile_search"></input>
