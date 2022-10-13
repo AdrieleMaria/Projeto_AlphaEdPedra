@@ -11,6 +11,7 @@ async function getUser() {
     const token = localStorage.getItem("auth");
 
     try {
+        //const response = await fetch(`https://108.61.89.179:443/profile`, {
         const response = await fetch(`http://localhost:8082/profile`, {
             method: "GET",
             headers: { "Content-type": "application/json; charset=UTF-8", "Authorization": `Bearer ${token}` },
@@ -32,6 +33,7 @@ async function getProfileEdit(){
     const token = localStorage.getItem("auth");
 
     try {
+        //const response = await fetch(`https://108.61.89.179:443/profile`, {
         const response = await fetch(`http://localhost:8082/profile`, {
             method: "GET",
             headers: { "Content-type": "application/json; charset=UTF-8", "Authorization": `Bearer ${token}` },
@@ -79,6 +81,7 @@ async function putUser(_name, _email, _phone, _id) {
     formData.append("phone", _phone);
 
     try {
+        //const response = await fetch(`https://108.61.89.179:443/updateUser/${_id}`, {
         const response = await fetch(`http://localhost:8082/updateUser/${_id}`, {
             method: "PUT",
             body: formData,
@@ -109,6 +112,7 @@ async function getProfileDelete() {
     const token = localStorage.getItem("auth");
 
     try {
+        //const response = await fetch(`https://108.61.89.179:443/profile`, {
         const response = await fetch(`http://localhost:8082/profile`, {
             method: "GET",
             headers: { "Content-type": "application/json; charset=UTF-8", "Authorization": `Bearer ${token}` },
@@ -137,6 +141,7 @@ async function removeUser(id){
     const token = localStorage.getItem("auth");
 
     try {
+        //const response = await fetch(`https://108.61.89.179:443/deleteUser/${id}`, {
         const response = await fetch(`http://localhost:8082/deleteUser/${id}`, {
             method: "DELETE",
             headers: {
@@ -152,9 +157,11 @@ async function removeUser(id){
         document.getElementById(
             "statusDelete"
         ).textContent = `Deletado com sucesso!`;
-        
+
         localStorage.clear();
         window.location.reload(false);
+
+        console.log("data", data);
 
     } catch (error) {
         document.getElementById("statusDelete").textContent = error;

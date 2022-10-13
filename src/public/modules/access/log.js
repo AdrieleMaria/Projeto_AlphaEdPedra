@@ -3,6 +3,7 @@ import { inventory } from "../home/inventories.js";
 
 async function sign(_user) {
     try {
+        //const response = await fetch(`https://108.61.89.179:443/login`, {
         const response = await fetch(`http://localhost:8082/login`, {
             method: "POST",
             body: JSON.stringify(_user),

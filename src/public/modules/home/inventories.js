@@ -14,6 +14,7 @@ async function postStone(_photo, _name, _description) {
     formData.append("description", _description);
 
     try {
+        //const response = await fetch(`https://108.61.89.179:443/addpedra`, {
         const response = await fetch(`http://localhost:8082/addpedra`, {
             method: "POST",
             body: formData,
@@ -75,6 +76,7 @@ async function getStoneModal(_id, _func) {
     const token = localStorage.getItem("auth");
 
     try {
+        //const response = await fetch(`https://108.61.89.179:443/getpedra/${_id}`, {
         const response = await fetch(`http://localhost:8082/getpedra/${_id}`, {
             method: "GET",
             headers: { "Content-type": "application/json; charset=UTF-8", "Authorization": `Basic ${token}` },
@@ -118,6 +120,7 @@ async function putStone(_photo, _name, _description, _id) {
 
 
     try {
+        //const response = await fetch(`https://108.61.89.179:443/updatePedra/${_id}`, {
         const response = await fetch(`http://localhost:8082/updatePedra/${_id}`, {
             method: "PUT",
             body: formData,
@@ -185,6 +188,7 @@ async function deleteStone(_id) {
     const token = localStorage.getItem("auth");
 
     try {
+        //const response = await fetch(`https://108.61.89.179:443/deletepedra/${_id}`, {
         const response = await fetch(`http://localhost:8082/deletepedra/${_id}`, {
             method: "DELETE",
             headers: {
@@ -240,6 +244,7 @@ async function getStone() {
     const token = localStorage.getItem("auth");
 
     try {
+        //const response = await fetch(`https://108.61.89.179:443/listpedra`, {
         const response = await fetch(`http://localhost:8082/listpedra`, {
             method: "GET",
             headers: { "Content-type": "application/json; charset=UTF-8", "Authorization": `Basic ${token}` },
