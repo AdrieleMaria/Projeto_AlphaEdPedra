@@ -16,7 +16,7 @@ exports.searchProfile = async (req, res) => {
         /* if (resp.err !== null) {
             res.status(500).send("Nenhum usuário encontrado");
         } else { */
-            res.status(201).json(resp);
+        res.status(201).json(resp);
         /* } */
 
     } catch (err) {
@@ -26,6 +26,6 @@ exports.searchProfile = async (req, res) => {
             code: 500,
             detail: { ...err },
         };
-        res.sendError(errors, 501);
+        res.send(errors, 501);
     }
 };

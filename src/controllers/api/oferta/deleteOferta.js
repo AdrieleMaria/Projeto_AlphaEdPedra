@@ -1,28 +1,23 @@
-const bcrypt = require('bcrypt');
-const jwt = require('../../../auth/jwt');
-const insertTroca = require('../../../repositories/Troca/addTroca');
+const deleteOffer = require('../../../repositories/ofertas/deleteOferta');
 const updateStone = require('../../../repositories/pedras/updatePedra');
 
-exports.addTroca = async (req, res) => {
+exports.deleteOferta = async (req, res) => {
 
-    const userid = req.auth.id;
-    const { id_pedra, desejo, img_url, stone_name } = req.body;
+    const id_Offer = Number(req.params.idOffer);
+    const id_stone = Number(req.params.idStone);
 
     try {
         const columns = {
-            user_id: userid,
-            pedra_id: id_pedra,
-            desejo: desejo,
-            img_url: img_url,
-            stone_name: stone_name,
-            offered: 'true'
+            idOffer: id_Offer,
+            pedra_id: id_stone,
+            offered: 'false'
         };
         console.log(columns);
 
-        const respTroca = await insertTroca(columns);
+        const resp = await deleteOffer(columns);
 
-        if (respTroca.err !== null) {
-            console.log({ err: respTroca.err });
+        if (resp.err !== null) {
+            console.log({ err: resp.err });
 
             res.status(500).send("Internal Server Error");
         } else {
@@ -37,7 +32,7 @@ exports.addTroca = async (req, res) => {
                     res.status(500).send("Internal Server Error");
                 } else {
 
-                    res.status(200).json({ message: "Oferta criada." });
+                    res.status(200).json({ message: "Oferta cancelada." });
 
                 }
 
