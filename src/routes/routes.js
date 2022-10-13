@@ -30,6 +30,9 @@ const { listOferta } = require('../controllers/api/troca/listOferta');
 
 
 const { addOferta } = require('../controllers/api/oferta/registerOferta');
+const { getOferta } = require('../controllers/api/oferta/getOferta');
+
+
 
 //----------------------------USER----------------------------
 router.post('/login', login); //user e admin | criação de token
@@ -67,7 +70,7 @@ router.get('/gettroca', jwtUser, getTroca);
 
 //----------------------------OFERTA---------------------------
 router.post('/addoferta', jwtUser, addOferta);
-
+router.get('/getoferta', jwtUser, getOferta);
 
 //----------------------------OFERTA---------------------------
 
