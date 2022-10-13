@@ -320,6 +320,70 @@ function exchanges(op) {
 
 }
 
+async function minhasTrocas() {
+
+    try {
+        const token = localStorage.getItem("auth");
+
+        const response = await fetch(`http://localhost:8082/minhasTrocas`, {
+            method: "GET",
+            headers: { "Content-type": "application/json; charset=UTF-8", "Authorization": `Bearer ${token}` },
+        });
+
+        const data = await response.json();
+
+        const display = document.getElementById("display_box");
+        display.innerHTML = ``;
+
+        data.data.forEach(element => {
+            display.innerHTML += `
+            <div class="inventory_icon">
+                <button class="stone">
+                    <img width="100%" height="100%" src="${element.img_url}" />
+                </button>  
+                <button onclick="offers('${element.id}')">VER OFERTA</button>        
+            </div>`;
+        });
+
+    }
+
+    catch (error) {
+        console.log(error);
+    }
+}
+
+async function offers(id) {
+    
+    try {
+        const token = localStorage.getItem("auth");
+
+        const response = await fetch(`http://localhost:8082/minhasOfertas/${id}`, {
+            method: "GET",
+            headers: { "Content-type": "application/json; charset=UTF-8", "Authorization": `Bearer ${token}` },
+        });
+
+        const data = await response.json();
+
+        const display = document.getElementById("display_box");
+        display.innerHTML = ``;
+
+        data.data.forEach(element => {
+            console.log(element)
+            display.innerHTML += `
+            <div class="inventory_icon">
+                <button class="stone" onclick="modalProcurar('${element.id}','${element.stone_id}','${element.wish}','${element.img_url}')">
+                    <img width="100%" height="100%" src="${element.img_url}" />
+                </button>  
+                <button onclick="modalProcurar('${element.id}','${element.stone_id}','${element.wish}','${element.img_url}')">VER OFERTA</button>        
+            </div>`;
+        });
+
+    }
+
+    catch (error) {
+        console.log(error);
+    }
+}
 
 window.ProcurarOfertarConfirma = ProcurarOfertarConfirma;
 window.modalProcurarOfertar = modalProcurarOfertar;
@@ -331,4 +395,6 @@ window.addTroca = addTroca;
 window.minhasOfertas = minhasOfertas;
 window.procurar = procurar;
 window.exchanges = exchanges;
+window.minhasTrocas = minhasTrocas;
+window.offers = offers;
 export { exchanges }
