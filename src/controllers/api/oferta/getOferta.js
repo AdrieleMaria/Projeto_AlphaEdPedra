@@ -5,8 +5,6 @@ const getOfertas = require('../../../repositories/ofertas/getOferta');
 exports.getOferta = async (req, res) => {
 
     const userid = req.auth.id;
-    // console.log(req.params.id)
-    // return
 
     try {
         const columns = {

@@ -15,7 +15,7 @@ export function newExchangesModal(_id, _name, _description, _img_url) {
         
         <input type="textarea" id="desejo" placeholder="Desejo trocar por..."/>
 
-        <button type="submit" id="display_stone" name="display_stone" onclick="addTroca('${_id}', '${_img_url}')" class="btn_submit">Ofertar</button>
+        <button type="submit" id="display_stone" name="display_stone" onclick="addTroca('${_id}', '${_img_url}', '${_name}')" class="btn_submit">Ofertar</button>
 
         <p id="statusCreateOferta"></p>
 

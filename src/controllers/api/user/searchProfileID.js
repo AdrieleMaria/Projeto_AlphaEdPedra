@@ -1,26 +1,26 @@
 const bcrypt = require('bcrypt');
 const jwt = require('../../../auth/jwt');
-const getTroca = require('../../../repositories/Troca/getTroca');
+const searchUserID = require('../../../repositories/user/searchProfileID');
 
-exports.getTroca = async (req, res) => {
+exports.searchProfileID = async (req, res) => {
 
-    const id = Number(req.params.id);
+    const searchID = req.params.id;
 
     try {
         const columns = {
-            id: id
+            id: searchID
         };
-        console.log(columns);
 
-        const resp = await getTroca(columns);
+        const resp = await searchUserID(columns);
 
         if (resp.err !== null) {
-            console.log({ err: resp.err });
 
-            res.status(500).send("Internal Server Error");
+            res.status(500).send("Nenhum usuário encontrado");
+
         } else {
 
             res.status(201).json(resp);
+
         }
 
     } catch (err) {
@@ -30,6 +30,6 @@ exports.getTroca = async (req, res) => {
             code: 500,
             detail: { ...err },
         };
-        res.sendError(errors, 501);
+        res.send(errors, 501);
     }
 };

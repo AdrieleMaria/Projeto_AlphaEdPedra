@@ -1,4 +1,3 @@
-
 const db = require("../../controllers/db");
 
 async function deletePedra(params) {
