@@ -1,24 +1,33 @@
 const bcrypt = require('bcrypt');
 const jwt = require('../../../auth/jwt');
-const getTroca = require('../../../repositories/Troca/minhasOfertas');
+const putOfertas = require('../../../repositories/ofertas/putOfertas');
 
-exports.minhasOfertas = async (req, res) => {
+exports.putOferta = async (req, res) => {
 
-    const trocaid = req.params.id;
+    const userid = req.auth.id;
+
+    const { idtroca, idPedra } = req.body;
 
     try {
         const columns = {
-            idTroca : trocaid,
+            idTroca: idtroca,
+            idPedraOffer: idPedra,
+            finished: 'true'
         };
 
-        const resp = await getTroca(columns);
+        console.log(columns);
+
+        const resp = await putOfertas(columns);
 
         if (resp.err !== null) {
+
             console.log({ err: resp.err });
+
             res.status(500).send("Internal Server Error");
+
         } else {
 
-            // const pedraCreate = "get trocas";
+            console.log("putOfertas", resp.data)
             res.status(201).json(resp);
         }
 
@@ -29,6 +38,6 @@ exports.minhasOfertas = async (req, res) => {
             code: 500,
             detail: { ...err },
         };
-        res.sendError(errors, 501);
+        res.send(errors, 501);
     }
 };

@@ -21,12 +21,12 @@ async function removeOferta(_id_Offer, _id_stone) {
 
         if (!response.ok) throw new Error(data.message);
 
-        document.getElementById(
+        document.getElementsByClassName(
             "status_delete_offer"
         ).textContent = `Cancelada com sucesso!`;
 
     } catch (error) {
-        document.getElementById("status_delete_offer").textContent = error;
+        document.getElementsByClassName("status_delete_offer").textContent = error;
     }
 
 }
@@ -482,7 +482,7 @@ async function minhasTrocas() {
                 <button class="stone">
                     <img width="100%" height="100%" src="${element.img_url}" />
                 </button>  
-                <button onclick="offers('${element.id}')">VER OFERTA</button>
+                <button onclick="offers('${element.id}', '${element.stone_id}')">VER OFERTA</button>
                 <button onclick="cancel()">CANCELAR TROCA</button>       
             </div>`;
         });
@@ -494,8 +494,8 @@ async function minhasTrocas() {
     }
 }
 
-async function offers(id) {
-    
+async function offers(id, idStone) {
+
     try {
         const token = localStorage.getItem("auth");
 
@@ -508,6 +508,8 @@ async function offers(id) {
 
         const display = document.getElementById("display_box");
         display.innerHTML = ``;
+
+        console.log("offers fetch", data.data)
 
         data.data.forEach(element => {
             console.log(element)
@@ -522,12 +524,13 @@ async function offers(id) {
                 <p id="stone_description" class="stone_description_modal">${element.phone} </p>
                 <p id="stone_name">${element.name} </p>
                 <p id="stone_description" class="stone_description_modal">${element.description} </p>
-                <button onclick="acept()">
+                <button onclick="acept('${id}', '${element.id}', '${element.user_id}', '${idStone}')">
                     ACEITAR TROCA
                 </button>
-                <button onclick="refuse()">
+                <button onclick="refuse('${id}', '${element.id}','${element.name}')">
                     RECUSAR TROCA
                 </button>
+                <p id="status_delete_offer"></p>
             </div>`;
         });
 
@@ -538,15 +541,107 @@ async function offers(id) {
     }
 }
 
-function acept(){
-    console.log("aceitar");
+
+async function trocaIdStone(_idPedraOffer, _idUser, _idStoneOpenTroca) {
+
+    const oferta = {
+        idPedra: _idPedraOffer,
+        idUser: _idUser,
+        idPedraUserLog: _idStoneOpenTroca
+    }
+
+    try {
+
+        const response = await fetch(`http://localhost:8082/updatePedraUser`, {
+            method: "PUT",
+            body: JSON.stringify(oferta),
+            headers: { "Content-type": "application/json; charset=UTF-8", "Authorization": `Bearer ${token}` },
+        });
+
+        const dados = await response.json();
+        if (!response.ok) throw new Error(dados.err);
+
+        document.getElementsByClassName(
+            "status_delete_offer"
+        ).textContent = `Troca realizada com sucesso!`;
+
+    }
+
+    catch (error) {
+        console.log(error);
+    }
+
 }
 
-function refuse(){
-    console.log("recusar");
+async function acept(_idtroca, _idPedraOffer, _idUser, _idStoneOpenTroca) {
+    console.log("aceitar", _idtroca, _idPedraOffer, _idUser, _idStoneOpenTroca);
+
+    try {
+
+        const oferta = {
+            idtroca: _idtroca,
+            idPedra: _idPedraOffer
+        }
+
+        console.log(oferta)
+        const token = localStorage.getItem("auth");
+
+        const response = await fetch(`http://localhost:8082/validoferta`, {
+            method: "PUT",
+            body: JSON.stringify(oferta),
+            headers: { "Content-type": "application/json; charset=UTF-8", "Authorization": `Bearer ${token}` },
+        });
+
+        const data = await response.json();
+        if (!response.ok) throw new Error(data.err);
+
+        //ir na tabela de oferta e filtrar por troca_id e finished = 'false' -> data
+
+        try {
+
+            const responsetwo = await fetch(`http://localhost:8082/validofertatroca/${_idtroca}/${_idPedraOffer}`, {
+                method: "GET",
+                headers: { "Content-type": "application/json; charset=UTF-8", "Authorization": `Bearer ${token}` },
+            });
+
+            const dados = await responsetwo.json();
+            if (!responsetwo.ok) throw new Error(dados.err);
+            else if (dados.data.length == 0) {
+
+                const trocaId = await trocaIdStone(_idPedraOffer, _idUser, _idStoneOpenTroca);
+
+            } else {
+
+                dados.data.forEach(element => {
+
+                    removeOferta(element.new_id, element.stone_id);
+
+                });
+
+                const trocaIdtwo = trocaIdStone(_idPedraOffer, _idUser, _idStoneOpenTroca);
+            }
+
+        }
+
+        catch (error) {
+            console.log(error);
+        }
+    }
+
+    catch (error) {
+        console.log(error);
+    }
+
+
+
 }
 
-function cancel(){
+async function refuse(_idOffer, _idPedra) {
+    console.log("recusar", _idOffer, _idPedra);
+    removeOferta(_id_Offer, _idPedra);
+}
+
+function cancel() {
     console.log("cancela troca");
 }
 

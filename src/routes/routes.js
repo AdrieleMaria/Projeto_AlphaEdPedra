@@ -35,7 +35,8 @@ const { minhasOfertas } = require('../controllers/api/troca/minhasOfertas');
 const { addOferta } = require('../controllers/api/oferta/registerOferta');
 const { getOferta } = require('../controllers/api/oferta/getOferta');
 const { deleteOferta } = require('../controllers/api/oferta/deleteOferta');
-
+const { putOferta } = require('../controllers/api/oferta/validOferta');
+const { getOfertaTroca } = require('../controllers/api/oferta/validOfertaTrocas');
 
 //----------------------------USER----------------------------
 router.post('/login', login); //user e admin | criação de token
@@ -59,6 +60,8 @@ router.put('/updatePedra/:id', jwtUser, updatePedra);
 router.delete('/deletepedra/:id', jwtUser, deletePedra);
 router.get('/listpedra', jwtUser, listPedra);
 router.get('/getpedra/:id', jwtUser, getPedra);
+
+router.put('/updatePedraUser', jwtUser, updatePedra);
 //----------------------------PEDRA---------------------------
 
 //----------------------------TROCA---------------------------
@@ -71,11 +74,11 @@ router.put('/updatroca', jwtUser, updateTroca);
 router.delete('/deletetroca', jwtUser, deleteTroca);
 router.get('/listtroca', jwtUser, listTroca);
 
-
-
 router.get('/gettroca', jwtUser, getTroca);
 router.get('/minhasTrocas', jwtUser, minhasTrocas);
 router.get('/minhasOfertas/:id', jwtUser, minhasOfertas);
+
+
 
 //----------------------------TROCA---------------------------
 
@@ -83,6 +86,9 @@ router.get('/minhasOfertas/:id', jwtUser, minhasOfertas);
 router.post('/addoferta', jwtUser, addOferta);
 router.get('/getoferta', jwtUser, getOferta);
 router.delete('/deleteoferta/:idOffer/:idStone', jwtUser, deleteOferta);
+router.put('/validoferta', jwtUser, putOferta);
+router.get('/validofertatroca/:idtroca/:idPedra', jwtUser, getOfertaTroca);
+// router.put('/refuseofertas/:idOffer/:idStone', jwtUser, deleteOferta);
 
 //----------------------------OFERTA---------------------------
 

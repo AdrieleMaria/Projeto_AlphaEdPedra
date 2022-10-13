@@ -18,7 +18,7 @@ export function minhasOfertasModal(_data) {
                 <p id="stone_name">Minha oferta:</p>
                 <p id="stone_name">${_data.user_stone_name}</p>
                 <button onclick="removeOferta('${_data.offer_id}', '${_data.user_stone_id}')">CANCELAR OFERTA</button> 
-                <p id="status_delete_offer"></p>
+                <p class="status_delete_offer"></p>
             </div>       
         </div>
 
