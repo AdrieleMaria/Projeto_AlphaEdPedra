@@ -3,6 +3,7 @@ import { newExchangesModal } from "./pages/newExchangesModal.js"
 import { modalSearchOffer } from "./pages/modalSearchOffer.js"
 import { modalSearchOfferCheck } from "./pages/modalSearchOfferCheck.js"
 import { minhasOfertasModal } from "./pages/modalMyOffer.js"
+import { closeModal } from "./searchProfile.js"
 
 async function removeOferta(_id_Offer, _id_stone) {
 
@@ -84,9 +85,10 @@ async function minhasOfertasInfo(_stone_id, troca_id, img_url, stone_name, _id_o
 
                 console.log(offer);
 
-                const display = document.getElementById("display_box");
-                display.innerHTML = ``;
-                display.innerHTML = minhasOfertasModal(offer);
+                const display = document.getElementById("appHome");
+                display.innerHTML += minhasOfertasModal(offer);
+                const modal = document.querySelector(`.modal_trade`);
+                modal.style.display = "block";
 
             } catch (error) {
 
@@ -121,17 +123,17 @@ async function minhasOfertas() {
 
         console.log(data.data);
 
-        const display = document.getElementById("display_box");
+        const display = document.getElementById("trade_box");
         display.innerHTML = ``;
 
         data.data.forEach(element => {
 
             display.innerHTML += `
-            <div class="inventory_icon">
-                <button class="stone" onclick="minhasOfertasInfo('${element.stone_id}','${element.troca_id}','${element.stone_img_url}','${element.stone_name}','${element.new_id}')">
+            <div class="trade_icon">
+                <button class="trade_stone" onclick="minhasOfertasInfo('${element.stone_id}','${element.troca_id}','${element.stone_img_url}','${element.stone_name}','${element.new_id}')">
                     <img width="100%" height="100%" src="${element.stone_img_url}" />
                 </button>  
-                <button onclick="minhasOfertasInfo('${element.stone_id}','${element.troca_id}','${element.stone_img_url}','${element.stone_name}','${element.new_id}')">VER OFERTA</button>        
+                <button class="trade_btn" onclick="minhasOfertasInfo('${element.stone_id}','${element.troca_id}','${element.stone_img_url}','${element.stone_name}','${element.new_id}')">VER OFERTA</button>        
             </div>`;
 
         });
@@ -188,9 +190,8 @@ async function ProcurarOfertarConfirma(_id_stone_offer, _id_troca, _img_url, _na
 async function modalProcurarOfertar(_img_url, _name, _description, _id_troca, _id_stone_offer) {
 
     console.log("modalProcurarOfertar", _img_url, _name, _description, _id_troca, _id_stone_offer);
-    let modal = document.getElementById("display_box");
-    modal.innerHTML = ``;
-    modal.innerHTML = modalSearchOfferCheck(_img_url, _name, _description, _id_troca, _id_stone_offer);
+    let modal = document.getElementById("appHome");
+    modal.innerHTML += modalSearchOfferCheck(_img_url, _name, _description, _id_troca, _id_stone_offer);
 }
 
 
@@ -214,14 +215,17 @@ async function displayOferta(_id_troca) {
         console.log("displayOferta - dados do display de pedras", data)
 
         // document.getElementById("text_Troca").innerHTML = `<h3>Escolha uma pedra para ofertar</h3>`;
-        const display = document.getElementById("display_box");
+        const display = document.getElementById("trade_box");
         display.innerHTML = ``;
+        closeModal();
+
+        document.querySelector("#text_Troca").innerHTML = `<p class="stone_name">Escolha uma pedra para ofertar:</p><br><br>`;
 
         data.data.forEach(element => {
 
             if (element.validated === true && element.offered === false) {
                 display.innerHTML += `
-                <div class="inventory_icon">
+                <div class="trade_icon">
                     <button class="stone" onclick="modalProcurarOfertar('${element.img_url}', '${element.name}', '${element.description}', '${_id_troca}', '${element.id}')">
                         <img width="100%" height="100%" src="${element.img_url}" />
                     </button>          
@@ -255,7 +259,9 @@ async function modalProcurar(_id_troca, _id_pedra, _wish, _img_url) {
 
         console.log("data do getPedraModal", data);
 
-        document.getElementById("display_box").innerHTML = modalSearchOffer(data.data[0], _id_troca, _wish);
+        document.getElementById("appHome").innerHTML += modalSearchOffer(data.data[0], _id_troca, _wish);
+        const modal = document.querySelector(`.modal_trade`);
+        modal.style.display = "block";
 
 
     } catch (error) {
@@ -285,18 +291,18 @@ async function procurar() {
         console.log(data);
 
         const userid = data.id_user;
-        const display = document.getElementById("display_box");
+        const display = document.getElementById("trade_box");
         display.innerHTML = ``;
 
         data.data.forEach(element => {
 
             if (element.user_id !== userid) {
                 display.innerHTML += `
-                <div class="inventory_icon">
-                    <button class="stone" onclick="modalProcurar('${element.id}','${element.stone_id}','${element.wish}','${element.img_url}')">
+                <div class="trade_icon">
+                    <button class="trade_stone" onclick="modalProcurar('${element.id}','${element.stone_id}','${element.wish}','${element.img_url}')">
                         <img width="100%" height="100%" src="${element.img_url}" />
                     </button>  
-                    <button onclick="modalProcurar('${element.id}','${element.stone_id}','${element.wish}','${element.img_url}')">VER OFERTA</button>        
+                    <button class="trade_btn" onclick="modalProcurar('${element.id}','${element.stone_id}','${element.wish}','${element.img_url}')">VER OFERTA</button>        
                 </div>`;
             }
 
@@ -326,7 +332,7 @@ async function displayMinhasTrocas() {
 
     //     if (!response.ok) throw new Error(data.err);
 
-    //     const display = document.getElementById("display_box");
+    //     const display = document.getElementById("trade_box");
     //     display.innerHTML = ``;
 
     //     data.data.forEach(element => {
@@ -394,8 +400,9 @@ async function addTroca(_id, _img_url, _name) {
 function novaTrocaModal(_id, _name, _description, _img_url) {
 
     const display = document.getElementById("appHome");
-    display.innerHTML = ``;
-    display.innerHTML = newExchangesModal(_id, _name, _description, _img_url);
+    display.innerHTML += newExchangesModal(_id, _name, _description, _img_url);
+    const modal = document.querySelector(`.modal_trade`);
+    modal.style.display = "block";
 
 
 }
@@ -414,14 +421,14 @@ async function displayTroca() {
 
         if (!response.ok) throw new Error(data.err);
 
-        const display = document.getElementById("display_box");
+        const display = document.getElementById("trade_box");
         display.innerHTML = ``;
 
         data.data.forEach(element => {
 
             if (element.validated === true && element.offered === false) {
                 display.innerHTML += `
-                <div class="inventory_icon">
+                <div class="trade_icon">
                     <button class="stone" onclick="novaTrocaModal('${element.id}','${element.name}','${element.description}','${element.img_url}')">
                         <img width="100%" height="100%" src="${element.img_url}" />
                     </button>          
@@ -449,7 +456,7 @@ function exchanges(op) {
             displayTroca();
             break;
         case 2:
-            displayMinhasTrocas();
+            minhasTrocas();
             break;
         case 3:
             minhasOfertas();
@@ -473,17 +480,17 @@ async function minhasTrocas() {
 
         const data = await response.json();
 
-        const display = document.getElementById("display_box");
+        const display = document.getElementById("trade_box");
         display.innerHTML = ``;
 
         data.data.forEach(element => {
             display.innerHTML += `
-            <div class="inventory_icon">
-                <button class="stone">
+            <div class="trade_icon">
+                <button class="trade_stone">
                     <img width="100%" height="100%" src="${element.img_url}" />
                 </button>  
-                <button onclick="offers('${element.id}')">VER OFERTA</button>
-                <button onclick="cancel()">CANCELAR TROCA</button>       
+                <button class="trade_btn" onclick="offers('${element.id}')">VER OFERTA</button>
+                <button class="trade_btn" onclick="cancel()">CANCELAR TROCA</button>       
             </div>`;
         });
 
@@ -506,30 +513,43 @@ async function offers(id) {
 
         const data = await response.json();
 
-        const display = document.getElementById("display_box");
-        display.innerHTML = ``;
+        const display = document.getElementById("appHome");
 
         data.data.forEach(element => {
             console.log(element)
             display.innerHTML += `
-            <div class="inventory_icon">
-                <button class="stone stone_modal">
-                    <img width="100%" height="100%" src="${element.img_url}" />
+            <div class="modal_trade">
+                <div id="profile_card" class="modal-content-stone">
+
+                <button id="closeCreate" class="display_flex" onclick="exchanges(2)">
+                    <svg class="close_modal close_padding" width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M19.385 0.5L11 8.885L2.615 0.5L0.5 2.615L8.885 11L0.5 19.385L2.615 21.5L11 13.115L19.385 21.5L21.5 19.385L13.115 11L21.5 2.615L19.385 0.5Z" fill="black" />
+                    </svg>
                 </button>
+        
+                
+                <img class="modal_img" width="100%" height="100%" src="${element.img_url}" />
  
-                <p id="stone_name">${element.user_name} </p>
-                <p id="stone_description" class="stone_description_modal">${element.email} </p>
-                <p id="stone_description" class="stone_description_modal">${element.phone} </p>
-                <p id="stone_name">${element.name} </p>
-                <p id="stone_description" class="stone_description_modal">${element.description} </p>
-                <button onclick="acept()">
-                    ACEITAR TROCA
+                <p id="stone_description">${element.user_name} </p>
+                <p id="stone_description"">${element.email} </p>
+                <p id="stone_description">${element.phone} </p>
+                <p id="stone_description">${element.name} </p>
+                <p id="stone_description">${element.description} </p><br>
+                <p id="stone_description">Aperte em troca realizada após ter recebido a pedra. </p>
+
+                <button class="btn_submit" onclick="acept()">
+                    TROCA REALIZADA
                 </button>
-                <button onclick="refuse()">
+                <button class="btn_submit" onclick="refuse()">
                     RECUSAR TROCA
                 </button>
+                <p id="status_delete_offer"></p>
+            </div>
             </div>`;
         });
+
+        const modal = document.querySelector(`.modal_trade`);
+        modal.style.display = "block";
 
     }
 

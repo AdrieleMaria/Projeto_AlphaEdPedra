@@ -8,6 +8,7 @@ import { exchanges } from "./modules/home/exchanges.js";
 import { userProfile, searchForUser } from "./modules/home/searchProfile.js";
 import { profile } from "./modules/home/profile.js";
 import { logout } from "./modules/home/logout.js";
+import { closeLogout } from "./modules/home/logout.js";
 
 //--------------INICIAL
 
