@@ -312,7 +312,6 @@ async function procurar() {
 }
 
 
-
 async function displayMinhasTrocas() {
 
     // const token = localStorage.getItem("auth");
@@ -462,6 +461,94 @@ function exchanges(op) {
 
 }
 
+async function minhasTrocas() {
+
+    try {
+        const token = localStorage.getItem("auth");
+
+        const response = await fetch(`http://localhost:8082/minhasTrocas`, {
+            method: "GET",
+            headers: { "Content-type": "application/json; charset=UTF-8", "Authorization": `Bearer ${token}` },
+        });
+
+        const data = await response.json();
+
+        const display = document.getElementById("display_box");
+        display.innerHTML = ``;
+
+        data.data.forEach(element => {
+            display.innerHTML += `
+            <div class="inventory_icon">
+                <button class="stone">
+                    <img width="100%" height="100%" src="${element.img_url}" />
+                </button>  
+                <button onclick="offers('${element.id}')">VER OFERTA</button>
+                <button onclick="cancel()">CANCELAR TROCA</button>       
+            </div>`;
+        });
+
+    }
+
+    catch (error) {
+        console.log(error);
+    }
+}
+
+async function offers(id) {
+    
+    try {
+        const token = localStorage.getItem("auth");
+
+        const response = await fetch(`http://localhost:8082/minhasOfertas/${id}`, {
+            method: "GET",
+            headers: { "Content-type": "application/json; charset=UTF-8", "Authorization": `Bearer ${token}` },
+        });
+
+        const data = await response.json();
+
+        const display = document.getElementById("display_box");
+        display.innerHTML = ``;
+
+        data.data.forEach(element => {
+            console.log(element)
+            display.innerHTML += `
+            <div class="inventory_icon">
+                <button class="stone stone_modal">
+                    <img width="100%" height="100%" src="${element.img_url}" />
+                </button>
+ 
+                <p id="stone_name">${element.user_name} </p>
+                <p id="stone_description" class="stone_description_modal">${element.email} </p>
+                <p id="stone_description" class="stone_description_modal">${element.phone} </p>
+                <p id="stone_name">${element.name} </p>
+                <p id="stone_description" class="stone_description_modal">${element.description} </p>
+                <button onclick="acept()">
+                    ACEITAR TROCA
+                </button>
+                <button onclick="refuse()">
+                    RECUSAR TROCA
+                </button>
+            </div>`;
+        });
+
+    }
+
+    catch (error) {
+        console.log(error);
+    }
+}
+
+function acept(){
+    console.log("aceitar");
+}
+
+function refuse(){
+    console.log("recusar");
+}
+
+function cancel(){
+    console.log("cancela troca");
+}
 
 window.removeOferta = removeOferta;
 window.minhasOfertasInfo = minhasOfertasInfo;
@@ -475,4 +562,9 @@ window.addTroca = addTroca;
 window.minhasOfertas = minhasOfertas;
 window.procurar = procurar;
 window.exchanges = exchanges;
+window.minhasTrocas = minhasTrocas;
+window.offers = offers;
+window.acept = acept;
+window.refuse = refuse;
+window.cancel = cancel;
 export { exchanges }

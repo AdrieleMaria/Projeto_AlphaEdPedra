@@ -28,6 +28,8 @@ const { updateTroca } = require('../controllers/api/troca/updateTroca');
 const { listTroca } = require('../controllers/api/troca/listTroca');
 const { getTroca } = require('../controllers/api/troca/getTroca');
 const { listOferta } = require('../controllers/api/troca/listOferta');
+const { minhasTrocas } = require('../controllers/api/troca/minhasTrocas');
+const { minhasOfertas } = require('../controllers/api/troca/minhasOfertas');
 
 
 const { addOferta } = require('../controllers/api/oferta/registerOferta');
@@ -68,6 +70,12 @@ router.get('/gettroca/:id', jwtUser, getTroca);
 router.put('/updatroca', jwtUser, updateTroca);
 router.delete('/deletetroca', jwtUser, deleteTroca);
 router.get('/listtroca', jwtUser, listTroca);
+
+
+
+router.get('/gettroca', jwtUser, getTroca);
+router.get('/minhasTrocas', jwtUser, minhasTrocas);
+router.get('/minhasOfertas/:id', jwtUser, minhasOfertas);
 
 //----------------------------TROCA---------------------------
 
