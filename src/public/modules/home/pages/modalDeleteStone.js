@@ -1,7 +1,9 @@
 export function modalDeleteStone(_dataStone) {
     return `
-    <aside id="cadastrate_modal">
-        <div class="modal_title_div display_flex">
+    <div class="modal">
+        <div id="profile_card" class="modal-content-stone">
+        
+        <div class="stone_title_div display_flex">
             <h2 class="modal_title">Deletar: ${_dataStone.name}</h2>
             <button id="closeDelete" onclick="inventory()">
                 <svg class="clickable" width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -12,12 +14,15 @@ export function modalDeleteStone(_dataStone) {
             </button>
         </div>
         
-        <p class="done_warning" id="stone_name">Deseja realmente deletar a pedra?</p>
-        <p class="done_warning" id="stone_name">Nome: ${_dataStone.name}</p>
-        <p class="done_warning" id="stone_weight">Descrição: ${_dataStone.description}</p>
+        <img class="modal_img" width="100%" height="100%" src="${_dataStone.img_url}" />
+        
+        <p class="done_warning" class="stone_name">Deseja realmente deletar a pedra?</p>
+        <p class="done_warning" class="stone_name">Nome: ${_dataStone.name}</p>
+        <p class="done_warning" class="stone_weight">Descrição: ${_dataStone.description}</p>
 
         <button type="submit" id="delete_stone" name="delete_stone" class="btn_submit">DELETAR</button>
         <p class="done_warning" id="statusDelete"></p>
-    </aside>
+    </div>
+    </div>
     `
 }

@@ -7,8 +7,8 @@ export function inventoriesRender() {
 
     return ` 
     <div id="new_stone" class="inventory_icon">
-        <button class="stone">
-            <svg width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <button class="add_stone">
+            <svg width="32" height="32" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M23.625 18.375V0H18.375V18.375H0V23.625H18.375V42H23.625V23.625H42V18.375H23.625Z"
             fill="#533F36" />
             </svg>
@@ -18,7 +18,6 @@ export function inventoriesRender() {
     <div id="inventory_main">
     </div> `
 }
-{/*  */}
 /* <div id="listIcon" class="inventory_icon">
 
             <button class="stone">

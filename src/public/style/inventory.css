@@ -22,7 +22,8 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    width: fit-content; 
+    min-width: fit-content; 
+    max-width: 680px;
     height: fit-content;
     margin-top: 5em;
     padding: 1em;
@@ -42,21 +43,16 @@
     width: 7em;
     border: black 0.2em solid;
     cursor: pointer;
-    background-color: #FFF5DF;
+    box-shadow: inset 0 0 10px #303030;
+}
+.add_stone{
+    align-self: flex-start;
+    height: 7em;
+    width: 7em;
+    border: black 0.2em solid;
+    cursor: pointer;
     box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(97, 97, 97, 0.5) -3px -3px 6px 1px inset;
 }
-@media only screen and (max-width: 690px) {
-    #display_box{
-        width: 306px;
-        padding: 0.8em;
-        gap: 0.8em;
-    }
-    .stone{
-        height: 5em;
-        width: 5em;
-    }
-}
-
 /* ------------------------------------------------------
                         MODAL
 ------------------------------------------------------ */
@@ -100,4 +96,16 @@
 .stone_modal{
     width: 15em;
     height: 15em;
+}
+
+@media only screen and (max-width: 690px) {
+    #display_box{
+        width: 260px;
+        padding: 0.8em;
+        gap: 0.8em;
+    }
+    .stone, .add_stone{
+        height: 5em;
+        width: 5em;
+    }
 }

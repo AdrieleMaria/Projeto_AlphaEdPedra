@@ -1,10 +1,10 @@
 export function exchangesRender(_id) {
     return `  
-    <div  class="display_flex_row" >
+    <div class="trades_apphome" >
   
         <div class="trade_menu">
 
-            <nav class="nav_gap">
+            <nav class="trade_gap">
                 <li class="nav_title"><button class="btn_logon btn_nav" onclick="displayTroca()">Nova Troca</button></li>
 
                 <li class="nav_title"><button class="btn_logon btn_nav" onclick="minhasTrocas()">Minhas Trocas</button></li>
@@ -18,7 +18,7 @@ export function exchangesRender(_id) {
         </div>
 
         <div id="text_Troca"></div>
-        <div id="display_box"></div>
+        <div id="trade_box"></div>
       
     </div>
     `

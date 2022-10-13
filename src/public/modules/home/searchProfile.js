@@ -13,6 +13,7 @@ async function searchForUser() {
     }
 
     try {
+        //const response = await fetch(`https://108.61.89.179:443/searchprofile/${searchFor.value}`, {
         const response = await fetch(`http://localhost:8082/searchprofile/${searchFor.value}`, {
             method: "GET",
             headers: { "Content-type": "application/json; charset=UTF-8", "Authorization": `Bearer ${token}` },
@@ -51,6 +52,10 @@ function userProfile(clicked) {
 
 function closeModal() {
     var modals = document.getElementsByClassName("modal");
+    for (var i=0; i<modals.length; i++) {
+        modals[i].style.display = "none";
+    }
+    var modals = document.getElementsByClassName("modal_trade");
     for (var i=0; i<modals.length; i++) {
         modals[i].style.display = "none";
     }

@@ -6,6 +6,7 @@ async function getDisplayModal(_id, _func) {
     const token = localStorage.getItem("auth");
 
     try {
+        //const response = await fetch(`https://108.61.89.179:443/getpedra/${_id}`, {
         const response = await fetch(`http://localhost:8082/getpedra/${_id}`, {
             method: "GET",
             headers: { "Content-type": "application/json; charset=UTF-8", "Authorization": `Basic ${token}` },
@@ -16,7 +17,9 @@ async function getDisplayModal(_id, _func) {
         if (!response.ok) throw new Error(data.err);
 
         console.log("data do getDisplayModal", data.data);
-        document.getElementById("appHome").innerHTML = _func(data.data[0]);
+        document.getElementById("appHome").innerHTML += _func(data.data[0]);
+        const modal = document.querySelector(`.modal`);
+        modal.style.display = "block";
 
         return true;
 
@@ -39,6 +42,7 @@ async function displayReq() {
     const token = localStorage.getItem("auth");
 
     try {
+        //const response = await fetch(`https://108.61.89.179:443/listpedra`, {
         const response = await fetch(`http://localhost:8082/listpedra`, {
             method: "GET",
             headers: { "Content-type": "application/json; charset=UTF-8", "Authorization": `Basic ${token}` },
