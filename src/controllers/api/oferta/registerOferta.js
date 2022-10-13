@@ -6,13 +6,15 @@ const insertOferta = require('../../../repositories/ofertas/addOferta')
 exports.addOferta = async (req, res) => {
 
     const userid = req.auth.id;
-    const { id_troca, id_pedra } = req.body;
+    const { id_troca, id_pedra, stone_img_url, stone_name } = req.body;
 
     try {
         const columns = {
             user_id: userid,
             pedra_id: id_pedra,
-            troca_id: id_troca
+            troca_id: id_troca,
+            stone_img_url: stone_img_url,
+            stone_name: stone_name
         };
         console.log(columns);
 

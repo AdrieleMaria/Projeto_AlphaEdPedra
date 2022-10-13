@@ -1,4 +1,5 @@
-export function modalSearchOfferCheck(_img_url, _name, _description, _id_troca, _id_stone_offer) {
+export function modalMinhasOfertas(_data, _id_troca, _wish) {
+    console.log(_data)
     return `
     <div id="inventory_modal">
             <button id="closeCreate" onclick="exchanges(4)">
@@ -8,16 +9,16 @@ export function modalSearchOfferCheck(_img_url, _name, _description, _id_troca, 
             </button>
 
             <button class="stone stone_modal">
-                <img width="100%" height="100%" src="${_img_url}" />
+                <img width="100%" height="100%" src="${_data.img_url}" />
             </button>
 
-            <p id="stone_name">${_name}</p>
+            <p id="stone_name">${_data.name} </p>
             
-            <p id="stone_description" class="stone_description_modal">${_description}</p>
+            <p id="stone_description" class="stone_description_modal">${_data.description} </p>
 
-            <button onclick="ProcurarOfertarConfirma('${_id_stone_offer}', '${_id_troca}', '${_img_url}', '${_name}')">CONFIRMAR</button>
+            <p class="stone_description_modal">${_wish} </p>
 
-            <p id="status_troca_oferecer"></p>
+            <button onclick="displayOferta(${_id_troca})">OFERECER TROCA</button>
 
         </div>
     `
