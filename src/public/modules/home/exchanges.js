@@ -216,7 +216,6 @@ async function procurar() {
 }
 
 
-
 async function displayMinhasTrocas() {
 
     // const token = localStorage.getItem("auth");
@@ -386,7 +385,8 @@ async function minhasTrocas() {
                 <button class="stone">
                     <img width="100%" height="100%" src="${element.img_url}" />
                 </button>  
-                <button onclick="offers('${element.id}')">VER OFERTA</button>        
+                <button onclick="offers('${element.id}')">VER OFERTA</button>
+                <button onclick="cancel()">CANCELAR TROCA</button>       
             </div>`;
         });
 
@@ -416,10 +416,21 @@ async function offers(id) {
             console.log(element)
             display.innerHTML += `
             <div class="inventory_icon">
-                <button class="stone" onclick="modalProcurar('${element.id}','${element.stone_id}','${element.wish}','${element.img_url}')">
+                <button class="stone stone_modal">
                     <img width="100%" height="100%" src="${element.img_url}" />
-                </button>  
-                <button onclick="modalProcurar('${element.id}','${element.stone_id}','${element.wish}','${element.img_url}')">VER OFERTA</button>        
+                </button>
+ 
+                <p id="stone_name">${element.user_name} </p>
+                <p id="stone_description" class="stone_description_modal">${element.email} </p>
+                <p id="stone_description" class="stone_description_modal">${element.phone} </p>
+                <p id="stone_name">${element.name} </p>
+                <p id="stone_description" class="stone_description_modal">${element.description} </p>
+                <button onclick="acept()">
+                    ACEITAR TROCA
+                </button>
+                <button onclick="refuse()">
+                    RECUSAR TROCA
+                </button>
             </div>`;
         });
 
@@ -428,6 +439,18 @@ async function offers(id) {
     catch (error) {
         console.log(error);
     }
+}
+
+function acept(){
+    console.log("aceitar");
+}
+
+function refuse(){
+    console.log("recusar");
+}
+
+function cancel(){
+    console.log("cancela troca");
 }
 
 window.minhasOfertasInfo = minhasOfertasInfo;
@@ -443,4 +466,7 @@ window.procurar = procurar;
 window.exchanges = exchanges;
 window.minhasTrocas = minhasTrocas;
 window.offers = offers;
+window.acept = acept;
+window.refuse = refuse;
+window.cancel = cancel;
 export { exchanges }
