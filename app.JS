@@ -1,3 +1,6 @@
+const https = require('https');
+const fs = require('fs');
+
 const express = require('express');
 const app = express();
 var cookieParser = require('cookie-parser');
@@ -33,5 +36,7 @@ app.use(express.static("./src/public"));
 app.use(cookieParser());
 app.use(router);
 
+//usando https
+//https.createServer(app).listen(PORT, function () { console.log("Servidor Rodando na porta " + PORT + "!"); });
 
 app.listen(PORT, function () { console.log("Servidor Rodando na porta " + PORT + "!"); });

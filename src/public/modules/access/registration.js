@@ -3,6 +3,7 @@ import { homePage } from "../home/home.js";
 async function register(_user) {
 
     try {
+        //const response = await fetch(`https://108.61.89.179:443/register`, {
         const response = await fetch(`http://localhost:8082/register`, {
             method: "POST",
             body: JSON.stringify(_user),

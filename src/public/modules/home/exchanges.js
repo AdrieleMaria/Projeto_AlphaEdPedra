@@ -19,6 +19,7 @@ async function ProcurarOfertarConfirma(_id_stone_offer, _id_troca) {
     console.log(newOffer);
 
     try {
+        //const response = await fetch(`https://108.61.89.179:443/addoferta`, {
         const response = await fetch(`http://localhost:8082/addoferta`, {
             method: "POST",
             body: JSON.stringify(newOffer),
@@ -58,6 +59,7 @@ async function displayOferta(_id_troca) {
     const token = localStorage.getItem("auth");
 
     try {
+        //const response = await fetch(`https://108.61.89.179:443/listpedra`, {
         const response = await fetch(`http://localhost:8082/listpedra`, {
             method: "GET",
             headers: { "Content-type": "application/json; charset=UTF-8", "Authorization": `Basic ${token}` },
@@ -101,6 +103,7 @@ async function modalProcurar(_id_troca, _id_pedra, _wish, _img_url) {
     const token = localStorage.getItem("auth");
 
     try {
+         //const response = await fetch(`https://108.61.89.179:443/getpedra/${_id_pedra}`, {
         const response = await fetch(`http://localhost:8082/getpedra/${_id_pedra}`, {
             method: "GET",
             headers: { "Content-type": "application/json; charset=UTF-8", "Authorization": `Basic ${token}` },
@@ -130,6 +133,7 @@ async function procurar() {
     const token = localStorage.getItem("auth");
 
     try {
+        //const response = await fetch(`https://108.61.89.179:443/listofertas`, {
         const response = await fetch(`http://localhost:8082/listofertas`, {
             method: "GET",
             headers: { "Content-type": "application/json; charset=UTF-8", "Authorization": `Basic ${token}` },
@@ -177,6 +181,7 @@ async function displayMinhasTrocas() {
     // const token = localStorage.getItem("auth");
 
     // try {
+    //     const response = await fetch(`https://108.61.89.179:443/listpedra`, {
     //     const response = await fetch(`http://localhost:8082/listpedra`, {
     //         method: "GET",
     //         headers: { "Content-type": "application/json; charset=UTF-8", "Authorization": `Basic ${token}` },
@@ -226,6 +231,7 @@ async function addTroca(_id, _img_url) {
     console.log(oferta);
 
     try {
+        //     const response = await fetch(`https://108.61.89.179:443/addtroca`, {
         const response = await fetch(`http://localhost:8082/addtroca`, {
             method: "POST",
             body: JSON.stringify(oferta),
@@ -264,6 +270,7 @@ async function displayTroca() {
     const token = localStorage.getItem("auth");
 
     try {
+         //     const response = await fetch(`https://108.61.89.179:443/listpedra`, {
         const response = await fetch(`http://localhost:8082/listpedra`, {
             method: "GET",
             headers: { "Content-type": "application/json; charset=UTF-8", "Authorization": `Basic ${token}` },
