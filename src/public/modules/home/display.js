@@ -17,7 +17,9 @@ async function getDisplayModal(_id, _func) {
         if (!response.ok) throw new Error(data.err);
 
         console.log("data do getDisplayModal", data.data);
-        document.getElementById("appHome").innerHTML = _func(data.data[0]);
+        document.getElementById("appHome").innerHTML += _func(data.data[0]);
+        const modal = document.querySelector(`.modal`);
+        modal.style.display = "block";
 
         return true;
 

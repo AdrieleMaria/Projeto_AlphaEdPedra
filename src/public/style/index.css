@@ -10,7 +10,6 @@ body{
     cursor: pointer;
 }
 
-
 /* ------------------------------------------------------
                         MAIN
 ------------------------------------------------------ */
@@ -40,8 +39,10 @@ body{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    margin: 0 auto;
+    width: 80vw;
+    margin: 0 1em;
     align-self: center;
+    z-index: 1;
 }
 .inventory_icon{
     display: flex;
@@ -52,6 +53,7 @@ body{
     align-content: center;
     padding-bottom: 3em;
     gap: 0.8em;
+    z-index: 1;
 }
 .stone_name{
     font-family: 'Roboto';
@@ -67,6 +69,12 @@ body{
     display: flex;
     justify-content: center;
     gap: 10px;
+    cursor: pointer;
+}
+.edit_delete_profile{
+    display: flex;
+    justify-content: space-between;
+    width: 50px;
     cursor: pointer;
 }
 .stone{

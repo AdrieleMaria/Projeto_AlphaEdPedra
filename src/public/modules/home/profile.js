@@ -42,7 +42,9 @@ async function getProfileEdit(){
         const data = await response.json();
         console.log(data)
         const render = await modalEditUser(data);
-        document.getElementById("appHome").innerHTML = render;
+        document.getElementById("appHome").innerHTML += render;
+        const modal = document.querySelector(`.modal`);
+        modal.style.display = "block";
 
         document
             .getElementById("edit_user_submit")
@@ -121,7 +123,9 @@ async function getProfileDelete() {
         const data = await response.json();
         console.log(data)
         const render = await modalDeleteProfile(data.data);
-        document.getElementById("appHome").innerHTML = render;
+        document.getElementById("appHome").innerHTML += render;
+        const modal = document.querySelector(`.modal`);
+        modal.style.display = "block";
 
         document
             .getElementById("delete_profile")

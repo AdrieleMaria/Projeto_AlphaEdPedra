@@ -1,7 +1,8 @@
 export function modalEditStone(_dataStone) {
     return `
-    <aside id="cadastrate_modal">
-        <div class="modal_title_div display_flex">
+    <div class="modal">
+        <div id="profile_card" class="modal-content-stone">
+        <div class="stone_title_div display_flex">
             <h2 class="modal_title">Editar: ${_dataStone.name}</h2>
             <button id="closeEdit" onclick="inventory()">
                 <svg class="clickable" width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -27,7 +28,7 @@ export function modalEditStone(_dataStone) {
         </div>
 
         <p class="done_warning" id="statusEdit"></p>
-
-    </aside>
+    </div>
+    </div>
     `
 }

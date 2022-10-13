@@ -46,19 +46,20 @@ router.get('/profile', jwtUser, getUser);
 
 router.get('/searchprofileID/:id', jwtUser, searchProfileID);
 //----------------------------SEARCH----------------------------
-router.get('/searchprofile/:name', jwtUser, searchProfile);
 
+router.get('/searchprofile/:name', jwtUser, searchProfile);
 router.get('/editar-perfil', jwtUser, getProfileEdit);
 router.put('/updateUser/:id', jwtUser, updateUser)
 router.delete('/deleteUser/:id', jwtUser, deleteUser);
-//----------------------------USER----------------------------
 
 //----------------------------PEDRA---------------------------
+
 router.post('/addpedra', jwtUser, addPedra);
 router.put('/updatePedra/:id', jwtUser, updatePedra);
 router.delete('/deletepedra/:id', jwtUser, deletePedra);
 router.get('/listpedra', jwtUser, listPedra);
 router.get('/getpedra/:id', jwtUser, getPedra);
+
 //----------------------------PEDRA---------------------------
 
 //----------------------------TROCA---------------------------

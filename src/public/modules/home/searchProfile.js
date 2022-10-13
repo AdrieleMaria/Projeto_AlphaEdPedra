@@ -55,6 +55,10 @@ function closeModal() {
     for (var i=0; i<modals.length; i++) {
         modals[i].style.display = "none";
     }
+    var modals = document.getElementsByClassName("modal_trade");
+    for (var i=0; i<modals.length; i++) {
+        modals[i].style.display = "none";
+    }
 };
 
 window.closeModal = closeModal;
