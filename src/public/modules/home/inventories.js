@@ -255,8 +255,9 @@ async function getStone() {
         inventories.innerHTML = ``;
 
         data.data.forEach(element => {
+            console.log(element)
             // listIcon
-
+            if (element.offered == false){
             inventories.innerHTML += `
             <div class="inventory_icon">
                 <button class="stone" onclick="modalpedra(${element.id})">
@@ -286,6 +287,7 @@ async function getStone() {
                 </div>
             
             </div>`;
+            }
 
         });
 

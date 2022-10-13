@@ -32,6 +32,9 @@ const { minhasOfertas } = require('../controllers/api/troca/minhasOfertas');
 
 
 const { addOferta } = require('../controllers/api/oferta/registerOferta');
+const { getOferta } = require('../controllers/api/oferta/getOferta');
+
+
 
 //----------------------------USER----------------------------
 router.post('/login', login); //user e admin | criação de token
@@ -71,7 +74,7 @@ router.get('/minhasOfertas/:id', jwtUser, minhasOfertas);
 
 //----------------------------OFERTA---------------------------
 router.post('/addoferta', jwtUser, addOferta);
-
+router.get('/getoferta', jwtUser, getOferta);
 
 //----------------------------OFERTA---------------------------
 

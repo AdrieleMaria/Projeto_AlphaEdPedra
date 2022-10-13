@@ -11,11 +11,11 @@ export function modalSearchOfferCheck(_img_url, _name, _description, _id_troca, 
                 <img width="100%" height="100%" src="${_img_url}" />
             </button>
 
-            <p id="stone_name">${_name} </p>
+            <p id="stone_name">${_name}</p>
             
             <p id="stone_description" class="stone_description_modal">${_description}</p>
 
-            <button onclick="ProcurarOfertarConfirma('${_id_stone_offer}', '${_id_troca}')" >CONFIRMAR</button>
+            <button onclick="ProcurarOfertarConfirma('${_id_stone_offer}', '${_id_troca}', '${_img_url}', '${_name}')">CONFIRMAR</button>
 
             <p id="status_troca_oferecer"></p>
 

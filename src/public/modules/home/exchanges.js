@@ -3,17 +3,63 @@ import { newExchangesModal } from "./pages/newExchangesModal.js"
 import { modalSearchOffer } from "./pages/modalSearchOffer.js"
 import { modalSearchOfferCheck } from "./pages/modalSearchOfferCheck.js"
 
+async function minhasOfertasInfo(_stone_id, troca_id, img_url, stone_name) {
 
-async function ProcurarOfertarConfirma(_id_stone_offer, _id_troca) {
+    console.log("minhasOfertasInfo", _stone_id, troca_id, img_url, stone_name);
+}
 
-    console.log("ProcurarOfertarConfirma", _id_stone_offer, _id_troca);
+async function minhasOfertas() {
+    console.log("Minhas Ofertas");
+
+    const token = localStorage.getItem("auth");
+
+    try {
+        const response = await fetch(`http://localhost:8082/getoferta`, {
+            method: "GET",
+            headers: { "Content-type": "application/json; charset=UTF-8", "Authorization": `Basic ${token}` },
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) throw new Error(data.err);
+
+        console.log(data.data);
+
+        const display = document.getElementById("display_box");
+        display.innerHTML = ``;
+
+        data.data.forEach(element => {
+
+            display.innerHTML += `
+            <div class="inventory_icon">
+                <button class="stone" onclick="minhasOfertasInfo('${element.stone_id}','${element.troca_id}','${element.stone_img_url}','${element.stone_name}')">
+                    <img width="100%" height="100%" src="${element.stone_img_url}" />
+                </button>  
+                <button onclick="minhasOfertasInfo('${element.stone_id}','${element.troca_id}','${element.stone_img_url}','${element.stone_name}')">VER OFERTA</button>        
+            </div>`;
+
+        });
+
+    } catch (error) {
+
+        console.log(error);
+
+    }
+
+}
+
+async function ProcurarOfertarConfirma(_id_stone_offer, _id_troca, _img_url, _name) {
+
+    console.log("ProcurarOfertarConfirma", _id_stone_offer, _id_troca, _img_url, _name);
     console.log("oferta id", _id_stone_offer)
     console.log("troca id", _id_troca)
 
     const token = localStorage.getItem("auth");
     const newOffer = {
         id_pedra: _id_stone_offer,
-        id_troca: _id_troca
+        id_troca: _id_troca,
+        stone_img_url: _img_url,
+        stone_name: _name
     }
 
     console.log(newOffer);
@@ -43,11 +89,12 @@ async function ProcurarOfertarConfirma(_id_stone_offer, _id_troca) {
 
 }
 
-
 async function modalProcurarOfertar(_img_url, _name, _description, _id_troca, _id_stone_offer) {
 
     console.log("modalProcurarOfertar", _img_url, _name, _description, _id_troca, _id_stone_offer);
-    document.getElementById("display_box").innerHTML = modalSearchOfferCheck(_img_url, _name, _description, _id_troca, _id_stone_offer);
+    let modal = document.getElementById("display_box");
+    modal.innerHTML = ``;
+    modal.innerHTML = modalSearchOfferCheck(_img_url, _name, _description, _id_troca, _id_stone_offer);
 }
 
 
@@ -110,7 +157,7 @@ async function modalProcurar(_id_troca, _id_pedra, _wish, _img_url) {
 
         if (!response.ok) throw new Error(data.err);
 
-        console.log("data do getPedraModal", data.data);
+        console.log("data do getPedraModal", data);
 
         document.getElementById("display_box").innerHTML = modalSearchOffer(data.data[0], _id_troca, _wish);
 
@@ -168,9 +215,7 @@ async function procurar() {
 
 }
 
-function minhasOfertas() {
-    console.log("Minhas Ofertas");
-}
+
 
 async function displayMinhasTrocas() {
 
@@ -385,6 +430,7 @@ async function offers(id) {
     }
 }
 
+window.minhasOfertasInfo = minhasOfertasInfo;
 window.ProcurarOfertarConfirma = ProcurarOfertarConfirma;
 window.modalProcurarOfertar = modalProcurarOfertar;
 window.displayOferta = displayOferta;
