@@ -1,14 +1,15 @@
 const deleteOffer = require('../../../repositories/ofertas/deleteOferta');
-const updateStone = require('../../../repositories/pedras/updatePedra');
+const updateStone = require('../../../repositories/pedras/updatePedraFalse');
+const updateNovaTroca = require('../../../repositories/troca/updateNovaTrocaFalse');
 
 exports.deleteOferta = async (req, res) => {
 
-    const id_Offer = Number(req.params.idOffer);
+    const idtroca = Number(req.params.idtroca);
     const id_stone = Number(req.params.idStone);
 
     try {
         const columns = {
-            idOffer: id_Offer,
+            idtroca: idtroca,
             pedra_id: id_stone,
             offered: 'false'
         };
@@ -32,10 +33,30 @@ exports.deleteOferta = async (req, res) => {
                     res.status(500).send("Internal Server Error");
                 } else {
 
-                    res.status(200).json({ message: "Oferta cancelada." });
+                    try {
 
+                        const respUpdate = await updateNovaTroca(columns);
+
+                        if (respUpdate.err !== null) {
+                            console.log({ err: respUpdate.err });
+
+                            res.status(500).send("Internal Server Error");
+                        } else {
+
+                            res.status(200).json({ message: "Oferta cancelada." });
+
+                        }
+
+                    } catch (err) {
+                        console.log(err);
+                        errors = {
+                            message: 'Ocorreu um erro inesperado.',
+                            code: 500,
+                            detail: { ...err },
+                        };
+                        res.send(errors, 501);
+                    }
                 }
-
             } catch (err) {
                 console.log(err);
                 errors = {
@@ -45,9 +66,7 @@ exports.deleteOferta = async (req, res) => {
                 };
                 res.send(errors, 501);
             }
-
         }
-
     } catch (err) {
         console.log(err);
         errors = {

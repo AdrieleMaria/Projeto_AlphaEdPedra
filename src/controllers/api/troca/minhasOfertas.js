@@ -4,7 +4,7 @@ const getTroca = require('../../../repositories/Troca/minhasOfertas');
 
 exports.minhasOfertas = async (req, res) => {
 
-    const trocaid = req.params.id;
+    const trocaid = req.params.idtroca;
 
     try {
         const columns = {

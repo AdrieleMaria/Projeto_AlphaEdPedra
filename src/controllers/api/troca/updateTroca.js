@@ -1,42 +1,39 @@
-const bcrypt = require('bcrypt');
-const jwt = require('../../../auth/jwt');
-const updateTroca = require('../../../repositories/Troca/updateTroca');
+// const bcrypt = require('bcrypt');
+// const jwt = require('../../../auth/jwt');
+// const updateTroca = require('../../../repositories/Troca/updateTrocaPedra');
 
-exports.updateTroca = async (req, res) => {
+// exports.updateTrocaPedra = async (req, res) => {
+    
+//     const userid = req.auth.id;
+//     const { idPedra, idUser, idPedraUserLog } = req.body;
 
-    //verificar:
-    const userid = req.auth.id;
-    const { name, description, user_id, created_at, img_url } = req.body;
+//     try {
+//         const columns = {
+//             idPedra: idPedra,
+//             idUser: idUser,
+//             userid: userid,
+//             idPedraUserLog: idPedraUserLog
+//         };
+//         console.log(columns);
 
-    try {
-        const columns = {
-            name: name,
-            description: description,
-            user_id: userid,
-            created_at: created_at,
-            img_url: img_url
-        };
-        console.log(columns);
+//         const resp = await updateDbPedraUser(columns);
 
-        const resp = await updateTroca(columns);
+//         if (resp.err !== null) {
+//             console.log({ err: resp.err });
+//             res.status(500).send("Internal Server Error");
+//         } else {
 
-        if (resp.err !== null) {
-            console.log({ err: resp.err });
+//             res.status(201).json();
+//         }
 
-            res.status(500).send("Internal Server Error");
-        } else {
+//     } catch (err) {
+//         console.log(err);
+//         errors = {
+//             message: 'Ocorreu um erro inesperado.',
+//             code: 500,
+//             detail: { ...err },
+//         };
+//         res.send(errors, 501);
+//     }
 
-            const pedraCreate = "update troca";
-            res.status(201).json(pedraCreate);
-        }
-
-    } catch (err) {
-        console.log(err);
-        errors = {
-            message: 'Ocorreu um erro inesperado.',
-            code: 500,
-            detail: { ...err },
-        };
-        res.sendError(errors, 501);
-    }
-};
+// };
