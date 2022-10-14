@@ -7,7 +7,7 @@ async function getDisplayModal(_id, _func) {
 
     try {
         //const response = await fetch(`https://108.61.89.179:443/getpedra/${_id}`, {
-        const response = await fetch(`http://localhost:8082/getpedra/${_id}`, {
+        const response = await fetch(`https://alphaedpedra.ddns.net/getpedra/${_id}`, {
             method: "GET",
             headers: { "Content-type": "application/json; charset=UTF-8", "Authorization": `Basic ${token}` },
         });
@@ -43,7 +43,7 @@ async function displayReq() {
 
     try {
         //const response = await fetch(`https://108.61.89.179:443/listpedra`, {
-        const response = await fetch(`http://localhost:8082/listpedra`, {
+        const response = await fetch(`https://alphaedpedra.ddns.net/listpedra`, {
             method: "GET",
             headers: { "Content-type": "application/json; charset=UTF-8", "Authorization": `Basic ${token}` },
         });

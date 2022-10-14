@@ -11,7 +11,9 @@ async function removeOferta(_id_troca, _id_stone) {
     const token = localStorage.getItem("auth");
 
     try {
-        const response = await fetch(`http://localhost:8082/deleteoferta/${_id_troca}/${_id_stone}`, {
+
+        const response = await fetch(`https://alphaedpedra.ddns.net/deleteoferta/${_id_troca}/${_id_stone}`, {
+
             method: "DELETE",
             headers: {
                 "Content-type": "application/json; charset=UTF-8",
@@ -38,7 +40,7 @@ async function minhasOfertasInfo(_stone_id, troca_id, img_url, stone_name, _id_o
     const token = localStorage.getItem("auth");
 
     try {
-        const response = await fetch(`http://localhost:8082/gettroca/${troca_id}`, {
+        const response = await fetch(`https://alphaedpedra.ddns.net/gettroca/${troca_id}`, {
             method: "GET",
             headers: { "Content-type": "application/json; charset=UTF-8", "Authorization": `Basic ${token}` },
         });
@@ -55,7 +57,7 @@ async function minhasOfertasInfo(_stone_id, troca_id, img_url, stone_name, _id_o
             const profileID = data.data.user_id;
 
             try {
-                const response = await fetch(`http://localhost:8082/searchprofileID/${profileID}`, {
+                const response = await fetch(`https://alphaedpedra.ddns.net/searchprofileID/${profileID}`, {
                     method: "GET",
                     headers: { "Content-type": "application/json; charset=UTF-8", "Authorization": `Basic ${token}` },
                 });
@@ -110,7 +112,7 @@ async function minhasOfertas() {
     const token = localStorage.getItem("auth");
 
     try {
-        const response = await fetch(`http://localhost:8082/getoferta`, {
+        const response = await fetch(`https://alphaedpedra.ddns.net/getoferta`, {
             method: "GET",
             headers: { "Content-type": "application/json; charset=UTF-8", "Authorization": `Basic ${token}` },
         });
@@ -161,7 +163,7 @@ async function ProcurarOfertarConfirma(_id_stone_offer, _id_troca, _img_url, _na
 
     try {
         //const response = await fetch(`https://108.61.89.179:443/addoferta`, {
-        const response = await fetch(`http://localhost:8082/addoferta`, {
+        const response = await fetch(`https://alphaedpedra.ddns.net/addoferta`, {
             method: "POST",
             body: JSON.stringify(newOffer),
             headers: { "Content-type": "application/json; charset=UTF-8", "Authorization": `Basic ${token}` },
@@ -198,7 +200,7 @@ async function displayOferta(_id_troca) {
 
     try {
         //const response = await fetch(`https://108.61.89.179:443/listpedra`, {
-        const response = await fetch(`http://localhost:8082/listpedra`, {
+        const response = await fetch(`https://alphaedpedra.ddns.net/listpedra`, {
             method: "GET",
             headers: { "Content-type": "application/json; charset=UTF-8", "Authorization": `Basic ${token}` },
         });
@@ -239,7 +241,7 @@ async function modalProcurar(_id_troca, _id_pedra, _wish, _img_url) {
 
     try {
         //const response = await fetch(`https://108.61.89.179:443/getpedra/${_id_pedra}`, {
-        const response = await fetch(`http://localhost:8082/getpedra/${_id_pedra}`, {
+        const response = await fetch(`https://alphaedpedra.ddns.net/getpedra/${_id_pedra}`, {
             method: "GET",
             headers: { "Content-type": "application/json; charset=UTF-8", "Authorization": `Basic ${token}` },
         });
@@ -270,7 +272,7 @@ async function procurar() {
 
     try {
         //const response = await fetch(`https://108.61.89.179:443/listofertas`, {
-        const response = await fetch(`http://localhost:8082/listofertas`, {
+        const response = await fetch(`https://alphaedpedra.ddns.net/listofertas`, {
             method: "GET",
             headers: { "Content-type": "application/json; charset=UTF-8", "Authorization": `Basic ${token}` },
         });
@@ -330,7 +332,7 @@ async function addTroca(_id, _img_url, _name) {
 
     try {
         //     const response = await fetch(`https://108.61.89.179:443/addtroca`, {
-        const response = await fetch(`http://localhost:8082/addtroca`, {
+        const response = await fetch(`https://alphaedpedra.ddns.net/addtroca`, {
             method: "POST",
             body: JSON.stringify(oferta),
             headers: { "Content-type": "application/json; charset=UTF-8", "Authorization": `Basic ${token}` },
@@ -369,7 +371,7 @@ async function displayTroca() {
 
     try {
         //     const response = await fetch(`https://108.61.89.179:443/listpedra`, {
-        const response = await fetch(`http://localhost:8082/listpedra`, {
+        const response = await fetch(`https://alphaedpedra.ddns.net/listpedra`, {
             method: "GET",
             headers: { "Content-type": "application/json; charset=UTF-8", "Authorization": `Basic ${token}` },
         });
@@ -435,7 +437,7 @@ async function minhasTrocas() {
     try {
         const token = localStorage.getItem("auth");
 
-        const response = await fetch(`http://localhost:8082/minhasTrocas`, {
+        const response = await fetch(`https://alphaedpedra.ddns.net/minhasTrocas`, {
             method: "GET",
             headers: { "Content-type": "application/json; charset=UTF-8", "Authorization": `Bearer ${token}` },
         });
@@ -469,7 +471,9 @@ async function offers(idtroca, idStoneLog) {
         const token = localStorage.getItem("auth");
 
 
-        const response = await fetch(`http://localhost:8082/minhasOfertas/${idtroca}`, {
+
+        const response = await fetch(`https://alphaedpedra.ddns.net/minhasOfertas/${idtroca}`, {
+
             method: "GET",
             headers: { "Content-type": "application/json; charset=UTF-8", "Authorization": `Bearer ${token}` },
         });
@@ -552,7 +556,8 @@ async function trocaIdStone(_idtroca, _idPedraOffer, _idUser, _idStoneLog) {
         }
         console.log("trocaIdStone", oferta)
 
-        const response3 = await fetch(`http://localhost:8082/trocaPedra`, {
+        const response3 = await fetch(`https://alphaedpedra.ddns.net/trocaPedra`, {
+
             method: "PUT",
             body: JSON.stringify(oferta),
             headers: {
@@ -585,13 +590,15 @@ async function acept(_idtroca, _idPedraOffer, _idUser, _idStoneLog) {
 
     const token = localStorage.getItem("auth");
 
+
     try {
-        const response = await fetch(`http://localhost:8082/deleteoferta/${_idtroca}/${_idPedraOffer}`, {
+        const response = await fetch(`https://alphaedpedra.ddns.net/deleteoferta/${_idtroca}/${_idPedraOffer}`, {
             method: "DELETE",
             headers: {
                 "Content-type": "application/json; charset=UTF-8",
                 "Authorization": `Basic ${token}`
             },
+
         });
 
         const data = await response.json();
@@ -599,13 +606,15 @@ async function acept(_idtroca, _idPedraOffer, _idUser, _idStoneLog) {
         if (!response.ok) throw new Error(data.message);
 
         try {
+
             //deletar troca
-            const response2 = await fetch(`http://localhost:8082/deletetroca/${_idtroca}`, {
+            const response2 = await fetch(`https://alphaedpedra.ddns.net/deletetroca/${_idtroca}`, {
                 method: "DELETE",
                 headers: {
                     "Content-type": "application/json; charset=UTF-8",
                     "Authorization": `Basic ${token}`
                 },
+
             });
 
             const data2 = await response2.json();
