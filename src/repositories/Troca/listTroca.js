@@ -1,12 +1,10 @@
 const db = require("../../controllers/db");
 
-//usado em listOferta
-//lista todas as trocas da tabela nova_troca com conclusão falsa
 async function listTroca() {
 
     try {
 
-        const query = `SELECT * FROM nova_troca WHERE finished='false';`;
+        const query = `SELECT * FROM nova_troca WHERE finished='false' and offer='false';`;
         const data = await db.query(query);
         console.log(data);
 

@@ -6,7 +6,6 @@ const jwtUser = require('../auth/userAuth');
 const { login } = require('../controllers/api/session/login');
 const { addUser } = require('../controllers/api/user/registerUser');
 const { searchEmail } = require('../controllers/api/user/searchUserEmail');
-// const { logout } = require('../controllers/api/session/logout');
 
 const { getUser } = require('../controllers/api/user/getUser');
 const { getProfileEdit } = require('../controllers/api/user/getProfileEdit');
@@ -38,13 +37,11 @@ const { deleteOferta } = require('../controllers/api/oferta/deleteOferta');
 const { putOferta } = require('../controllers/api/oferta/validOferta');
 const { getOfertaTroca } = require('../controllers/api/oferta/validOfertaTrocas');
 
+const { updatePedraUser } = require('../controllers/api/pedra/updatePedraUser');
 //----------------------------USER----------------------------
-router.post('/login', login); //user e admin | criação de token
-router.post('/register', searchEmail, addUser);  //user e admin | criação de token
-// router.put('/update-userdata', jwtuser, updateUserData); //user | verificação de token | editar dados
-// router.post('/logout', logout);
+router.post('/login', login);
+router.post('/register', searchEmail, addUser);
 router.get('/profile', jwtUser, getUser);
-
 router.get('/searchprofileID/:id', jwtUser, searchProfileID);
 //----------------------------SEARCH----------------------------
 
@@ -60,7 +57,6 @@ router.put('/updatePedra/:id', jwtUser, updatePedra);
 router.delete('/deletepedra/:id', jwtUser, deletePedra);
 router.get('/listpedra', jwtUser, listPedra);
 router.get('/getpedra/:id', jwtUser, getPedra);
-
 router.put('/updatePedraUser', jwtUser, updatePedra);
 
 //----------------------------PEDRA---------------------------
@@ -69,28 +65,23 @@ router.put('/updatePedraUser', jwtUser, updatePedra);
 router.post('/addtroca', jwtUser, addTroca);
 router.get('/listofertas', jwtUser, listOferta);
 router.get('/gettroca/:id', jwtUser, getTroca);
-//<<<<<<<<<OKKKK
-
-router.put('/updatroca', jwtUser, updateTroca);
-router.delete('/deletetroca', jwtUser, deleteTroca);
+// router.put('/updatroca', jwtUser, updateTroca);
 router.get('/listtroca', jwtUser, listTroca);
-
 router.get('/gettroca', jwtUser, getTroca);
 router.get('/minhasTrocas', jwtUser, minhasTrocas);
-router.get('/minhasOfertas/:id', jwtUser, minhasOfertas);
-
-
-
+router.get('/minhasOfertas/:idtroca', jwtUser, minhasOfertas);
 //----------------------------TROCA---------------------------
 
 //----------------------------OFERTA---------------------------
 router.post('/addoferta', jwtUser, addOferta);
 router.get('/getoferta', jwtUser, getOferta);
-router.delete('/deleteoferta/:idOffer/:idStone', jwtUser, deleteOferta);
-router.put('/validoferta', jwtUser, putOferta);
-router.get('/validofertatroca/:idtroca/:idPedra', jwtUser, getOfertaTroca);
-// router.put('/refuseofertas/:idOffer/:idStone', jwtUser, deleteOferta);
+router.delete('/deleteoferta/:idtroca/:idStone', jwtUser, deleteOferta);
+router.delete('/deletetroca/:idtroca', jwtUser, deleteTroca);
+router.put('/trocaPedra', jwtUser, updatePedraUser);
 
+// router.put('/trocaPedra', jwtUser, updateDbPedraUser, putTrocaPedra);
+// router.put('/validoferta', jwtUser, putOferta);
+// router.get('/validofertatroca/:idtroca/:idPedra', jwtUser, getOfertaTroca);
 //----------------------------OFERTA---------------------------
 
 

@@ -3,8 +3,8 @@ const db = require("../../controllers/db");
 async function updatePedra(params) {
     try {
 
-        const query = `UPDATE stone set offered=$1 WHERE id=$2 RETURNING *;`;
-        const values = [params.offered, params.pedra_id];
+        const query = `UPDATE stone set offered='true' WHERE id=$1;`
+        const values = [params.pedra_id];
 
         const result = await db.query(query, values);
         console.log(result);

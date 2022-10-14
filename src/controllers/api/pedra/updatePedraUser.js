@@ -2,32 +2,55 @@ const bcrypt = require('bcrypt');
 const jwt = require('../../../auth/jwt');
 const updateDbPedraUser = require('../../../repositories/pedras/updatePedraUser');
 
-exports.updatePedra = async (req, res) => {
-
-    const userid = req.auth.id;
-    const { idPedra, idUser, idPedraUserLog } = req.body;
+exports.updatePedraUser = async (req, res) => {
 
     try {
-        const columns = {
-            idPedra: idPedra,
-            idUser: idUser,
-            userid: userid,
-            idPedraUserLog: idPedraUserLog
-        };
-        console.log(columns);
 
-        const resp = await updateDbPedraUser(columns);
+        const userid = req.auth.id;
+        const { idPedraO, idUserO, idPedraL } = req.body;
+        const troca = {
+            idPedra: idPedraO,
+            idUser: userid,
+            offered: 'false'
+        }
+
+        console.log("troca", troca);
+
+        const troca2 = {
+            idPedra: idPedraL,
+            idUser: idUserO,
+            offered: 'false'
+        }
+        console.log("troca", troca2);
+
+        const resp = await updateDbPedraUser(troca);
 
         if (resp.err !== null) {
             console.log({ err: resp.err });
             res.status(500).send("Internal Server Error");
         } else {
+            try {
+                const resp = await updateDbPedraUser(troca2);
 
-            res.status(201).json();
+                if (resp.err !== null) {
+                    console.log({ err: resp.err });
+                    res.status(500).send("Internal Server Error");
+                } else {
+
+                    res.status(201).json(resp);
+                }
+
+            } catch (err) {
+                errors = {
+                    message: 'Ocorreu um erro inesperado.',
+                    code: 500,
+                    detail: { ...err },
+                };
+                res.send(errors, 501);
+            }
         }
 
     } catch (err) {
-        console.log(err);
         errors = {
             message: 'Ocorreu um erro inesperado.',
             code: 500,
