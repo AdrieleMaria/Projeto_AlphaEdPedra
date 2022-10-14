@@ -140,3 +140,11 @@
     box-shadow: inset 0 0 10px #303030;
     margin: auto;
 }
+#trade_alert{
+    font-size: 2em;
+    width: 250px;
+}
+.trade_description_modal{
+    width: 300px;
+    padding: 1em 0;
+}

@@ -23,9 +23,7 @@ async function removeOferta(_id_troca, _id_stone) {
 
         if (!response.ok) throw new Error(data.message);
 
-        document.getElementsByClassName(
-            "status_delete_offer"
-        ).textContent = `Cancelada com sucesso!`;
+        document.querySelector(".status_delete_offer").innerHTML = `Cancelada com sucesso!`;
 
     } catch (error) {
         document.getElementsByClassName("status_delete_offer").textContent = error;
@@ -137,6 +135,7 @@ async function minhasOfertas() {
             </div>`;
 
         });
+        displayNull();
 
     } catch (error) {
 
@@ -299,6 +298,7 @@ async function procurar() {
             }
 
         });
+        displayNull();
 
 
     } catch (error) {
@@ -393,6 +393,7 @@ async function displayTroca() {
             }
 
         });
+        displayNull();
 
 
     } catch (error) {
@@ -454,6 +455,7 @@ async function minhasTrocas() {
                 <button class="trade_btn" onclick="cancel()">CANCELAR TROCA</button>       
             </div>`;
         });
+        displayNull()
 
     }
 
@@ -628,6 +630,18 @@ async function acept(_idtroca, _idPedraOffer, _idUser, _idStoneLog) {
 
 //-------------------------------------------------------------
 
+
+function displayNull() {
+    const boxDisplay = document.querySelector("#trade_box");
+    if (boxDisplay.innerHTML.length == 0) {
+        boxDisplay.style.display = "none";
+    } else {
+        boxDisplay.style.display = "flex";
+    }
+
+};
+
+window.displayNull = displayNull;
 window.trocaIdStone = trocaIdStone;
 window.removeOferta = removeOferta;
 window.minhasOfertasInfo = minhasOfertasInfo;
