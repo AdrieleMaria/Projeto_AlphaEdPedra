@@ -2,7 +2,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('../../../auth/jwt');
 const updateTroca = require('../../../repositories/Troca/updateTroca');
 
-exports.updateTroca= async (req, res) => {
+exports.updateTroca = async (req, res) => {
 
     //verificar:
     const userid = req.auth.id;
