@@ -1,7 +1,8 @@
 const bcrypt = require('bcrypt');
 const jwt = require('../../../auth/jwt');
 const updateStone = require('../../../repositories/pedras/updatePedra');
-const insertOferta = require('../../../repositories/ofertas/addOferta')
+const insertOferta = require('../../../repositories/ofertas/addOferta');
+const updateNovaTroca = require('../../../repositories/Troca/updateNovaTroca');
 
 exports.addOferta = async (req, res) => {
 
@@ -31,12 +32,31 @@ exports.addOferta = async (req, res) => {
                 const respUpdate = await updateStone(columns);
 
                 if (respUpdate.err !== null) {
-                    console.log({ err: respUpdate.err });
-
+                    // console.log({ err: respUpdate.err });
                     res.status(500).send("Internal Server Error");
                 } else {
 
-                    res.status(200).json({ message: "Oferta criada." });
+                    try {
+
+                        const respUpdate2 = await updateNovaTroca(columns);
+
+                        if (respUpdate2.err !== null) {
+                            // console.log({ err: respUpdate.err });
+                            res.status(500).send("Internal Server Error");
+                        } else {
+
+                            res.status(200).json({ message: "Oferta criada." });
+                        }
+
+                    } catch (err) {
+                        console.log(err);
+                        errors = {
+                            message: 'Ocorreu um erro inesperado.',
+                            code: 500,
+                            detail: { ...err },
+                        };
+                        res.send(errors, 501);
+                    }
 
                 }
 

@@ -3,8 +3,7 @@ const db = require("../../controllers/db");
 async function getOfertas(params) {
     try {
 
-        const query = `SELECT *
-        FROM "ofertas" WHERE user_id = $1`;
+        const query = `SELECT * FROM "ofertas" WHERE user_id = $1`;
         const values = [params.user_id];
 
         const result = await db.query(query, values);

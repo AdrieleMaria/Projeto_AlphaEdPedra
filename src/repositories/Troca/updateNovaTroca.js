@@ -1,10 +1,10 @@
 const db = require("../../controllers/db");
 
-async function updatePedra(params) {
+async function updateNovaTroca(params) {
     try {
 
-        const query = `UPDATE stone set offered='true' WHERE id=$1;`
-        const values = [params.pedra_id];
+        const query = `UPDATE nova_troca set offer='true' WHERE id=$1;`;
+        const values = [params.troca_id];
 
         const result = await db.query(query, values);
         console.log(result);
@@ -15,4 +15,7 @@ async function updatePedra(params) {
     };
 }
 
-module.exports = updatePedra;
+module.exports = updateNovaTroca;
+
+
+

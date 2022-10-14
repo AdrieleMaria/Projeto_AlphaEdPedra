@@ -5,6 +5,7 @@ import { modalSearchOfferCheck } from "./pages/modalSearchOfferCheck.js"
 import { minhasOfertasModal } from "./pages/modalMyOffer.js"
 import { closeModal } from "./searchProfile.js"
 
+//MINHAS OFERTAS-------------------------------------------------
 async function removeOferta(_id_Offer, _id_stone) {
 
     const token = localStorage.getItem("auth");
@@ -31,7 +32,6 @@ async function removeOferta(_id_Offer, _id_stone) {
     }
 
 }
-
 
 async function minhasOfertasInfo(_stone_id, troca_id, img_url, stone_name, _id_offer) {
 
@@ -145,12 +145,10 @@ async function minhasOfertas() {
     }
 
 }
+//---------------------------------------------------------------
 
+//PROCURAR -------------------------------------------------------
 async function ProcurarOfertarConfirma(_id_stone_offer, _id_troca, _img_url, _name) {
-
-    // console.log("ProcurarOfertarConfirma", _id_stone_offer, _id_troca, _img_url, _name);
-    // console.log("oferta id", _id_stone_offer)
-    // console.log("troca id", _id_troca)
 
     const token = localStorage.getItem("auth");
     const newOffer = {
@@ -195,10 +193,7 @@ async function modalProcurarOfertar(_img_url, _name, _description, _id_troca, _i
     modal.innerHTML += modalSearchOfferCheck(_img_url, _name, _description, _id_troca, _id_stone_offer);
 }
 
-
 async function displayOferta(_id_troca) {
-
-    // console.log("modal Procurar", _id_troca);
 
     const token = localStorage.getItem("auth");
 
@@ -213,10 +208,6 @@ async function displayOferta(_id_troca) {
 
         if (!response.ok) throw new Error(data.err);
 
-
-        console.log("displayOferta - dados do display de pedras", data)
-
-        // document.getElementById("text_Troca").innerHTML = `<h3>Escolha uma pedra para ofertar</h3>`;
         const display = document.getElementById("trade_box");
         display.innerHTML = ``;
         closeModal();
@@ -245,12 +236,10 @@ async function displayOferta(_id_troca) {
 
 async function modalProcurar(_id_troca, _id_pedra, _wish, _img_url) {
 
-    // console.log("modal Procurar", _id_troca, _id_pedra, _wish, _img_url)
-
     const token = localStorage.getItem("auth");
 
     try {
-         //const response = await fetch(`https://108.61.89.179:443/getpedra/${_id_pedra}`, {
+        //const response = await fetch(`https://108.61.89.179:443/getpedra/${_id_pedra}`, {
         const response = await fetch(`http://localhost:8082/getpedra/${_id_pedra}`, {
             method: "GET",
             headers: { "Content-type": "application/json; charset=UTF-8", "Authorization": `Basic ${token}` },
@@ -274,7 +263,6 @@ async function modalProcurar(_id_troca, _id_pedra, _wish, _img_url) {
     }
 
 }
-
 
 async function procurar() {
     console.log("Procurar");
@@ -320,47 +308,10 @@ async function procurar() {
     }
 
 }
+//---------------------------------------------------------------
 
 
-async function displayMinhasTrocas() {
-
-    // const token = localStorage.getItem("auth");
-
-    // try {
-    //     const response = await fetch(`https://108.61.89.179:443/listpedra`, {
-    //     const response = await fetch(`http://localhost:8082/listpedra`, {
-    //         method: "GET",
-    //         headers: { "Content-type": "application/json; charset=UTF-8", "Authorization": `Basic ${token}` },
-    //     });
-
-    //     const data = await response.json();
-
-    //     if (!response.ok) throw new Error(data.err);
-
-    //     const display = document.getElementById("trade_box");
-    //     display.innerHTML = ``;
-
-    //     data.data.forEach(element => {
-
-    //         if (element.validated === true && element.offered === true) {
-    //             display.innerHTML += `
-    //             <div class="inventory_icon">
-    //                 <button class="stone" onclick="minhasTrocaModal('${element.id}','${element.name}','${element.description}','${element.img_url}')">
-    //                     <img width="100%" height="100%" src="${element.img_url}" />
-    //                 </button>          
-    //             </div>`;
-    //         }
-
-    //     });
-
-
-    // } catch (error) {
-
-    //     console.log(error);
-
-    // }
-
-}
+//NOVA TROCA -------------------------------------------------------
 
 async function addTroca(_id, _img_url, _name) {
 
@@ -402,7 +353,6 @@ async function addTroca(_id, _img_url, _name) {
 
 }
 
-
 function novaTrocaModal(_id, _name, _description, _img_url) {
 
     const display = document.getElementById("appHome");
@@ -418,7 +368,7 @@ async function displayTroca() {
     const token = localStorage.getItem("auth");
 
     try {
-         //     const response = await fetch(`https://108.61.89.179:443/listpedra`, {
+        //     const response = await fetch(`https://108.61.89.179:443/listpedra`, {
         const response = await fetch(`http://localhost:8082/listpedra`, {
             method: "GET",
             headers: { "Content-type": "application/json; charset=UTF-8", "Authorization": `Basic ${token}` },
@@ -453,6 +403,8 @@ async function displayTroca() {
 
 }
 
+//---------------------------------------------------------------
+
 function exchanges(op) {
 
     console.log("TROCAS");
@@ -474,6 +426,8 @@ function exchanges(op) {
     }
 
 }
+
+//MINHAS TROCAS-------------------------------------------------
 
 async function minhasTrocas() {
 
@@ -566,7 +520,6 @@ async function offers(id, idStone) {
         console.log(error);
     }
 }
-
 
 async function trocaIdStone(_idPedraOffer, _idUser, _idStoneOpenTroca) {
 
@@ -670,6 +623,9 @@ async function refuse(_idOffer, _idPedra) {
 function cancel() {
     console.log("cancela troca");
 }
+
+//-------------------------------------------------------------
+
 
 window.removeOferta = removeOferta;
 window.minhasOfertasInfo = minhasOfertasInfo;

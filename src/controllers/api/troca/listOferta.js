@@ -1,8 +1,5 @@
-const bcrypt = require('bcrypt');
-const jwt = require('../../../auth/jwt');
 const listTroca = require('../../../repositories/Troca/listTroca');
 
-//>>>>>>>>>>>>>>>>>>>>>>>ok!
 exports.listOferta = async (req, res) => {
 
     const userid = req.auth.id;

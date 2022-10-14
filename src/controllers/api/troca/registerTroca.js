@@ -15,7 +15,9 @@ exports.addTroca = async (req, res) => {
             desejo: desejo,
             img_url: img_url,
             stone_name: stone_name,
-            offered: 'true'
+            offered: 'true',
+            finished: 'false',
+            offer: 'false'
         };
         console.log(columns);
 
