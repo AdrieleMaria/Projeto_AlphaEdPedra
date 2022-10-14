@@ -4,12 +4,11 @@ const deleteTroca = require('../../../repositories/Troca/deleteTroca');
 
 exports.deleteTroca = async (req, res) => {
 
-    //verificar:
-    const userid = req.auth.id;
+    const idtroca = Number(req.params.idtroca);
 
     try {
         const columns = {
-            id : userid
+            id: idtroca
         };
         console.log(columns);
 
@@ -20,9 +19,7 @@ exports.deleteTroca = async (req, res) => {
 
             res.status(500).send("Internal Server Error");
         } else {
-
-            const pedraCreate = "get Troca";
-            res.status(201).json(pedraCreate);
+            res.status(201).json(resp);
         }
 
     } catch (err) {
@@ -32,6 +29,6 @@ exports.deleteTroca = async (req, res) => {
             code: 500,
             detail: { ...err },
         };
-        res.sendError(errors, 501);
+        res.send(errors, 501);
     }
 };

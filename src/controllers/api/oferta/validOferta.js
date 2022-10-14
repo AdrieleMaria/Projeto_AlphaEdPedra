@@ -6,12 +6,12 @@ exports.putOferta = async (req, res) => {
 
     const userid = req.auth.id;
 
-    const { idtroca, idPedra } = req.body;
+    const { idtroca, idPedraO } = req.body;
 
     try {
         const columns = {
             idTroca: idtroca,
-            idPedraOffer: idPedra,
+            idPedraOffer: idPedraO,
             finished: 'true'
         };
 
