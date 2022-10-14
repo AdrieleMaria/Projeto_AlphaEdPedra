@@ -5,7 +5,7 @@ const updateDbPedraUser = require('../../../repositories/pedras/updatePedraUser'
 exports.updatePedraUser = async (req, res) => {
 
     try {
-
+        console.log("cheguei!!!!!!!!!")
         const userid = req.auth.id;
         const { idPedraO, idUserO, idPedraL } = req.body;
         const troca = {
@@ -21,19 +21,20 @@ exports.updatePedraUser = async (req, res) => {
             idUser: idUserO,
             offered: 'false'
         }
-        console.log("troca", troca2);
+        console.log("troca2", troca2);
 
         const resp = await updateDbPedraUser(troca);
 
         if (resp.err !== null) {
-            console.log({ err: resp.err });
+            console.log("troca 1 erro", { err: resp.err });
             res.status(500).send("Internal Server Error");
         } else {
+
             try {
                 const resp = await updateDbPedraUser(troca2);
 
                 if (resp.err !== null) {
-                    console.log({ err: resp.err });
+                    console.log("troca 2 erro", { err: resp.err });
                     res.status(500).send("Internal Server Error");
                 } else {
 

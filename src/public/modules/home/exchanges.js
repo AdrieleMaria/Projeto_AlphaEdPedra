@@ -450,8 +450,7 @@ async function minhasTrocas() {
                 <button class="trade_stone">
                     <img width="100%" height="100%" src="${element.img_url}" />
                 </button>  
-                <button id="verOferta" class="trade_btn" onclick="offers('${element.id}','${element.stone_id}')">VER OFERTA</button>
-                <button class="trade_btn" onclick="cancel()">CANCELAR TROCA</button>       
+                <button id="verOferta" class="trade_btn" onclick="offers('${element.id}','${element.stone_id}')">VER OFERTA</button>   
             </div>`;
         });
 
@@ -502,7 +501,7 @@ async function offers(idtroca, idStoneLog) {
                     <p id="stone_description">${element.description} </p><br>
                     <p id="stone_description">Aperte em troca realizada após ter recebido a pedra. </p>
     
-                    <button class="btn_submit" onclick="acept('${idtroca}', '${element.id}', '${element.user_id}', '${idStoneLog}')">
+                    <button class="btn_submit" onclick="trocaIdStone('${idtroca}', '${element.id}', '${element.user_id}', '${idStoneLog}')">
                         TROCA REALIZADA
                     </button>
                     <button class="btn_submit" onclick="removeOferta('${idtroca}', '${element.id}')">
@@ -539,7 +538,8 @@ async function offers(idtroca, idStoneLog) {
     }
 }
 
-async function trocaIdStone(_idPedraOffer, _idUser, _idStoneLog) {
+async function trocaIdStone(_idtroca, _idPedraOffer, _idUser, _idStoneLog) {
+    const token = localStorage.getItem("auth");
 
     try {
 
@@ -548,7 +548,7 @@ async function trocaIdStone(_idPedraOffer, _idUser, _idStoneLog) {
             idUserO: _idUser,
             idPedraL: _idStoneLog
         }
-        console.log("oferta", oferta)
+        console.log("trocaIdStone", oferta)
 
         const response3 = await fetch(`http://localhost:8082/trocaPedra`, {
             method: "PUT",
@@ -559,15 +559,20 @@ async function trocaIdStone(_idPedraOffer, _idUser, _idStoneLog) {
             },
         });
 
-        const data3 = await response3.json();
+        console.log(response3);
 
         if (!response3.ok) throw new Error(data3.message);
 
-        console.log("data3", data3)
-        console.log("fimmm!")
+        const data3 = await response3.json();
+
+        acept(_idtroca, _idPedraOffer, _idUser, _idStoneLog)
+
+        // console.log("data3", data3)
+        // console.log("fimmm!")
         //mensagem
 
     } catch (error) {
+        console.log(error)
         document.getElementsByClassName("status_delete_offer").textContent = error;
     }
 
@@ -604,8 +609,6 @@ async function acept(_idtroca, _idPedraOffer, _idUser, _idStoneLog) {
             const data2 = await response2.json();
 
             if (!response2.ok) throw new Error(data2.message);
-
-            trocaIdStone(_idPedraOffer, _idUser, _idStoneLog);
 
         } catch (error) {
             document.getElementsByClassName("status_delete_offer").textContent = error;
