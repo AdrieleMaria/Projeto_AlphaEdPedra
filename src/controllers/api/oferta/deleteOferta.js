@@ -1,6 +1,6 @@
 const deleteOffer = require('../../../repositories/ofertas/deleteOferta');
 const updateStone = require('../../../repositories/pedras/updatePedraFalse');
-const updateNovaTroca = require('../../../repositories/troca/updateNovaTrocaFalse');
+const updateNovaTrocaFalse = require('../../../repositories/Troca/updateNovaTrocaFalse');
 
 exports.deleteOferta = async (req, res) => {
 
@@ -35,7 +35,7 @@ exports.deleteOferta = async (req, res) => {
 
                     try {
 
-                        const respUpdate = await updateNovaTroca(columns);
+                        const respUpdate = await updateNovaTrocaFalse(columns);
 
                         if (respUpdate.err !== null) {
                             console.log({ err: respUpdate.err });

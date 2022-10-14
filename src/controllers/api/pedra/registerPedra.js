@@ -55,7 +55,7 @@ exports.addPedra = async (req, res) => {
 
             const columnsUpdate = {
                 id: id,
-                img_url: `http://${host}/photoStone/stonephoto-${id}.jpg`
+                img_url: `https://${host}/photoStone/stonephoto-${id}.jpg`
             }
 
             const updateStone = await upatePhotoPedra(columnsUpdate);
