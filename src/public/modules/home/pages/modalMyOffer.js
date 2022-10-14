@@ -14,8 +14,8 @@ export function minhasOfertasModal(_data) {
             <img class="myoffer_img" width="100%" height="100%" src="${_data.user_img_url}" />
 
             <div>
-                <p id="stone_description">Minha oferta:</p>
-                <p id="stone_description">${_data.user_stone_name}</p>
+                <p id="trade_description_modal">Minha oferta:</p>
+                <p id="stone_name">${_data.user_stone_name}</p>
                 <button style="margin-top: 1em;" class="trade_btn"  onclick="removeOferta('${_data.offer_id}', '${_data.user_stone_id}')">CANCELAR OFERTA</button> 
                 <p class="status_delete_offer"></p>
 
@@ -26,10 +26,10 @@ export function minhasOfertasModal(_data) {
             <img class="myoffer_img" width="100%" height="100%" src="${_data.trocador_stone_url}" />
 
             <div>
-                <p id="stone_description">Trocar por: ${_data.trocador_stone_name}</p>
-                <p id="stone_description">Entre em contato com: ${_data.trocador_name}</p>
-                <p id="stone_description">Telefone: ${_data.trocador_phone}</p>
-                <p id="stone_description">Email: ${_data.trocador_email}</p>
+                <p id="stone_name">${_data.trocador_stone_name}</p>
+                <p id="trade_description_modal">Entre em contato com: ${_data.trocador_name}</p>
+                <p id="trade_description_modal">Telefone: ${_data.trocador_phone}</p>
+                <p id="trade_description_modal">Email: ${_data.trocador_email}</p>
             </div>  
         </div>
 

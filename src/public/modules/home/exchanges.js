@@ -22,9 +22,7 @@ async function removeOferta(_id_Offer, _id_stone) {
 
         if (!response.ok) throw new Error(data.message);
 
-        document.getElementsByClassName(
-            "status_delete_offer"
-        ).textContent = `Cancelada com sucesso!`;
+        document.querySelector(".status_delete_offer").innerHTML = `Cancelada com sucesso!`;
 
     } catch (error) {
         document.getElementsByClassName("status_delete_offer").textContent = error;
@@ -137,6 +135,7 @@ async function minhasOfertas() {
             </div>`;
 
         });
+        displayNull();
 
     } catch (error) {
 
@@ -311,6 +310,7 @@ async function procurar() {
             }
 
         });
+        displayNull();
 
 
     } catch (error) {
@@ -443,6 +443,7 @@ async function displayTroca() {
             }
 
         });
+        displayNull();
 
 
     } catch (error) {
@@ -500,6 +501,7 @@ async function minhasTrocas() {
                 <button class="trade_btn" onclick="cancel()">CANCELAR TROCA</button>       
             </div>`;
         });
+        displayNull()
 
     }
 
@@ -539,12 +541,12 @@ async function offers(id, idStone) {
                 
                 <img class="modal_img" width="100%" height="100%" src="${element.img_url}" />
  
-                <p id="stone_description">${element.user_name} </p>
-                <p id="stone_description"">${element.email} </p>
-                <p id="stone_description">${element.phone} </p>
-                <p id="stone_description">${element.name} </p>
-                <p id="stone_description">${element.description} </p><br>
-                <p id="stone_description">Aperte em troca realizada após ter recebido a pedra. </p>
+                <p id="stone_name">${element.user_name} </p>
+                <p id="stone_description"">Email: ${element.email} </p>
+                <p id="stone_description">Telefone: ${element.phone} </p>
+                <p id="stone_description">Nome: ${element.name} </p>
+                <p id="stone_description">Descrição: ${element.description} </p><br>
+                <p id="trade_alert">Aperte em troca realizada após ter recebido a pedra. </p>
 
                 <button class="btn_submit" onclick="acept('${id}', '${element.id}', '${element.user_id}', '${idStone}')">
                     TROCA REALIZADA
@@ -671,6 +673,17 @@ function cancel() {
     console.log("cancela troca");
 }
 
+function displayNull() {
+    const boxDisplay = document.querySelector("#trade_box");
+    if (boxDisplay.innerHTML.length == 0) {
+        boxDisplay.style.display = "none";
+    } else {
+        boxDisplay.style.display = "flex";
+    }
+
+};
+
+window.displayNull = displayNull;
 window.removeOferta = removeOferta;
 window.minhasOfertasInfo = minhasOfertasInfo;
 window.ProcurarOfertarConfirma = ProcurarOfertarConfirma;

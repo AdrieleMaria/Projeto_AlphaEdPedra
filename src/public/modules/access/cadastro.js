@@ -32,7 +32,7 @@ export function cadastro() {
         <input class="login_input" type="password" id="password2" name="password" placeholder="Confirme sua senha"/>
     </div>
     <p id="status"><p>
-    <button type="submit" id="cadastroSubmit" class="btn_submit">Cadastrar</button>`
+    <button type="submit" id="cadastroSubmit" class="btn_submit" value="submit">Cadastrar</button>`
 
 }
 

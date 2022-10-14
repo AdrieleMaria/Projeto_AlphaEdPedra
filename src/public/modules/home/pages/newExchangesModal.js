@@ -11,8 +11,8 @@ export function newExchangesModal(_id, _name, _description, _img_url) {
 
        
         <img class="modal_img" width="100%" height="100%" src="${_img_url}" />
-        <p id="stone_description">${_name}</p>
-        <p id="stone_description">${_description}</p>
+        <p id="stone_name">${_name}</p>
+        <p id="stone_description" class="trade_description_modal">Descrição: ${_description}</p>
         
         <input type="textarea" id="desejo" placeholder="Desejo trocar por..."/>
 
