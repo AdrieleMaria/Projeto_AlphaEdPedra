@@ -56,13 +56,13 @@ exports.updatePedra = async (req, res) => {
 
             const uploadPath = path.join(__dirname, `../../../photoStone/stonephoto-${id}.jpg`);
 
-            const host = 'localhost';
+            const host = 'https://alphaedpedra.ddns.net';
 
             const columns = {
                 name: name,
                 description: description,
                 id: id,
-                img_url: `http://${host}:${process.env.PORT}/photoStone/stonephoto-${id}.jpg`
+                img_url: `http://${host}/photoStone/stonephoto-${id}.jpg`
             };
 
             console.log(columns);

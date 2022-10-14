@@ -4,7 +4,7 @@ async function register(_user) {
 
     try {
         //const response = await fetch(`https://108.61.89.179:443/register`, {
-        const response = await fetch(`http://localhost:8082/register`, {
+        const response = await fetch(`https://alphaedpedra.ddns.net/register`, {
             method: "POST",
             body: JSON.stringify(_user),
             headers: { "Content-type": "application/json; charset=UTF-8" },

@@ -15,7 +15,7 @@ async function postStone(_photo, _name, _description) {
 
     try {
         //const response = await fetch(`https://108.61.89.179:443/addpedra`, {
-        const response = await fetch(`http://localhost:8082/addpedra`, {
+        const response = await fetch(`https://alphaedpedra.ddns.net/addpedra`, {
             method: "POST",
             body: formData,
             headers: {
@@ -79,7 +79,7 @@ async function getStoneModal(_id, _func) {
 
     try {
         //const response = await fetch(`https://108.61.89.179:443/getpedra/${_id}`, {
-        const response = await fetch(`http://localhost:8082/getpedra/${_id}`, {
+        const response = await fetch(`https://alphaedpedra.ddns.net/getpedra/${_id}`, {
             method: "GET",
             headers: { "Content-type": "application/json; charset=UTF-8", "Authorization": `Basic ${token}` },
         });
@@ -112,7 +112,7 @@ function modalpedra(_id) {
 // Edição
 async function putStone(_photo, _name, _description, _id) {
 
-    // fetch(`http://localhost:8082/updatePedra/:id`
+    // fetch(`https://alphaedpedra.ddns.net/updatePedra/:id`
 
     const token = localStorage.getItem("auth");
     console.log(_photo, _name, _description, _id);
@@ -125,7 +125,7 @@ async function putStone(_photo, _name, _description, _id) {
 
     try {
         //const response = await fetch(`https://108.61.89.179:443/updatePedra/${_id}`, {
-        const response = await fetch(`http://localhost:8082/updatePedra/${_id}`, {
+        const response = await fetch(`https://alphaedpedra.ddns.net/updatePedra/${_id}`, {
             method: "PUT",
             body: formData,
             headers: {
@@ -193,7 +193,7 @@ async function deleteStone(_id) {
 
     try {
         //const response = await fetch(`https://108.61.89.179:443/deletepedra/${_id}`, {
-        const response = await fetch(`http://localhost:8082/deletepedra/${_id}`, {
+        const response = await fetch(`https://alphaedpedra.ddns.net/deletepedra/${_id}`, {
             method: "DELETE",
             headers: {
                 "Content-type": "application/json; charset=UTF-8",
@@ -249,7 +249,7 @@ async function getStone() {
 
     try {
         //const response = await fetch(`https://108.61.89.179:443/listpedra`, {
-        const response = await fetch(`http://localhost:8082/listpedra`, {
+        const response = await fetch(`https://alphaedpedra.ddns.net/listpedra`, {
             method: "GET",
             headers: { "Content-type": "application/json; charset=UTF-8", "Authorization": `Basic ${token}` },
         });
