@@ -1,4 +1,5 @@
 import { homePage } from "../home/home.js";
+import { inventory } from "../home/inventories.js";
 
 async function register(_user) {
 
@@ -34,7 +35,7 @@ async function register(_user) {
         localStorage.setItem("auth", data.token);
         //----------------------------------------
         document.getElementById("body").innerHTML = homePage(data);
-
+        inventory();
     } catch (error) {
         document.getElementById("status").innerHTML = error;
     }
