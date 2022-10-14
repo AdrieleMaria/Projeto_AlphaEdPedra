@@ -24,7 +24,7 @@ exports.addPedra = async (req, res) => {
         name: name,
         description: description,
         user_id: userid,
-        validated: 'false',
+        validated: 'true',
         offered: 'false',
         img_url: 'default.png'
     }

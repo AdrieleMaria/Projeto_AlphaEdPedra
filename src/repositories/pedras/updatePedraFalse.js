@@ -1,11 +1,10 @@
-
 const db = require("../../controllers/db");
 
-async function deleteTroca(params) {
+async function updatePedraFalse(params) {
     try {
 
-        const query = `DELETE FROM nova_troca WHERE id = $1 RETURNING *`;
-        const values = [params.id];
+        const query = `UPDATE stone set offered='false' WHERE id=$1;`
+        const values = [params.pedra_id];
 
         const result = await db.query(query, values);
         console.log(result);
@@ -16,4 +15,4 @@ async function deleteTroca(params) {
     };
 }
 
-module.exports = deleteTroca;
+module.exports = updatePedraFalse;

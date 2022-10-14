@@ -13,7 +13,7 @@ export function modalSearchOfferCheck(_img_url, _name, _description, _id_troca, 
 
             <p id="stone_name">${_name}</p>
             
-            <p id="stone_description" class="stone_description_modal">${_description}</p>
+            <p id="stone_description" class="stone_description_modal">Descrição: ${_description}</p>
 
             <button style="margin: 2em 0 1em;" class="trade_btn" onclick="ProcurarOfertarConfirma('${_id_stone_offer}', '${_id_troca}', '${_img_url}', '${_name}')">CONFIRMAR</button>
 

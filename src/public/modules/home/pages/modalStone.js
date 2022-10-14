@@ -14,7 +14,7 @@ export function modalStone(_data) {
 
             <p id="stone_name">${_data.name} </p>
             
-            <p id="stone_description" class="stone_description_modal">${_data.description} </p>
+            <p id="stone_description" class="stone_description_modal">Descrição: ${_data.description} </p>
         </div>
     </div>
     `

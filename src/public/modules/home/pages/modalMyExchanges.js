@@ -14,9 +14,9 @@ export function modalMinhasOfertas(_data, _id_troca, _wish) {
 
             <p id="stone_name">${_data.name} </p>
             
-            <p id="stone_description" class="stone_description_modal">${_data.description} </p>
+            <p id="stone_description" class="trade_description_modal">Descrição: ${_data.description} </p>
 
-            <p class="stone_description_modal">${_wish} </p>
+            <p class="stone_description_modal">Desejo: ${_wish} </p>
 
             <button onclick="displayOferta(${_id_troca})">OFERECER TROCA</button>
 

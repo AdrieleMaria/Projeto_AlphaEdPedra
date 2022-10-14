@@ -12,9 +12,9 @@ export function modalSearchOffer(_data, _id_troca, _wish) {
 
             <img class="modal_img" width="100%" height="100%" src="${_data.img_url}" />
 
-            <p id="stone_description">${_data.name} </p>
+            <p id="stone_name">${_data.name} </p>
             
-            <p id="stone_description">${_data.description} </p>
+            <p id="stone_description">Descrição: ${_data.description} </p>
 
             <p id="stone_description">Desejo: ${_wish} </p>
 

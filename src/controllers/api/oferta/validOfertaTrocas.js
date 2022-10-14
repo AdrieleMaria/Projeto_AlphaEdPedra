@@ -12,7 +12,7 @@ exports.getOfertaTroca = async (req, res) => {
         const columns = {
             idTroca: idtroca,
             idPedraOffer: idPedra,
-            finished: 'false'
+            finished: 'true'
         };
 
         console.log(columns);
@@ -26,8 +26,31 @@ exports.getOfertaTroca = async (req, res) => {
 
         } else {
 
-            // console.log("putOfertas", resp.data)
-            res.status(201).json(resp);
+            try {
+        
+                const resp = await getOfertaTrocas(columns);
+        
+                if (resp.err !== null) {
+        
+                    // console.log({ err: resp.err });
+                    res.status(500).send("Internal Server Error");
+        
+                } else {
+        
+                    // console.log("putOfertas", resp.data)
+                    res.status(201).json(resp);
+                }
+        
+            } catch (err) {
+                console.log(err);
+                errors = {
+                    message: 'Ocorreu um erro inesperado.',
+                    code: 500,
+                    detail: { ...err },
+                };
+                res.send(errors, 501);
+            }
+
         }
 
     } catch (err) {
