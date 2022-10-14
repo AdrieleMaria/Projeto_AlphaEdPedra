@@ -13,8 +13,7 @@ async function searchForUser() {
     }
 
     try {
-        //const response = await fetch(`https://108.61.89.179:443/searchprofile/${searchFor.value}`, {
-        const response = await fetch(`http://localhost:8082/searchprofile/${searchFor.value}`, {
+        const response = await fetch(`https://alphaedpedra.ddns.net/searchprofile/${searchFor.value}`, {
             method: "GET",
             headers: { "Content-type": "application/json; charset=UTF-8", "Authorization": `Bearer ${token}` },
         });

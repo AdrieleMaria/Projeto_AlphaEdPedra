@@ -4,13 +4,12 @@ const db = require("../../controllers/db");
 async function updateTroca(params) {
     try {
         
-        const query = `UPDATE troca SET
+        const query = `UPDATE nova_troca SET
         name = $1
         description = $2
         user_id = $3
-        created_at = $4
-        img_url = $5
-        WHERE id = $6
+        img_url = $4
+        WHERE id = $5
         RETURNING *`;
         const values = [params.name, params.description, params.user_id, params.oferta, params.valid, params.user_id];
 

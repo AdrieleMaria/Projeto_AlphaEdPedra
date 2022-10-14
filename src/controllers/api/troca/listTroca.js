@@ -6,7 +6,7 @@ exports.listTroca = async (req, res) => {
 
     //verificar:
     const userid = req.auth.id;
-    const { name, description, user_id, created_at, img_url } = req.body;
+    const { name, description, user_id, img_url } = req.body;
 
     try {
         const resp = await listTroca(columns);

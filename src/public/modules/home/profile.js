@@ -11,8 +11,7 @@ async function getUser() {
     const token = localStorage.getItem("auth");
 
     try {
-        //const response = await fetch(`https://108.61.89.179:443/profile`, {
-        const response = await fetch(`http://localhost:8082/profile`, {
+        const response = await fetch(`https://alphaedpedra.ddns.net/profile`, {
             method: "GET",
             headers: { "Content-type": "application/json; charset=UTF-8", "Authorization": `Bearer ${token}` },
         });
@@ -33,8 +32,7 @@ async function getProfileEdit(){
     const token = localStorage.getItem("auth");
 
     try {
-        //const response = await fetch(`https://108.61.89.179:443/profile`, {
-        const response = await fetch(`http://localhost:8082/profile`, {
+        const response = await fetch(`https://alphaedpedra.ddns.net/profile`, {
             method: "GET",
             headers: { "Content-type": "application/json; charset=UTF-8", "Authorization": `Bearer ${token}` },
         });
@@ -83,8 +81,7 @@ async function putUser(_name, _email, _phone, _id) {
     formData.append("phone", _phone);
 
     try {
-        //const response = await fetch(`https://108.61.89.179:443/updateUser/${_id}`, {
-        const response = await fetch(`http://localhost:8082/updateUser/${_id}`, {
+        const response = await fetch(`https://alphaedpedra.ddns.net/updateUser/${_id}`, {
             method: "PUT",
             body: formData,
             headers: {
@@ -114,8 +111,7 @@ async function getProfileDelete() {
     const token = localStorage.getItem("auth");
 
     try {
-        //const response = await fetch(`https://108.61.89.179:443/profile`, {
-        const response = await fetch(`http://localhost:8082/profile`, {
+        const response = await fetch(`https://alphaedpedra.ddns.net/profile`, {
             method: "GET",
             headers: { "Content-type": "application/json; charset=UTF-8", "Authorization": `Bearer ${token}` },
         });
@@ -145,8 +141,7 @@ async function removeUser(id){
     const token = localStorage.getItem("auth");
 
     try {
-        //const response = await fetch(`https://108.61.89.179:443/deleteUser/${id}`, {
-        const response = await fetch(`http://localhost:8082/deleteUser/${id}`, {
+        const response = await fetch(`https://alphaedpedra.ddns.net/deleteUser/${id}`, {
             method: "DELETE",
             headers: {
                 "Content-type": "application/json; charset=UTF-8",
